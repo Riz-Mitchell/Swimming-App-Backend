@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Swimming-App-Backend.props" />
+</Project>
