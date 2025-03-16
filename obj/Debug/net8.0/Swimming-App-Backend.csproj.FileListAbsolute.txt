@@ -127,3 +127,4 @@
 /home/mr_mitchell/Projects-2025/Swimming-App-Backend/obj/Debug/net8.0/Swimming-App-Backend.pdb
 /home/mr_mitchell/Projects-2025/Swimming-App-Backend/obj/Debug/net8.0/Swimming-App-Backend.genruntimeconfig.cache
 /home/mr_mitchell/Projects-2025/Swimming-App-Backend/obj/Debug/net8.0/ref/Swimming-App-Backend.dll
+/home/mr_mitchell/Projects-2025/Swimming-App-Backend/obj/Debug/net8.0/Swimming-App-Backend.sourcelink.json

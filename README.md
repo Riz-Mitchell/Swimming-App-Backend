@@ -38,6 +38,54 @@ A selling point could be to allow coaches to view the macro effects of the curre
 
 ## Business Requirements
 
+### Data
+
+```cs
+public class Club {
+  public int Id;
+  public int Name;
+  public Link? ProfilePicture;
+}
+
+public class Squad {
+  public int Id;
+  public int Name;
+  public List<Swimmer> Swimmers;
+  public List<Coach>
+}
+
+public class abstract User {
+  public int Id;
+  public string PhoneNum;
+  public string Name;
+  public int? Age;
+  public string? Email;
+  public Link? ProfilePicture;
+}
+
+public Swimmer : User {
+  public string MainStroke;
+  public int MainDistance;
+  public string GoalTime;
+  public List<Swim>? Swims;
+}
+
+public class Swim {
+  public int Id;
+  public string Stroke;
+  public int Distance;
+  public string Time;
+  public int? StrokeRate;
+  public int? Pace;
+  public int? PerceivedExertion;
+  public int? HeartRate;
+  public bool? Dive;
+  public List<Swims>? Splits;
+}
+
+
+```
+
 ## Features
 
 ### Accounts Types / Signing Up

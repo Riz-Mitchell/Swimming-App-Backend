@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Swimming-App-Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57060c49bc8e8c6bb9aebb211696f2f949d42951")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ca0e6fe7936a40ba6bed36eb7bd9a6ef49f0cb4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Swimming-App-Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Swimming-App-Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
