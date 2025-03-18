@@ -2,19 +2,43 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend;
 using SwimmingAppBackend.context;
+using DotNetEnv;
+
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Configure DbContext with PostgreSQL connection string from appsettings.json
-builder.Services.AddDbContext<SwimmingAppDBContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DevConnection")));
+Console.WriteLine("DOTNET_ENV=" + builder.Configuration["DOTNET_ENV"]);
 
-builder.Services.AddControllers();
+// Configure DbContext with PostgreSQL connection string from environment variables
+if (Environment.GetEnvironmentVariable("DOTNET_ENV") == "PROD")
+{
+    // Load Production Variables
+    builder.Services.AddDbContext<SwimmingAppDBContext>(options =>
+        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_PROD")));
+    Console.WriteLine("=========================\nPROD MODE !!!!!!!\n=========================\n");
+}
+else
+{
+    builder.Services.AddDbContext<SwimmingAppDBContext>(options =>
+        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_DEV")));
+    Console.WriteLine("=========================\nDEV MODE !!!!!!!\n=========================\n");
+}
 
 var app = builder.Build();
+
+// Ensure migrations are applied on startup
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<SwimmingAppDBContext>(); // Correct DbContext name
+
+    // Apply migrations automatically
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
