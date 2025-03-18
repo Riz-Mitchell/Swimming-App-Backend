@@ -2,17 +2,15 @@ version: "3.8"
 
 services:
   db:
-    container_name: postgres_db
+    container_name: swimming_app_db
     image: postgres:15
     restart: unless-stopped
     environment:
-      POSTGRES_DB: testdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: sigma
+      POSTGRES_DB: swimmingappdb
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: developer
     ports:
       - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
 
 volumes:
   pg_data:
