@@ -54,7 +54,7 @@ public class Squad {
   public List<Coach>
 }
 
-public class abstract User {
+public abstract class User {
   public int Id;
   public string PhoneNum;
   public string Name;
