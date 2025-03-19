@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SwimmingAppBackend.context;
+using SwimmingAppBackend.Context;
 
 #nullable disable
 
-namespace Swimming_App_Backend.Migrations
+namespace SwimmingAppBackend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    [Migration("20250301121227_first-migration")]
-    partial class firstmigration
+    [Migration("20250319013042_TestingSomeDifferentSchema")]
+    partial class TestingSomeDifferentSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,13 +94,45 @@ namespace Swimming_App_Backend.Migrations
                     b.Property<int?>("StrokeRate")
                         .HasColumnType("integer");
 
+                    b.Property<int>("SwimmerId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Time")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SwimmerId");
+
                     b.ToTable("Swims");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Swimmer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("Age")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNum")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Swimmers");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
@@ -112,6 +144,17 @@ namespace Swimming_App_Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Swim");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
+                {
+                    b.HasOne("SwimmingAppBackend.Models.Swimmer", "Swimmer")
+                        .WithMany()
+                        .HasForeignKey("SwimmerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Swimmer");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
