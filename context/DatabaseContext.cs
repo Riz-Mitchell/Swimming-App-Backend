@@ -2,25 +2,33 @@ using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Models;
 
 
-namespace SwimmingAppBackend.context
+namespace SwimmingAppBackend.Context
 {
     public class SwimmingAppDBContext : DbContext
     {
         public SwimmingAppDBContext(DbContextOptions<SwimmingAppDBContext> options) : base(options) { }
 
-        public DbSet<Swim> Swims { get; set; }
-
-        public DbSet<Split> Splits { get; set; }
+        public DbSet<User> users;
+        public DbSet<SwimmerProfile> swimmerProfiles;
+        public DbSet<Swim> swims;
+        public DbSet<Split> splits;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<SwimmerProfile>()
+                .HasOne(swimmerProfile => swimmerProfile.user)
+                .WithOne(user => user.swimmerProfile)
+                .HasForeignKey(swimmerProfile => swimmerProfile.userId);
 
-            // Configuring the one-to-many relationship between Swim and Split
             modelBuilder.Entity<Swim>()
-                .HasMany(s => s.Splits)
-                .WithOne(sp => sp.Swim)
-                .HasForeignKey(sp => sp.SwimId);
+                .HasOne(swim => swim.swimmerProfile)
+                .WithMany(swimmerProfile => swimmerProfile.swims)
+                .HasForeignKey(swim => swim.swimmerProfileId);
+
+            modelBuilder.Entity<Split>()
+                .HasOne(split => split.swim)
+                .WithMany(swim => swim.splits)
+                .HasForeignKey(split => split.swimId);
         }
     }
 }
