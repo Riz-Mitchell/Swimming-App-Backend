@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend;
-using SwimmingAppBackend.context;
+using SwimmingAppBackend.Context;
 using DotNetEnv;
 
 Env.Load();
