@@ -15,6 +15,21 @@ namespace SwimmingAppBackend.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Squad>()
+                .HasOne(squad => squad.coachProfile)
+                .WithMany(coachProfile => coachProfile.squads)
+                .HasForeignKey(squad => squad.coachId);
+
+            modelBuilder.Entity<SwimmerProfile>()
+                .HasOne(swimmerProfile => swimmerProfile.squad)
+                .WithMany(squad => squad.swimmers)
+                .HasForeignKey(swimmerProfile => swimmerProfile.squadId);
+
+            modelBuilder.Entity<Set>()
+                .HasOne(set => set.squad)
+                .WithMany(squad => squad.sets)
+                .HasForeignKey(set => set.squadId);
+
             modelBuilder.Entity<SwimmerProfile>()
                 .HasOne(swimmerProfile => swimmerProfile.user)
                 .WithOne(user => user.swimmerProfile)
