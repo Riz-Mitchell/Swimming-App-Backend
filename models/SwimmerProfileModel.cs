@@ -9,7 +9,7 @@ namespace SwimmingAppBackend.Models
 
         // One SwimmerProfile has One  User (1 -> 1)
         public int userId { get; set; }
-        public User user { get; set; }
+        required public User user { get; set; }
 
         public string? mainStroke;
 
