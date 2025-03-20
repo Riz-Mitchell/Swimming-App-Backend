@@ -17,6 +17,8 @@ namespace SwimmingAppBackend.Models
 
         public SwimmerProfile? swimmerProfile { get; set; }
 
+        public CoachProfile? coachProfile { get; set; }
+
         // public Link? ProfilePicture { get; set; }
 
     }
