@@ -18,7 +18,7 @@ namespace SwimmingAppBackend.Context
             modelBuilder.Entity<SwimmerProfile>()
                 .HasOne(swimmerProfile => swimmerProfile.user)
                 .WithOne(user => user.swimmerProfile)
-                .HasForeignKey(swimmerProfile => swimmerProfile.userId);
+                .HasForeignKey<SwimmerProfile>(swimmerProfile => swimmerProfile.userId);
 
             modelBuilder.Entity<Swim>()
                 .HasOne(swim => swim.swimmerProfile)
