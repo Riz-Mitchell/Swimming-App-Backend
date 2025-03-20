@@ -21,6 +21,46 @@ namespace SwimmingAppBackend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<int>("userId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("userId")
+                        .IsUnique();
+
+                    b.ToTable("CoachProfile");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("quoteOfTheSet")
+                        .HasColumnType("text");
+
+                    b.Property<int>("squadId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("squadId");
+
+                    b.ToTable("Set");
+                });
+
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
                 {
                     b.Property<int>("Id")
@@ -59,6 +99,28 @@ namespace SwimmingAppBackend.Migrations
                     b.HasIndex("swimId");
 
                     b.ToTable("Split");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<int>("coachId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("squadName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("coachId");
+
+                    b.ToTable("Squad");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
@@ -113,10 +175,24 @@ namespace SwimmingAppBackend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
+                    b.Property<string>("goalTime")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("mainDistance")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("mainStroke")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("squadId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("userId")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
+
+                    b.HasIndex("squadId");
 
                     b.HasIndex("userId")
                         .IsUnique();
@@ -151,6 +227,28 @@ namespace SwimmingAppBackend.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
+                {
+                    b.HasOne("SwimmingAppBackend.Models.User", "user")
+                        .WithOne("coachProfile")
+                        .HasForeignKey("SwimmingAppBackend.Models.CoachProfile", "userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
+                {
+                    b.HasOne("SwimmingAppBackend.Models.Squad", "squad")
+                        .WithMany("sets")
+                        .HasForeignKey("squadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("squad");
+                });
+
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
                 {
                     b.HasOne("SwimmingAppBackend.Models.Swim", "swim")
@@ -160,6 +258,17 @@ namespace SwimmingAppBackend.Migrations
                         .IsRequired();
 
                     b.Navigation("swim");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+                {
+                    b.HasOne("SwimmingAppBackend.Models.CoachProfile", "coachProfile")
+                        .WithMany("squads")
+                        .HasForeignKey("coachId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("coachProfile");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
@@ -175,13 +284,31 @@ namespace SwimmingAppBackend.Migrations
 
             modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerProfile", b =>
                 {
+                    b.HasOne("SwimmingAppBackend.Models.Squad", "squad")
+                        .WithMany("swimmers")
+                        .HasForeignKey("squadId");
+
                     b.HasOne("SwimmingAppBackend.Models.User", "user")
                         .WithOne("swimmerProfile")
                         .HasForeignKey("SwimmingAppBackend.Models.SwimmerProfile", "userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("squad");
+
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
+                {
+                    b.Navigation("squads");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+                {
+                    b.Navigation("sets");
+
+                    b.Navigation("swimmers");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
@@ -196,6 +323,8 @@ namespace SwimmingAppBackend.Migrations
 
             modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
                 {
+                    b.Navigation("coachProfile");
+
                     b.Navigation("swimmerProfile");
                 });
 #pragma warning restore 612, 618
