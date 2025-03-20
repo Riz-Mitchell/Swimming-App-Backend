@@ -8,15 +8,18 @@ namespace SwimmingAppBackend.Models
         public int id { get; set; }
 
         // One SwimmerProfile has One  User (1 -> 1)
-        public int userId { get; set; }
+        required public int userId { get; set; }
         required public User user { get; set; }
 
-        public string? mainStroke;
+        public int? squadId { get; set; }
+        public Squad? squad { get; set; }
 
-        public int? mainDistance;
+        public string? mainStroke { get; set; }
 
-        public string? goalTime;
+        public int? mainDistance { get; set; }
 
-        public ICollection<Swim>? swims;
+        public string? goalTime { get; set; }
+
+        public ICollection<Swim>? swims { get; set; }
     }
 }
