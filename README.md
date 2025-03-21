@@ -45,13 +45,22 @@ public class Club {
   public int Id;
   public int Name;
   public Link? ProfilePicture;
+
+  // 1 Club can have 1 or more squads
+  public ICollection<Squad>? squads;
 }
 
 public class Squad {
   public int Id;
   public int Name;
-  public List<Swimmer> Swimmers;
-  public List<Coach>
+
+  // 1 Squad belongs to 1 and Only 1 Club
+  required public int clubId;
+  required public Club club;
+
+
+  public ICollection<SwimmerProfile>? swimmers; 
+  public ICollection<CoachProfile>? coaches;
 }
 
 public abstract class User {
@@ -63,7 +72,7 @@ public abstract class User {
   public Link? ProfilePicture;
 }
 
-public Swimmer : User {
+public SwimmerProfile : User {
   public string MainStroke;
   public int MainDistance;
   public string GoalTime;
