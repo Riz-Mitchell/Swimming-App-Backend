@@ -8,13 +8,22 @@ namespace SwimmingAppBackend.Context
     {
         public SwimmingAppDBContext(DbContextOptions<SwimmingAppDBContext> options) : base(options) { }
 
+        public DbSet<Club> clubs;
+        public DbSet<Squad> squads;
         public DbSet<User> users;
         public DbSet<SwimmerProfile> swimmerProfiles;
+        public DbSet<CoachProfile> coachProfiles;
+        public DbSet<Set> sets;
         public DbSet<Swim> swims;
         public DbSet<Split> splits;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Squad>()
+                .HasOne(squad => squad.club)
+                .WithMany(club => club.squads)
+                .HasForeignKey(squad => squad.clubId);
+
             modelBuilder.Entity<Squad>()
                 .HasOne(squad => squad.coachProfile)
                 .WithMany(coachProfile => coachProfile.squads)
