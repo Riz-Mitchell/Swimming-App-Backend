@@ -7,7 +7,7 @@ using SwimmingAppBackend.Context;
 
 #nullable disable
 
-namespace SwimmingAppBackend.Migrations
+namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
     partial class SwimmingAppDBContextModelSnapshot : ModelSnapshot

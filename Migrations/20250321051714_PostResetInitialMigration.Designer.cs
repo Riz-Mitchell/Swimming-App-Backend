@@ -8,11 +8,11 @@ using SwimmingAppBackend.Context;
 
 #nullable disable
 
-namespace SwimmingAppBackend.Migrations
+namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    [Migration("20250321011555_Added_Clubs")]
-    partial class Added_Clubs
+    [Migration("20250321051714_PostResetInitialMigration")]
+    partial class PostResetInitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
