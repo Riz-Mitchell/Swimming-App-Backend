@@ -34,7 +34,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    var dbContext = services.GetRequiredService<SwimmingAppDBContext>(); // Correct DbContext name
+    var dbContext = services.GetRequiredService<SwimmingAppDBContext>();
 
     // Apply migrations automatically
     dbContext.Database.Migrate();
