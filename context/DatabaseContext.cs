@@ -8,14 +8,14 @@ namespace SwimmingAppBackend.Context
     {
         public SwimmingAppDBContext(DbContextOptions<SwimmingAppDBContext> options) : base(options) { }
 
-        public DbSet<Club> clubs;
-        public DbSet<Squad> squads;
-        public DbSet<User> users;
-        public DbSet<SwimmerProfile> swimmerProfiles;
-        public DbSet<CoachProfile> coachProfiles;
-        public DbSet<Set> sets;
-        public DbSet<Swim> swims;
-        public DbSet<Split> splits;
+        public DbSet<Club> clubs { get; set; }
+        public DbSet<Squad> squads { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<SwimmerProfile> swimmerProfiles { get; set; }
+        public DbSet<CoachProfile> coachProfiles { get; set; }
+        public DbSet<Set> sets { get; set; }
+        public DbSet<Swim> swims { get; set; }
+        public DbSet<Split> splits { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
