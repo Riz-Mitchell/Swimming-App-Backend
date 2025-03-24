@@ -11,8 +11,8 @@ using SwimmingAppBackend.Context;
 namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    [Migration("20250321051714_PostResetInitialMigration")]
-    partial class PostResetInitialMigration
+    [Migration("20250323053004_AddedGettersAndSetters")]
+    partial class AddedGettersAndSetters
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Club");
+                    b.ToTable("clubs");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
@@ -57,7 +57,7 @@ namespace Swimming_App_Backend.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("CoachProfile");
+                    b.ToTable("coachProfiles");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
@@ -78,7 +78,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasIndex("squadId");
 
-                    b.ToTable("Set");
+                    b.ToTable("sets");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
@@ -118,7 +118,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasIndex("swimId");
 
-                    b.ToTable("Split");
+                    b.ToTable("splits");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
@@ -145,7 +145,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasIndex("coachId");
 
-                    b.ToTable("Squad");
+                    b.ToTable("squads");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
@@ -189,7 +189,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasIndex("swimmerProfileId");
 
-                    b.ToTable("Swim");
+                    b.ToTable("swims");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerProfile", b =>
@@ -222,7 +222,7 @@ namespace Swimming_App_Backend.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("SwimmerProfile");
+                    b.ToTable("swimmerProfiles");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
@@ -249,7 +249,7 @@ namespace Swimming_App_Backend.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("User");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
