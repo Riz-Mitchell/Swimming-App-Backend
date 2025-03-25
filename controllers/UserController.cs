@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Context;
 using SwimmingAppBackend.Models;
+using SwimmingAppBackend.Data;
 
 namespace SwimmingAppBackend.Controllers
 {
@@ -19,7 +20,7 @@ namespace SwimmingAppBackend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult> GetUsers()
         {
             var foundUsers = await _context.users.ToListAsync();
 
@@ -34,7 +35,7 @@ namespace SwimmingAppBackend.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult> GetUser(int id)
         {
             var foundUser = await _context.users.FindAsync(id);
 
@@ -44,18 +45,44 @@ namespace SwimmingAppBackend.Controllers
             }
             else
             {
-                return Ok(foundUser);
+                var userDTO = new GetUserDTO
+                {
+                    id = foundUser.id,
+                    name = foundUser.name
+                };
+                return Ok(userDTO);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult> PostUser([FromBody] CreateUserDTO userDTO)
         {
-            _context.users.Add(user);
+            if (userDTO == null)
+            {
+                return BadRequest();
+            }
+
+            var newUser = new User
+            {
+                phoneNum = userDTO.phoneNum,
+                name = userDTO.name
+            };
+
+            if (userDTO.age != null)
+            {
+                newUser.age = userDTO.age;
+            }
+
+            if (userDTO.email != null)
+            {
+                newUser.email = userDTO.email;
+            }
+
+            _context.users.Add(newUser);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.id }, user);
+            return CreatedAtAction(nameof(GetUser), new { id = newUser.id }, newUser);
         }
 
         [HttpPut("{id}")]
