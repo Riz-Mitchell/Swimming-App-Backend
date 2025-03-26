@@ -23,59 +23,38 @@ namespace Swimming_App_Backend.Migrations
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Club", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("ClubId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ClubId"));
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("ClubId");
 
-                    b.ToTable("clubs");
+                    b.ToTable("Clubs");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Models.CoachData", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("CoachDataId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CoachDataId"));
 
-                    b.Property<int>("userId")
+                    b.Property<int>("UserOwnerId")
                         .HasColumnType("integer");
 
-                    b.HasKey("id");
+                    b.HasKey("CoachDataId");
 
-                    b.HasIndex("userId")
+                    b.HasIndex("UserOwnerId")
                         .IsUnique();
 
-                    b.ToTable("coachProfiles");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<string>("quoteOfTheSet")
-                        .HasColumnType("text");
-
-                    b.Property<int>("squadId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("squadId");
-
-                    b.ToTable("sets");
+                    b.ToTable("CoachDatas");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
@@ -86,279 +65,254 @@ namespace Swimming_App_Backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("distance")
+                    b.Property<int>("Distance")
                         .HasColumnType("integer");
 
-                    b.Property<bool?>("dive")
+                    b.Property<int?>("Pace")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Stroke")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("StrokeRate")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SwimId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Time")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("dive")
                         .HasColumnType("boolean");
 
-                    b.Property<int?>("pace")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("perceivedExertion")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("stroke")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("strokeRate")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("swimId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("time")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("swimId");
+                    b.HasIndex("SwimId");
 
-                    b.ToTable("splits");
+                    b.ToTable("Splits");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("clubId")
+                    b.Property<int?>("ClubId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("coachId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("squadName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("clubId");
+                    b.HasIndex("ClubId");
 
-                    b.HasIndex("coachId");
-
-                    b.ToTable("squads");
+                    b.ToTable("Squads");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("distance")
+                    b.Property<int>("Distance")
                         .HasColumnType("integer");
 
-                    b.Property<bool?>("dive")
+                    b.Property<int?>("Pace")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Stroke")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("StrokeRate")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SwimmerDataId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Time")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("dive")
                         .HasColumnType("boolean");
-
-                    b.Property<int?>("heartRate")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("pace")
-                        .HasColumnType("integer");
 
                     b.Property<int?>("perceivedExertion")
                         .HasColumnType("integer");
 
-                    b.Property<string>("stroke")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasKey("Id");
 
-                    b.Property<int?>("strokeRate")
-                        .HasColumnType("integer");
+                    b.HasIndex("SwimmerDataId");
 
-                    b.Property<int>("swimmerProfileId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("time")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("swimmerProfileId");
-
-                    b.ToTable("swims");
+                    b.ToTable("Swims");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerProfile", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerData", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("goalTime")
+                    b.Property<string>("GoalTime")
                         .HasColumnType("text");
 
-                    b.Property<int?>("mainDistance")
+                    b.Property<int?>("MainDistance")
                         .HasColumnType("integer");
 
-                    b.Property<string>("mainStroke")
+                    b.Property<string>("MainStroke")
                         .HasColumnType("text");
 
-                    b.Property<int?>("squadId")
+                    b.Property<int>("UserOwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("userId")
-                        .HasColumnType("integer");
+                    b.HasKey("Id");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("squadId");
-
-                    b.HasIndex("userId")
+                    b.HasIndex("UserOwnerId")
                         .IsUnique();
 
-                    b.ToTable("swimmerProfiles");
+                    b.ToTable("SwimmerDatas");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("age")
+                    b.Property<int?>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<string>("email")
+                    b.Property<int?>("CoachDataId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("phoneNum")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.Property<int?>("SquadId")
+                        .HasColumnType("integer");
 
-                    b.ToTable("users");
+                    b.Property<int?>("SwimmerDataId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SquadId");
+
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Models.CoachData", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.User", "user")
-                        .WithOne("coachProfile")
-                        .HasForeignKey("SwimmingAppBackend.Models.CoachProfile", "userId")
+                    b.HasOne("SwimmingAppBackend.Models.User", "UserOwner")
+                        .WithOne("CoachData")
+                        .HasForeignKey("SwimmingAppBackend.Models.CoachData", "UserOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("user");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
-                {
-                    b.HasOne("SwimmingAppBackend.Models.Squad", "squad")
-                        .WithMany("sets")
-                        .HasForeignKey("squadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("squad");
+                    b.Navigation("UserOwner");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Split", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Swim", "swim")
-                        .WithMany("splits")
-                        .HasForeignKey("swimId")
+                    b.HasOne("SwimmingAppBackend.Models.Swim", "Swim")
+                        .WithMany("Splits")
+                        .HasForeignKey("SwimId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("swim");
+                    b.Navigation("Swim");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Club", "club")
-                        .WithMany("squads")
-                        .HasForeignKey("clubId");
+                    b.HasOne("SwimmingAppBackend.Models.Club", "Club")
+                        .WithMany("Squads")
+                        .HasForeignKey("ClubId");
 
-                    b.HasOne("SwimmingAppBackend.Models.CoachProfile", "coachProfile")
-                        .WithMany("squads")
-                        .HasForeignKey("coachId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("club");
-
-                    b.Navigation("coachProfile");
+                    b.Navigation("Club");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.SwimmerProfile", "swimmerProfile")
-                        .WithMany("swims")
-                        .HasForeignKey("swimmerProfileId")
+                    b.HasOne("SwimmingAppBackend.Models.SwimmerData", "SwimmerData")
+                        .WithMany("Swims")
+                        .HasForeignKey("SwimmerDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("swimmerProfile");
+                    b.Navigation("SwimmerData");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerProfile", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerData", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Squad", "squad")
-                        .WithMany("swimmers")
-                        .HasForeignKey("squadId");
-
-                    b.HasOne("SwimmingAppBackend.Models.User", "user")
-                        .WithOne("swimmerProfile")
-                        .HasForeignKey("SwimmingAppBackend.Models.SwimmerProfile", "userId")
+                    b.HasOne("SwimmingAppBackend.Models.User", "UserOwner")
+                        .WithOne("SwimmerData")
+                        .HasForeignKey("SwimmingAppBackend.Models.SwimmerData", "UserOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("squad");
-
-                    b.Navigation("user");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.Club", b =>
-                {
-                    b.Navigation("squads");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.CoachProfile", b =>
-                {
-                    b.Navigation("squads");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
-                {
-                    b.Navigation("sets");
-
-                    b.Navigation("swimmers");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
-                {
-                    b.Navigation("splits");
-                });
-
-            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerProfile", b =>
-                {
-                    b.Navigation("swims");
+                    b.Navigation("UserOwner");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
                 {
-                    b.Navigation("coachProfile");
+                    b.HasOne("SwimmingAppBackend.Models.Squad", "Squad")
+                        .WithMany("Members")
+                        .HasForeignKey("SquadId");
 
-                    b.Navigation("swimmerProfile");
+                    b.Navigation("Squad");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Club", b =>
+                {
+                    b.Navigation("Squads");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+                {
+                    b.Navigation("Members");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
+                {
+                    b.Navigation("Splits");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.SwimmerData", b =>
+                {
+                    b.Navigation("Swims");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
+                {
+                    b.Navigation("CoachData");
+
+                    b.Navigation("SwimmerData");
                 });
 #pragma warning restore 612, 618
         }
