@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend;
 using SwimmingAppBackend.Context;
 using DotNetEnv;
+using SwimmingAppBackend.Interfaces;
+using SwimmingAppBackend.Repositories;
 
 Env.Load();
 
@@ -27,6 +29,8 @@ else
         options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_DEV")));
     Console.WriteLine("=========================\nDEV MODE !!!!!!!\n=========================\n");
 }
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
