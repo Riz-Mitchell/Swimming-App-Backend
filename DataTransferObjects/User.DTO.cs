@@ -1,35 +1,41 @@
-namespace SwimmingAppBackend.Data
+using SwimmingAppBackend.Enum;
+
+namespace SwimmingAppBackend.DataTransferObjects
 {
 
     public class GetUserDTO
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public int? age { get; set; }
+        public UserType UserType { get; set; }
+
+        public int? Age { get; set; }
     }
 
 
     public class UpdateUserDTO
     {
-        public string? phoneNum { get; set; }
+        public string? PhoneNumber { get; set; }
 
-        public string? name { get; set; }
+        public string? Name { get; set; }
 
-        public int? age { get; set; }
+        public int? Age { get; set; }
 
-        public string? email { get; set; }
+        public string? Email { get; set; }
     }
 
     public class CreateUserDTO
     {
-        required public string phoneNum { get; set; }
+        public required string PhoneNumber { get; set; }
 
-        required public string name { get; set; }
+        public required string Name { get; set; }
 
-        public int? age { get; set; }
+        public required UserType UserType { get; set; }
 
-        public string? email { get; set; }
+        public int? Age { get; set; }
+
+        public string? Email { get; set; }
     }
 }
