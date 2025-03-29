@@ -1,130 +1,101 @@
-// using Microsoft.AspNetCore.Http.HttpResults;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using SwimmingAppBackend.Context;
-// using SwimmingAppBackend.Models;
-// using SwimmingAppBackend.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SwimmingAppBackend.Context;
+using SwimmingAppBackend.Models;
+using SwimmingAppBackend.DataTransferObjects;
+using SwimmingAppBackend.Interfaces;
+using SwimmingAppBackend.Mappers;
 
-// namespace SwimmingAppBackend.Controllers
-// {
+namespace SwimmingAppBackend.Controllers
+{
 
-//     [ApiController]
-//     [Route("api/[controller]")]
-//     public class UserController : ControllerBase
-//     {
-//         private readonly SwimmingAppDBContext _context;
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UserController : ControllerBase
+    {
+        private readonly SwimmingAppDBContext _context;
+        private readonly IUserRepository _userRepo;
 
-//         public UserController(SwimmingAppDBContext context)
-//         {
-//             _context = context;
-//         }
+        public UserController(SwimmingAppDBContext context, IUserRepository userRepository)
+        {
+            _userRepo = userRepository;
+            _context = context;
+        }
 
-//         [HttpGet]
-//         public async Task<ActionResult> GetUsers()
-//         {
-//             var foundUsers = await _context.users.ToListAsync();
+        [HttpGet]
+        public async Task<ActionResult> GetUsers()
+        {
+            var foundUsers = await _userRepo.GetAllAsync();
 
-//             if (foundUsers.Count == 0)
-//             {
-//                 return NotFound();
-//             }
-//             else
-//             {
-//                 return Ok(foundUsers);
-//             }
-//         }
+            var userDtos = foundUsers.Select(user => user.MapGetUserDTO());
 
-//         [HttpGet("{id}")]
-//         public async Task<ActionResult> GetUser(int id)
-//         {
-//             var foundUser = await _context.users.FindAsync(id);
+            return Ok(userDtos);
+        }
 
-//             if (foundUser == null)
-//             {
-//                 return NotFound();
-//             }
-//             else
-//             {
-//                 var userDTO = new GetUserDTO
-//                 {
-//                     id = foundUser.id,
-//                     name = foundUser.name
-//                 };
-//                 return Ok(userDTO);
-//             }
-//         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetUser(int id)
+        {
+            var foundUser = await _userRepo.GetByIdAsync(id);
 
-//         [HttpPost]
-//         public async Task<ActionResult> PostUser([FromBody] CreateUserDTO userDTO)
-//         {
-//             if (userDTO == null)
-//             {
-//                 return BadRequest();
-//             }
+            if (foundUser == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var userDTO = foundUser.MapGetUserDTO();
+                return Ok(userDTO);
+            }
+        }
 
-//             var newUser = new User
-//             {
-//                 phoneNum = userDTO.phoneNum,
-//                 name = userDTO.name
-//             };
+        [HttpPost]
+        public async Task<ActionResult> PostUser([FromBody] CreateUserDTO createUserDTO)
+        {
+            // Check if DTO from body null
+            if (createUserDTO == null)
+            {
+                return BadRequest();
+            }
 
-//             if (userDTO.age != null)
-//             {
-//                 newUser.age = userDTO.age;
-//             }
+            // Map CreateUserDTO to new User
+            var createdUser = createUserDTO.MapCreateUserDTO();
 
-//             if (userDTO.email != null)
-//             {
-//                 newUser.email = userDTO.email;
-//             }
+            // Save to database
+            await _userRepo.CreateAsync(createdUser);
 
-//             _context.users.Add(newUser);
+            return CreatedAtAction(nameof(createdUser), new { id = createdUser.Id }, createdUser);
+        }
 
-//             await _context.SaveChangesAsync();
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutUser(int id, UpdateUserDTO updateUserDTO)
+        {
+            if (updateUserDTO == null)
+            {
+                return BadRequest();
+            }
 
-//             return CreatedAtAction(nameof(GetUser), new { id = newUser.id }, newUser);
-//         }
+            var updatedUser = await _userRepo.UpdateAsync(id, updateUserDTO);
 
-//         [HttpPut("{id}")]
-//         public async Task<IActionResult> PutUser(int id, User user)
-//         {
-//             if (id != user.id)
-//             {
-//                 return BadRequest();
-//             }
+            if (updatedUser == null)
+            {
+                return NotFound();
+            }
 
-//             _context.Entry(user).State = EntityState.Modified;
+            return Ok(updatedUser.MapGetUserDTO());
+        }
 
-//             try
-//             {
-//                 await _context.SaveChangesAsync();
-//             }
-//             catch (DbUpdateConcurrencyException)
-//             {
-//                 if (!_context.users.Any(e => e.id == id))
-//                 {
-//                     return NotFound();
-//                 }
-//                 else
-//                 {
-//                     throw;
-//                 }
-//             }
-//             return NoContent();
-//         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var foundUser = await _userRepo.GetByIdAsync(id);
+            if (foundUser == null)
+            {
+                return NotFound();
+            }
 
-//         [HttpDelete("{id}")]
-//         public async Task<IActionResult> DeleteUser(int id)
-//         {
-//             var foundUser = await _context.users.FindAsync(id);
-//             if (foundUser == null)
-//             {
-//                 return NotFound();
-//             }
-
-//             _context.users.Remove(foundUser);
-//             await _context.SaveChangesAsync();
-//             return NoContent();
-//         }
-//     }
-// }
+            await _userRepo.DeleteAsync(foundUser);
+            return NoContent();
+        }
+    }
+}
