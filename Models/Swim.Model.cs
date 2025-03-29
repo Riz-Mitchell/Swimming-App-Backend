@@ -19,9 +19,9 @@ namespace SwimmingAppBackend.Models
 
         public int? Pace { get; set; }
 
-        public int? perceivedExertion { get; set; }
+        public int? PerceivedExertion { get; set; }
 
-        public required bool dive { get; set; }
+        public required bool Dive { get; set; }
 
         // ------------------------------------------------
 
