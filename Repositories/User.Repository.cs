@@ -21,7 +21,7 @@ namespace SwimmingAppBackend.Repositories
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User?> GetByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
         }
@@ -34,7 +34,7 @@ namespace SwimmingAppBackend.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> UpdateAsync(int id, UpdateUserDTO updateUserDTO)
+        public async Task<User?> UpdateAsync(int id, UpdateUserDTO updateUserDTO)
         {
             var existingUser = await _context.Users.FindAsync(id);
 
