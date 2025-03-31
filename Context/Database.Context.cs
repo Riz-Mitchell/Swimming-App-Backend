@@ -14,13 +14,11 @@ namespace SwimmingAppBackend.Context
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<SwimmerData> SwimmerDatas { get; set; }
+        public DbSet<SwimmerMetaData> SwimmerMetaDatas { get; set; }
 
-        public DbSet<CoachData> CoachDatas { get; set; }
+        public DbSet<CoachMetaData> CoachMetaDatas { get; set; }
 
         public DbSet<Swim> Swims { get; set; }
-
-        public DbSet<Split> Splits { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,26 +37,22 @@ namespace SwimmingAppBackend.Context
                 .WithMany(Squad => Squad.Members)
                 .HasForeignKey(User => User.SquadId);
 
-            modelBuilder.Entity<SwimmerData>()
-                .HasOne(SwimmerData => SwimmerData.UserOwner)
-                .WithOne(User => User.SwimmerData)
-                .HasForeignKey<SwimmerData>(SwimmerData => SwimmerData.UserOwnerId);
+            modelBuilder.Entity<SwimmerMetaData>()
+                .HasOne(SwimmerMetaData => SwimmerMetaData.UserOwner)
+                .WithOne(User => User.SwimmerMetaData)
+                .HasForeignKey<SwimmerMetaData>(SwimmerMetaData => SwimmerMetaData.UserOwnerId);
 
 
-            modelBuilder.Entity<CoachData>()
-                .HasOne(CoachData => CoachData.UserOwner)
-                .WithOne(User => User.CoachData)
-                .HasForeignKey<CoachData>(CoachData => CoachData.UserOwnerId);
+            modelBuilder.Entity<CoachMetaData>()
+                .HasOne(CoachMetaData => CoachMetaData.UserOwner)
+                .WithOne(User => User.CoachMetaData)
+                .HasForeignKey<CoachMetaData>(CoachMetaData => CoachMetaData.UserOwnerId);
 
             modelBuilder.Entity<Swim>()
-                .HasOne(Swim => Swim.SwimmerData)
-                .WithMany(SwimmerData => SwimmerData.Swims)
-                .HasForeignKey(Swim => Swim.SwimmerDataId);
+                .HasOne(Swim => Swim.SwimmerMetaData)
+                .WithMany(SwimmerMetaData => SwimmerMetaData.Swims)
+                .HasForeignKey(Swim => Swim.SwimmerMetaDataId);
 
-            modelBuilder.Entity<Split>()
-                .HasOne(Split => Split.Swim)
-                .WithMany(Swim => Swim.Splits)
-                .HasForeignKey(Split => Split.SwimId);
         }
     }
 }
