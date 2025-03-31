@@ -28,11 +28,9 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required int SwimmerDataId { get; set; }
+        public required int SwimmerMetaDataId { get; set; }
 
-        public required SwimmerData SwimmerData { get; set; }
-
-        public ICollection<Split>? Splits { get; set; }
+        public required SwimmerMetaData SwimmerMetaData { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }

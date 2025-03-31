@@ -29,11 +29,11 @@ namespace SwimmingAppBackend.Models
         public int? SquadId { get; set; }
         public Squad? Squad { get; set; }
 
-        public int? SwimmerDataId { get; set; }
-        public SwimmerData? SwimmerData { get; set; }
+        public int? SwimmerMetaDataId { get; set; }
+        public SwimmerMetaData? SwimmerMetaData { get; set; }
 
-        public int? CoachDataId { get; set; }
-        public CoachData? CoachData { get; set; }
+        public int? CoachMetaDataId { get; set; }
+        public CoachMetaData? CoachMetaData { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
