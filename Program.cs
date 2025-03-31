@@ -5,6 +5,7 @@ using SwimmingAppBackend.Context;
 using DotNetEnv;
 using SwimmingAppBackend.Interfaces;
 using SwimmingAppBackend.Repositories;
+using SwimmingAppBackend.Models;
 
 Env.Load();
 
@@ -31,6 +32,8 @@ else
 }
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ISwimRepository, SwimRepository>();
+builder.Services.AddScoped<ISwimmerMetaDataRepository, SwimmerMetaDataRepository>();
 
 var app = builder.Build();
 
