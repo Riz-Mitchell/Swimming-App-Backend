@@ -1,4 +1,3 @@
-using Npgsql.Replication;
 using SwimmingAppBackend.DataTransferObjects;
 using SwimmingAppBackend.Models;
 
