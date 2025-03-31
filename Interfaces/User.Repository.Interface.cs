@@ -7,11 +7,11 @@ namespace SwimmingAppBackend.Interfaces
     {
         Task<List<User>> GetAllAsync();
 
-        Task<User> GetByIdAsync(int id);
+        Task<User?> GetByIdAsync(int id);
 
         Task CreateAsync(User user);
 
-        Task<User> UpdateAsync(int id, UpdateUserDTO updateUserDTO);
+        Task<User?> UpdateAsync(int id, UpdateUserDTO updateUserDTO);
 
         Task DeleteAsync(User user);
     }
