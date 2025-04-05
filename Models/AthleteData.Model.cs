@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwimmingAppBackend.Models
 {
-    public class SwimmerMetaData
+    public class AthleteData
     {
         public int Id { get; set; }
 
@@ -26,6 +26,8 @@ namespace SwimmingAppBackend.Models
         public required User UserOwner { get; set; }
 
         public ICollection<Swim>? Swims { get; set; }
+
+        public ICollection<Achievement>? Achievements { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
