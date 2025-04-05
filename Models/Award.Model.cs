@@ -1,28 +1,27 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SwimmingAppBackend.Models
 {
-    public class Squad
+    public class Award
     {
         public int Id { get; set; }
 
         // Attrubutes :
         // ------------------------------------------------
 
-        public required string Name { get; set; }
 
-        public string? Description { get; }
 
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public ICollection<User>? Members { get; set; }
+        public required int CoachDataOwnerId { get; set; }
 
-        public ICollection<TimeTable>? TimeTables { get; set; }
+        public required User CoachDataOwner { get; set; }
 
-        public int? ClubId { get; set; }
-
-        public Club? Club { get; set; }
+        public ICollection<AthleteData>? Recipients { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }

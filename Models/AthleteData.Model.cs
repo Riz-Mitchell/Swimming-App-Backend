@@ -29,6 +29,8 @@ namespace SwimmingAppBackend.Models
 
         public ICollection<Achievement>? Achievements { get; set; }
 
+        public ICollection<Award>? Awards { get; set; }
+
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
 }

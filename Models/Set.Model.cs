@@ -1,28 +1,26 @@
+using SwimmingAppBackend.Enum;
+
 namespace SwimmingAppBackend.Models
 {
-    public class Squad
+    public class Set
     {
-        public int Id { get; set; }
+        public int Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
 
-        public required string Name { get; set; }
 
-        public string? Description { get; }
 
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public ICollection<User>? Members { get; set; }
+        public required int SessionId { get; set; }
 
-        public ICollection<TimeTable>? TimeTables { get; set; }
+        public required Session Session { get; set; }
 
-        public int? ClubId { get; set; }
-
-        public Club? Club { get; set; }
+        public ICollection<SetItem>? SetItems { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
