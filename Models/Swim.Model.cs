@@ -1,10 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using SwimmingAppBackend.Enum;
 
 namespace SwimmingAppBackend.Models
 {
     public class Swim
     {
-        public int Id { get; set; }  // Primary Key
+        public Guid Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
@@ -28,9 +29,9 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required int AthleteDataId { get; set; }
+        public required Guid AthleteDataOwnerId { get; set; }
 
-        public required AthleteData AthleteData { get; set; }
+        public required AthleteData AthleteDataOwner { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }

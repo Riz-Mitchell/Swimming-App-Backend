@@ -6,7 +6,7 @@ namespace SwimmingAppBackend.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         // Attrubutes :
         // ------------------------------------------------
@@ -26,13 +26,13 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public int? SquadId { get; set; }
+        public Guid? SquadId { get; set; }
         public Squad? Squad { get; set; }
 
-        public int? AthleteDataId { get; set; }
+        public Guid? AthleteDataId { get; set; }
         public AthleteData? AthleteData { get; set; }
 
-        public int? CoachDataId { get; set; }
+        public Guid? CoachDataId { get; set; }
         public CoachData? CoachData { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++

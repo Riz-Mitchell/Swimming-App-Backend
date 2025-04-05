@@ -4,7 +4,7 @@ namespace SwimmingAppBackend.Models
 {
     public class TimeTable
     {
-        public int Id { get; set; }  // Primary Key
+        public Guid Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
@@ -16,7 +16,7 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required int SquadId { get; set; }
+        public required Guid SquadId { get; set; }
 
         public required Squad Squad { get; set; }
 

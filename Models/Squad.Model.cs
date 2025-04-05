@@ -2,7 +2,7 @@ namespace SwimmingAppBackend.Models
 {
     public class Squad
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         // Attrubutes :
         // ------------------------------------------------
@@ -20,7 +20,7 @@ namespace SwimmingAppBackend.Models
 
         public ICollection<TimeTable>? TimeTables { get; set; }
 
-        public int? ClubId { get; set; }
+        public Guid? ClubId { get; set; }
 
         public Club? Club { get; set; }
 

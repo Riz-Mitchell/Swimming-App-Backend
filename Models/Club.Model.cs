@@ -2,7 +2,7 @@ namespace SwimmingAppBackend.Models
 {
     public class Club
     {
-        public int ClubId { get; set; }
+        public Guid ClubId { get; set; }
 
         // Attrubutes :
         // ------------------------------------------------

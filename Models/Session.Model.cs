@@ -4,7 +4,7 @@ namespace SwimmingAppBackend.Models
 {
     public class Session
     {
-        public int Id { get; set; }  // Primary Key
+        public Guid Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
@@ -16,13 +16,13 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++\
 
-        public int? TimeTableId { get; set; }
+        public Guid? TimeTableId { get; set; }
 
         public TimeTable? TimeTable { get; set; }
 
-        public required int CoachDataCreatorId { get; set; }
+        public required Guid CoachDataOwnerId { get; set; }
 
-        public required CoachData CoachDataCreator { get; set; }
+        public required CoachData CoachDataOwner { get; set; }
 
         public ICollection<Set>? Sets { get; set; }
 

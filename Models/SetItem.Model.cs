@@ -4,7 +4,7 @@ namespace SwimmingAppBackend.Models
 {
     public class SetItem
     {
-        public int Id { get; set; }  // Primary Key
+        public Guid Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
@@ -16,7 +16,7 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required int SetId { get; set; }
+        public required Guid SetId { get; set; }
 
         public required Set Set { get; set; }
 

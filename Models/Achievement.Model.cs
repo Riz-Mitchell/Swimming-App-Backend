@@ -5,7 +5,7 @@ namespace SwimmingAppBackend.Models
 {
     public class Achievement
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         // Attrubutes :
         // ------------------------------------------------
@@ -21,7 +21,7 @@ namespace SwimmingAppBackend.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required int UserOwnerId { get; set; }
+        public required Guid UserOwnerId { get; set; }
 
         public required User UserOwner { get; set; }
 
