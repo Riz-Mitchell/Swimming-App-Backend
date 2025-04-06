@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend;
 using SwimmingAppBackend.Context;
 using DotNetEnv;
-using SwimmingAppBackend.Interfaces;
-using SwimmingAppBackend.Repositories;
+// using SwimmingAppBackend.Services;
 using SwimmingAppBackend.Models;
+using Microsoft.OpenApi.Models;
 
 Env.Load();
 
@@ -13,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    });
 
 Console.WriteLine("DOTNET_ENV=" + builder.Configuration["DOTNET_ENV"]);
 
@@ -31,9 +35,7 @@ else
     Console.WriteLine("=========================\nDEV MODE !!!!!!!\n=========================\n");
 }
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ISwimRepository, SwimRepository>();
-builder.Services.AddScoped<ISwimmerMetaDataRepository, SwimmerMetaDataRepository>();
+// builder.Services.AddSingleton(new FirebaseNotificationService(Environment.GetEnvironmentVariable("FIREBASE_NOTIFICATION_KEY")));
 
 var app = builder.Build();
 
@@ -48,6 +50,12 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = string.Empty; // Serve Swagger UI at root
+});
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
