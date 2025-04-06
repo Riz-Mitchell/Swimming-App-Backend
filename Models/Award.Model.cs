@@ -19,7 +19,7 @@ namespace SwimmingAppBackend.Models
 
         public required Guid CoachDataOwnerId { get; set; }
 
-        public required User CoachDataOwner { get; set; }
+        public required CoachData CoachDataOwner { get; set; }
 
         public ICollection<AthleteData>? Recipients { get; set; }
 

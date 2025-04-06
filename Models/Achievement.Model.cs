@@ -10,24 +10,14 @@ namespace SwimmingAppBackend.Models
         // Attrubutes :
         // ------------------------------------------------
 
-        public string? MainStroke { get; set; }
-
-        public int? MainDistance { get; set; }
-
-        public string? GoalTime { get; set; }
+        public required string Name { get; set; }
 
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required Guid UserOwnerId { get; set; }
 
-        public required User UserOwner { get; set; }
-
-        public ICollection<Swim>? Swims { get; set; }
-
-        public ICollection<Achievement>? Achievements { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
