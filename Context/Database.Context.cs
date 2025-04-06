@@ -32,6 +32,14 @@ namespace SwimmingAppBackend.Context
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<GoalSwim> GoalSwims { get; set; }
+
+        public DbSet<TimeSheet> TimeSheets { get; set; }
+
+        public DbSet<TimeSheetItem> TimeSheetsItems { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -110,6 +118,28 @@ namespace SwimmingAppBackend.Context
                 .HasOne(u => u.CoachData)
                 .WithOne(ad => ad.UserOwner)
                 .HasForeignKey<User>(u => u.AthleteDataId);
+
+            modelBuilder.Entity<Event>()
+                .HasOne(e => e.TimeSheet)
+                .WithOne(ts => ts.Event)
+                .HasForeignKey<Event>(e => e.TimeSheetId);
+
+            modelBuilder.Entity<TimeSheetItem>()
+                .HasOne(tsi => tsi.TimeSheet)
+                .WithMany(ts => ts.TimeSheetItems)
+                .HasForeignKey(tsi => tsi.TimeSheetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Swim>()
+                .HasOne(s => s.Event)
+                .WithMany()
+                .HasForeignKey(s => s.EventId);
+
+            modelBuilder.Entity<GoalSwim>()
+                .HasOne(gs => gs.AthleteDataOwner)
+                .WithMany(ado => ado.GoalSwims)
+                .HasForeignKey(gs => gs.AthleteDataOwnerId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
