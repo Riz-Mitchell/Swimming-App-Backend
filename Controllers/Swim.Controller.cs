@@ -1,114 +1,110 @@
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using SwimmingAppBackend.Models;
-// using SwimmingAppBackend.Context;
-// using System.Threading.Tasks;
-// using System.Linq;
-// using SwimmingAppBackend.Interfaces;
-// using System.IO.Pipelines;
-// using SwimmingAppBackend.Mappers;
-// using SwimmingAppBackend.DataTransferObjects;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SwimmingAppBackend.Models;
+using SwimmingAppBackend.Context;
+using System.Threading.Tasks;
+using System.Linq;
+using SwimmingAppBackend.Interfaces;
+using System.IO.Pipelines;
+using SwimmingAppBackend.Mappers;
+using SwimmingAppBackend.DataTransferObjects;
 
-// namespace SwimmingAppBackend.Controllers
-// {
-//     [Route("api/[controller]")]
-//     [ApiController]
-//     public class SwimController : ControllerBase
-//     {
-//         private readonly SwimmingAppDBContext _context;
+namespace SwimmingAppBackend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SwimController : ControllerBase
+    {
+        private readonly SwimmingAppDBContext _context;
 
-//         private readonly ISwimRepository _swimRepo;
+        public SwimController(SwimmingAppDBContext context, ISwimRepository swimRepo, ISwimmerMetaDataRepository swimmerMetaDataRepo)
+        {
+            _context = context;
+            _swimmerMetaDataRepo = swimmerMetaDataRepo;
+            _swimRepo = swimRepo;
+        }
 
-//         private readonly ISwimmerMetaDataRepository _swimmerMetaDataRepo;
+        // GET: api/swims
+        [HttpGet]
+        public async Task<ActionResult> GetSwims()
+        {
+            var foundSwims = await _swimRepo.GetAllAsync();
 
-//         public SwimController(SwimmingAppDBContext context, ISwimRepository swimRepo, ISwimmerMetaDataRepository swimmerMetaDataRepo)
-//         {
-//             _context = context;
-//             _swimmerMetaDataRepo = swimmerMetaDataRepo;
-//             _swimRepo = swimRepo;
-//         }
+            var swimDtos = foundSwims.Select(swim => swim.MapGetSwimDTO());
 
-//         // GET: api/swims
-//         [HttpGet]
-//         public async Task<ActionResult> GetSwims()
-//         {
-//             var foundSwims = await _swimRepo.GetAllAsync();
+            return Ok(swimDtos);
+        }
 
-//             var swimDtos = foundSwims.Select(swim => swim.MapGetSwimDTO());
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetSwim(int id)
+        {
+            var foundSwim = await _swimRepo.GetByIdAsync(id);
 
-//             return Ok(swimDtos);
-//         }
+            if (foundSwim == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var swimDTO = foundSwim.MapGetSwimDTO();
+                return Ok(swimDTO);
+            }
+        }
 
-//         [HttpGet("{id}")]
-//         public async Task<ActionResult> GetSwim(int id)
-//         {
-//             var foundSwim = await _swimRepo.GetByIdAsync(id);
+        [HttpPost]
+        public async Task<ActionResult> PostSwim([FromBody] CreateSwimDTO createSwimDTO)
+        {
+            // Check if DTO from body null
+            if (createSwimDTO == null)
+            {
+                return BadRequest();
+            }
 
-//             if (foundSwim == null)
-//             {
-//                 return NotFound();
-//             }
-//             else
-//             {
-//                 var swimDTO = foundSwim.MapGetSwimDTO();
-//                 return Ok(swimDTO);
-//             }
-//         }
+            var foundSwimmerMetaData = await _swimmerMetaDataRepo.GetByIdAsync(createSwimDTO.SwimmerMetaDataId);
 
-//         [HttpPost]
-//         public async Task<ActionResult> PostSwim([FromBody] CreateSwimDTO createSwimDTO)
-//         {
-//             // Check if DTO from body null
-//             if (createSwimDTO == null)
-//             {
-//                 return BadRequest();
-//             }
+            if (foundSwimmerMetaData == null)
+            {
+                return NotFound("SwimmerMetaData doesn't exist");
+            }
 
-//             var foundSwimmerMetaData = await _swimmerMetaDataRepo.GetByIdAsync(createSwimDTO.SwimmerMetaDataId);
+            // Map CreateUserDTO to new User
+            var createdSwim = createSwimDTO.MapCreateSwimDTO(foundSwimmerMetaData);
 
-//             if (foundSwimmerMetaData == null)
-//             {
-//                 return NotFound("SwimmerMetaData doesn't exist");
-//             }
+            // Save to database
+            await _swimRepo.CreateAsync(createdSwim);
 
-//             // Map CreateUserDTO to new User
-//             var createdSwim = createSwimDTO.MapCreateSwimDTO(foundSwimmerMetaData);
+            return CreatedAtAction(nameof(createdSwim), new { id = createdSwim.Id }, createdSwim);
+        }
 
-//             // Save to database
-//             await _swimRepo.CreateAsync(createdSwim);
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutUser(int id, UpdateUserDTO updateUserDTO)
+        {
+            if (updateUserDTO == null)
+            {
+                return BadRequest();
+            }
 
-//             return CreatedAtAction(nameof(createdSwim), new { id = createdSwim.Id }, createdSwim);
-//         }
+            var updatedUser = await _userRepo.UpdateAsync(id, updateUserDTO);
 
-//         [HttpPut("{id}")]
-//         public async Task<ActionResult> PutUser(int id, UpdateUserDTO updateUserDTO)
-//         {
-//             if (updateUserDTO == null)
-//             {
-//                 return BadRequest();
-//             }
+            if (updatedUser == null)
+            {
+                return NotFound();
+            }
 
-//             var updatedUser = await _userRepo.UpdateAsync(id, updateUserDTO);
+            return Ok(updatedUser.MapGetUserDTO());
+        }
 
-//             if (updatedUser == null)
-//             {
-//                 return NotFound();
-//             }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var foundUser = await _userRepo.GetByIdAsync(id);
+            if (foundUser == null)
+            {
+                return NotFound();
+            }
 
-//             return Ok(updatedUser.MapGetUserDTO());
-//         }
-
-//         [HttpDelete("{id}")]
-//         public async Task<IActionResult> DeleteUser(int id)
-//         {
-//             var foundUser = await _userRepo.GetByIdAsync(id);
-//             if (foundUser == null)
-//             {
-//                 return NotFound();
-//             }
-
-//             await _userRepo.DeleteAsync(foundUser);
-//             return NoContent();
-//         }
-//     }
-// }
+            await _userRepo.DeleteAsync(foundUser);
+            return NoContent();
+        }
+    }
+}

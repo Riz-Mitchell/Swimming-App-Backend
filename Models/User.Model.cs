@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using SwimmingAppBackend.Enum;
 
 namespace SwimmingAppBackend.Models
@@ -20,6 +21,10 @@ namespace SwimmingAppBackend.Models
         public int? Age { get; set; }
 
         public string? Email { get; set; }
+
+        public string? RefreshToken { get; set; }
+
+        public DateTime? RefreshTokenExpiry { get; set; }
 
         // ------------------------------------------------
 
