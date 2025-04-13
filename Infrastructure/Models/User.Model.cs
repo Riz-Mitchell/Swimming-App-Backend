@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using SwimmingAppBackend.Enum;
 
-namespace SwimmingAppBackend.Models
+namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class User
     {
