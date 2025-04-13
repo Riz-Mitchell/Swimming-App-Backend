@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Domain.Services;
 
 namespace SwimmingAppBackend.Api.Controllers
@@ -20,9 +21,13 @@ namespace SwimmingAppBackend.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetUsers()
+        public async Task<ActionResult> GetUsers([FromQuery] string nameContains)
         {
-            var foundUsers = await _userService.GetUsersByQuery();
+            var foundUsers = await _userService.GetUsersByQuery(new GetUsersQuery
+            {
+                PageNumber = 1,
+                NameContains = null
+            });
 
             return Ok(foundUsers);
         }
@@ -54,20 +59,25 @@ namespace SwimmingAppBackend.Api.Controllers
             // Save to database
             var newUser = await _userService.CreateUser(createUserReqDTO);
 
-            return CreatedAtAction(nameof(newUser), new { id = newUser.Id }, newUser);
+            return Ok(newUser);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> PutUser(int id, [FromBody] UpdateUserReqDTO userUpdates)
         {
-            var foundUser = await _userService.GetUserById(JwtRegisteredClaimNames.Sub);
+            if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
+            {
+                return BadRequest("Invalid user ID format.");
+            }
+
+            var foundUser = await _userService.GetUserById(userId);
 
             if (foundUser == null)
             {
                 return Unauthorized();
             }
 
-            var updatedUser = _userService.UpdateUser(JwtRegisteredClaimNames.Sub, userUpdates);
+            var updatedUser = _userService.UpdateUser(userId, userUpdates);
 
             return Ok(updatedUser);
         }
@@ -75,13 +85,18 @@ namespace SwimmingAppBackend.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var foundUser = await _userService.GetUserById(JwtRegisteredClaimNames.Sub); ;
+            if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
+            {
+                return BadRequest("Invalid user ID format.");
+            }
+
+            var foundUser = await _userService.GetUserById(userId);
             if (foundUser == null)
             {
                 return NotFound();
             }
 
-            await _userService.DeleteUser(JwtRegisteredClaimNames.Sub);
+            await _userService.DeleteUser(userId);
 
             return NoContent();
         }
