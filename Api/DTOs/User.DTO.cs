@@ -14,6 +14,7 @@ namespace SwimmingAppBackend.Api.DTOs
     // DTO for user response
     public class GetUserResDTO
     {
+        public required Guid Id { get; set; }
         public required string Name { get; set; }
         public int? Age { get; set; }
         public UserType UserType { get; set; }
