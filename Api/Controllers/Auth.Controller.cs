@@ -93,7 +93,7 @@ namespace SwimmingAppBackend.Api.Controllers
             }
 
             // Validate refresh token (check database or in-memory store)
-            var foundUser = await _userService.CheckRefreshTokenValid(id, refreshToken);
+            var foundUser = await _userService.FindUserAndRefreshToken(id, refreshToken);
             if (foundUser == null)
             {
                 return Unauthorized("Invalid refresh token");
