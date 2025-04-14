@@ -4,11 +4,14 @@ namespace SwimmingAppBackend.Domain.Services
 {
     public interface IUserService
     {
-        public Task<List<GetUserResDTO>> GetUsersByQuery(GetUsersQuery queryParams);
-        public Task<GetUserResDTO?> GetUserById(Guid id);
-        public Task<GetUserResDTO> CreateUser(CreateUserReqDTO userSchema);
-        public Task<GetUserResDTO> UpdateUser(Guid id, UpdateUserReqDTO userUpdates);
-        public Task DeleteUser(Guid id);
+        Task<List<GetUserResDTO>> GetUsersByQuery(GetUsersQuery queryParams);
+        Task<GetUserResDTO?> GetUserById(Guid id);
+        Task<GetUserResDTO> CreateUser(CreateUserReqDTO userSchema);
+        Task<GetUserResDTO?> UpdateUser(Guid id, UpdateUserReqDTO userUpdates);
+        Task DeleteUser(Guid id);
+        Task<GetUserResDTO?> GetUserByPhoneNumber(string phoneNumber);
+        Task SaveRefreshTokenAsync(Guid id, string refreshToken, DateTime dateTime);
+        Task<GetUserResDTO?> CheckRefreshTokenValid(Guid id, string refreshToken);
     }
 
     public class UserService : IUserService
@@ -43,6 +46,31 @@ namespace SwimmingAppBackend.Domain.Services
         public async Task DeleteUser(Guid id)
         {
             await _userRepository.DeleteUserAsync(id);
+        }
+
+        public async Task<GetUserResDTO?> GetUserByPhoneNumber(string phoneNumber)
+        {
+            var getUserResDTO = await _userRepository.GetUserByAttribute(phoneNumber);
+
+            return getUserResDTO;
+        }
+
+        public async Task SaveRefreshTokenAsync(Guid id, string refreshToken, DateTime dateTime)
+        {
+            await _userRepository.UpdateUserRefreshTokenAsync(id, refreshToken, dateTime);
+        }
+
+        public async Task<GetUserResDTO?> IsUserRefreshTokenValid(Guid id, string refreshToken)
+        {
+            var getUserResDTO = await _userRepository.GetUserAndCheckRefreshToken(id, refreshToken);
+            if (getUserResDTO == null)
+            {
+                return null;
+            }
+            else
+            {
+                return getUserResDTO;
+            }
         }
     }
 }
