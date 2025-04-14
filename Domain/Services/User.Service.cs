@@ -11,7 +11,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task DeleteUser(Guid id);
         Task<GetUserResDTO?> GetUserByPhoneNumber(string phoneNumber);
         Task SaveRefreshTokenAsync(Guid id, string refreshToken, DateTime dateTime);
-        Task<GetUserResDTO?> CheckRefreshTokenValid(Guid id, string refreshToken);
+        Task<GetUserResDTO?> FindUserAndRefreshToken(Guid id, string refreshToken);
     }
 
     public class UserService : IUserService
@@ -60,7 +60,7 @@ namespace SwimmingAppBackend.Domain.Services
             await _userRepository.UpdateUserRefreshTokenAsync(id, refreshToken, dateTime);
         }
 
-        public async Task<GetUserResDTO?> IsUserRefreshTokenValid(Guid id, string refreshToken)
+        public async Task<GetUserResDTO?> FindUserAndRefreshToken(Guid id, string refreshToken)
         {
             var getUserResDTO = await _userRepository.GetUserAndCheckRefreshToken(id, refreshToken);
             if (getUserResDTO == null)
