@@ -22,9 +22,9 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public string? Email { get; set; }
 
-        public string? RefreshToken { get; set; }
+        public string? RefreshToken { get; set; } = null;
 
-        public DateTime? RefreshTokenExpiry { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; } = null;
 
         // ------------------------------------------------
 

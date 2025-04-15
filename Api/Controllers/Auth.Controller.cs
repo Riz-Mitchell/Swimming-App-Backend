@@ -3,6 +3,8 @@ using FirebaseAdmin.Auth;
 using SwimmingAppBackend.Domain.Services;
 using System.Data;
 using System;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace SwimmingAppBackend.Api.Controllers
 {
@@ -21,6 +23,7 @@ namespace SwimmingAppBackend.Api.Controllers
             _jwtService = jwtService;
         }
 
+        [AllowAnonymous]
         [HttpPost("generate-otp")]
         public async Task<IActionResult> GenerateOTP([FromBody] OTPRequest otpRequest)
         {
@@ -31,15 +34,16 @@ namespace SwimmingAppBackend.Api.Controllers
 
             if (foundUser == null)
             {
-                return Unauthorized();
+                return Unauthorized("No user found");
             }
 
             // This shit will spend money!!!!!
-            await _twilioService.SendVerificationCodeAsync(phoneNum);
+            await _twilioService.SendVerificationCodeAsync(phoneNum, foundUser.Name);
 
             return Accepted();
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginReq)
         {
@@ -114,6 +118,38 @@ namespace SwimmingAppBackend.Api.Controllers
             // If a new refresh token was issued, update its cookie similarly.
 
             return Ok(new { message = "Token refreshed" });
+        }
+
+        [HttpPost("logout/{id}")]
+        public async Task<IActionResult> Logout(Guid id)
+        {
+            var subClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+            Console.WriteLine($"Sub claim: {subClaim}");
+
+            if (string.IsNullOrEmpty(subClaim) || !Guid.TryParse(subClaim, out var userId))
+            {
+                return BadRequest("Invalid user ID in token.");
+            }
+
+            var foundUser = await _userService.GetUserById(userId);
+            if (foundUser == null)
+            {
+                return Unauthorized();
+            }
+
+            // You might also want to check if userId == id to prevent logging out another user
+            if (userId != id)
+            {
+                return Forbid("You are not allowed to log out this user.");
+            }
+
+            await _userService.InvalidateRefreshToken(id);
+
+            Response.Cookies.Delete("AccessToken");
+            Response.Cookies.Delete("RefreshToken");
+
+            return Ok(new { message = "Logged out successfully" });
         }
 
     }

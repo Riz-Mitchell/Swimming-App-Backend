@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SwimmingAppBackend.Context;
+using SwimmingAppBackend.Infrastructure.Context;
 
 #nullable disable
 
 namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    [Migration("20250406103210_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250414015528_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("AthleteDataAward");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Achievement", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Achievement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Achievements");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.AthleteData", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.AthleteData", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("AthleteDatas");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Award", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Award", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,7 +104,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Awards");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Club", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Club", b =>
                 {
                     b.Property<Guid>("ClubId")
                         .ValueGeneratedOnAdd()
@@ -119,7 +119,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Clubs");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.CoachData", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.CoachData", b =>
                 {
                     b.Property<Guid>("CoachDataId")
                         .ValueGeneratedOnAdd()
@@ -133,7 +133,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("CoachDatas");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Event", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Event", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,7 +156,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.GoalSwim", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.GoalSwim", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,7 +183,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("GoalSwims");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Session", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Session", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,7 +204,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Sessions");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Set", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +220,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Sets");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.SetItem", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.SetItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -236,7 +236,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("SetItems");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Squad", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -256,7 +256,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Squads");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Swim", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -304,7 +304,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("Swims");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeSheet", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeSheet", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,7 +318,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("TimeSheets");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeSheetItem", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeSheetItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -340,7 +340,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("TimeSheetsItems");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeTable", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeTable", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -356,7 +356,7 @@ namespace Swimming_App_Backend.Migrations
                     b.ToTable("TimeTables");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -382,6 +382,12 @@ namespace Swimming_App_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("RefreshTokenExpiry")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid?>("SquadId")
                         .HasColumnType("uuid");
 
@@ -400,33 +406,33 @@ namespace Swimming_App_Backend.Migrations
 
             modelBuilder.Entity("AthleteDataAward", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Award", null)
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Award", null)
                         .WithMany()
                         .HasForeignKey("AwardsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SwimmingAppBackend.Models.AthleteData", null)
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", null)
                         .WithMany()
                         .HasForeignKey("RecipientsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Achievement", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Achievement", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.AthleteData", null)
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", null)
                         .WithMany("Achievements")
                         .HasForeignKey("AthleteDataId");
 
-                    b.HasOne("SwimmingAppBackend.Models.CoachData", null)
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", null)
                         .WithMany("Achievements")
                         .HasForeignKey("CoachDataId");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Award", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Award", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.CoachData", "CoachDataOwner")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", "CoachDataOwner")
                         .WithMany("Awards")
                         .HasForeignKey("CoachDataOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -435,26 +441,26 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("CoachDataOwner");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Event", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Event", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.TimeSheet", "TimeSheet")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.TimeSheet", "TimeSheet")
                         .WithOne("Event")
-                        .HasForeignKey("SwimmingAppBackend.Models.Event", "TimeSheetId")
+                        .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.Event", "TimeSheetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TimeSheet");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.GoalSwim", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.GoalSwim", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.AthleteData", "AthleteDataOwner")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", "AthleteDataOwner")
                         .WithMany("GoalSwims")
                         .HasForeignKey("AthleteDataOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SwimmingAppBackend.Models.Event", "Event")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -465,15 +471,15 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Session", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Session", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.CoachData", "CoachDataOwner")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", "CoachDataOwner")
                         .WithMany("Sessions")
                         .HasForeignKey("CoachDataOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SwimmingAppBackend.Models.TimeTable", "TimeTable")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.TimeTable", "TimeTable")
                         .WithMany("Sessions")
                         .HasForeignKey("TimeTableId");
 
@@ -482,9 +488,9 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("TimeTable");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Set", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Session", "Session")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Session", "Session")
                         .WithMany("Sets")
                         .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -493,9 +499,9 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Session");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.SetItem", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.SetItem", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Set", "Set")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Set", "Set")
                         .WithMany("SetItems")
                         .HasForeignKey("SetId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -504,24 +510,24 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Set");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Squad", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Club", "Club")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Club", "Club")
                         .WithMany("Squads")
                         .HasForeignKey("ClubId");
 
                     b.Navigation("Club");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Swim", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Swim", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.AthleteData", "AthleteDataOwner")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", "AthleteDataOwner")
                         .WithMany("Swims")
                         .HasForeignKey("AthleteDataOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SwimmingAppBackend.Models.Event", "Event")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -532,9 +538,9 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeSheetItem", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeSheetItem", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.TimeSheet", "TimeSheet")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.TimeSheet", "TimeSheet")
                         .WithMany("TimeSheetItems")
                         .HasForeignKey("TimeSheetId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -543,9 +549,9 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("TimeSheet");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeTable", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeTable", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.Squad", "Squad")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Squad", "Squad")
                         .WithMany("TimeTables")
                         .HasForeignKey("SquadId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -554,19 +560,19 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Squad");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.User", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.User", b =>
                 {
-                    b.HasOne("SwimmingAppBackend.Models.CoachData", "CoachData")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", "CoachData")
                         .WithOne("UserOwner")
-                        .HasForeignKey("SwimmingAppBackend.Models.User", "AthleteDataId")
+                        .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.User", "AthleteDataId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SwimmingAppBackend.Models.AthleteData", "AthleteData")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", "AthleteData")
                         .WithOne("UserOwner")
-                        .HasForeignKey("SwimmingAppBackend.Models.User", "AthleteDataId")
+                        .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.User", "AthleteDataId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SwimmingAppBackend.Models.Squad", "Squad")
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Squad", "Squad")
                         .WithMany("Members")
                         .HasForeignKey("SquadId");
 
@@ -577,7 +583,7 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("Squad");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.AthleteData", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.AthleteData", b =>
                 {
                     b.Navigation("Achievements");
 
@@ -589,12 +595,12 @@ namespace Swimming_App_Backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Club", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Club", b =>
                 {
                     b.Navigation("Squads");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.CoachData", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.CoachData", b =>
                 {
                     b.Navigation("Achievements");
 
@@ -606,24 +612,24 @@ namespace Swimming_App_Backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Session", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Session", b =>
                 {
                     b.Navigation("Sets");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Set", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Set", b =>
                 {
                     b.Navigation("SetItems");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.Squad", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.Squad", b =>
                 {
                     b.Navigation("Members");
 
                     b.Navigation("TimeTables");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeSheet", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeSheet", b =>
                 {
                     b.Navigation("Event")
                         .IsRequired();
@@ -631,7 +637,7 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("TimeSheetItems");
                 });
 
-            modelBuilder.Entity("SwimmingAppBackend.Models.TimeTable", b =>
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.TimeTable", b =>
                 {
                     b.Navigation("Sessions");
                 });

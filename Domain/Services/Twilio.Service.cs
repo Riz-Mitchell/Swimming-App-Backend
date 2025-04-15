@@ -10,7 +10,7 @@ namespace SwimmingAppBackend.Domain.Services
 {
     public interface ITwilioService
     {
-        Task<string> SendVerificationCodeAsync(string phoneNumber);
+        Task<string> SendVerificationCodeAsync(string phoneNumber, string name);
         bool ValidateVerificationCode(string phoneNumber, string code);
     }
 
@@ -30,8 +30,9 @@ namespace SwimmingAppBackend.Domain.Services
             _twilioPhoneNumber = Environment.GetEnvironmentVariable("TWILIO_PHONE_NUM");        // Only for aus
         }
 
-        public async Task<string> SendVerificationCodeAsync(string phoneNumber)
+        public async Task<string> SendVerificationCodeAsync(string phoneNumber, string name)
         {
+            Console.WriteLine($"Sending verification code to {phoneNumber}");
             try
             {
                 TwilioClient.Init(_twilioAccountSid, _twilioAuthToken);
@@ -47,10 +48,12 @@ namespace SwimmingAppBackend.Domain.Services
 
                 // Send the verification code via SMS
                 var message = await MessageResource.CreateAsync(
-                    body: "Your verification code is: " + verificationCode,
+                    body: "Hello " + name + " your verification code is: " + verificationCode,
                     from: new PhoneNumber(_twilioPhoneNumber),
                     to: new PhoneNumber(phoneNumber)
                 );
+
+                Console.WriteLine($"Message sent: {message.Sid}");
 
                 return message.Sid;
             }

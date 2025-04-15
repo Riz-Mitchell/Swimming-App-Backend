@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Swimming_App_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -190,6 +190,8 @@ namespace Swimming_App_Backend.Migrations
                     UserType = table.Column<int>(type: "integer", nullable: false),
                     Age = table.Column<int>(type: "integer", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
+                    RefreshToken = table.Column<string>(type: "text", nullable: true),
+                    RefreshTokenExpiry = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     SquadId = table.Column<Guid>(type: "uuid", nullable: true),
                     AthleteDataId = table.Column<Guid>(type: "uuid", nullable: true),
                     CoachDataId = table.Column<Guid>(type: "uuid", nullable: true)

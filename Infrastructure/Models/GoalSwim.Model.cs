@@ -14,6 +14,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public int? StrokeRate { get; set; }
 
+        public int? StrokeCount { get; set; }
+
         // ------------------------------------------------
 
         // Foreign Keys / Relations:

@@ -10,12 +10,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attrubutes :
         // ------------------------------------------------
 
-        public string? MainStroke { get; set; }
-
-        public int? MainDistance { get; set; }
-
-        public string? GoalTime { get; set; }
-
         // ------------------------------------------------
 
         // Foreign Keys / Relations:

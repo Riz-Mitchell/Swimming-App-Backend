@@ -8,30 +8,28 @@ namespace SwimmingAppBackend.Api.Controllers
     [ApiController]
     public class SwimController : ControllerBase
     {
-        private readonly SwimmingAppDBContext _context;
+        private readonly ISwimService _swimService;
 
-        public SwimController(SwimmingAppDBContext context, ISwimRepository swimRepo, ISwimmerMetaDataRepository swimmerMetaDataRepo)
+        public SwimController(ISwimService swimService)
         {
-            _context = context;
-            _swimmerMetaDataRepo = swimmerMetaDataRepo;
-            _swimRepo = swimRepo;
+            _swimService = swimService;
         }
 
         // GET: api/swims
         [HttpGet]
         public async Task<ActionResult> GetSwims()
         {
-            var foundSwims = await _swimRepo.GetAllAsync();
+            var foundSwims = await _swimService.GetSwimsByQueryAsync();
 
-            var swimDtos = foundSwims.Select(swim => swim.MapGetSwimDTO());
 
-            return Ok(swimDtos);
+
+            return Ok(foundSwims);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetSwim(int id)
+        public async Task<ActionResult> GetSwim(Guid id)
         {
-            var foundSwim = await _swimRepo.GetByIdAsync(id);
+            var foundSwim = await _swimService.GetUserByIdAsync(id);
 
             if (foundSwim == null)
             {
@@ -39,65 +37,86 @@ namespace SwimmingAppBackend.Api.Controllers
             }
             else
             {
-                var swimDTO = foundSwim.MapGetSwimDTO();
-                return Ok(swimDTO);
+                return Ok(foundSwim);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostSwim([FromBody] CreateSwimDTO createSwimDTO)
+        public async Task<ActionResult> PostSwim([FromBody] CreateSwimReqDTO createSwimReqDTO)
         {
             // Check if DTO from body null
-            if (createSwimDTO == null)
+            if (createSwimReqDTO == null)
             {
                 return BadRequest();
             }
 
-            var foundSwimmerMetaData = await _swimmerMetaDataRepo.GetByIdAsync(createSwimDTO.SwimmerMetaDataId);
+            var subClaim = User.FindFirst("sub")?.Value;
 
-            if (foundSwimmerMetaData == null)
+            if (Guid.TryParse(subClaim, out var userId))
             {
-                return NotFound("SwimmerMetaData doesn't exist");
+                var swim = await _swimService.CreateSwimAsync(createSwimReqDTO, userId);
+
+                return Ok(swim);
             }
-
-            // Map CreateUserDTO to new User
-            var createdSwim = createSwimDTO.MapCreateSwimDTO(foundSwimmerMetaData);
-
-            // Save to database
-            await _swimRepo.CreateAsync(createdSwim);
-
-            return CreatedAtAction(nameof(createdSwim), new { id = createdSwim.Id }, createdSwim);
+            else
+            {
+                return BadRequest("Invalid GUID in sub claim");
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutUser(int id, UpdateUserDTO updateUserDTO)
+        public async Task<ActionResult> PutSwim(Guid id, [FromBody] UpdateSwimDTO updateSwimDTO)
         {
-            if (updateUserDTO == null)
+            if (updateSwimDTO == null)
             {
                 return BadRequest();
             }
 
-            var updatedUser = await _userRepo.UpdateAsync(id, updateUserDTO);
+            var subClaim = User.FindFirst("sub")?.Value;
 
-            if (updatedUser == null)
+            var success = Guid.TryParse(subClaim, out var userId);
+
+            if (!success)
             {
-                return NotFound();
+                return BadRequest("Invalid GUID in sub claim");
             }
+            else
+            {
+                var foundSwim = await _swimService.GetSwimByIdAsync(id);
 
-            return Ok(updatedUser.MapGetUserDTO());
+                if (foundSwim == null)
+                {
+                    return BadRequest("No swim found with the given ID");
+                }
+
+                var updatedSwim = await _swimService.UpdateSwimAsync(userId, updateSwimDTO);
+
+                return Ok(updatedSwim);
+            }
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteSwim(Guid id)
         {
-            var foundUser = await _userRepo.GetByIdAsync(id);
-            if (foundUser == null)
+            var subClaim = User.FindFirst("sub")?.Value;
+
+            if (!Guid.TryParse(subClaim, out var userId))
             {
-                return NotFound();
+                return BadRequest("Invalid user ID format.");
+            }
+            else
+            {
+                var foundSwim = await _swimService.GetSwimByIdAsync(id);
+
+                if (foundSwim == null)
+                {
+                    return NotFound();
+                }
+
+                await _swimService.DeleteSwimAsync(id);
+                return NoContent();
             }
 
-            await _userRepo.DeleteAsync(foundUser);
-            return NoContent();
         }
     }
 }

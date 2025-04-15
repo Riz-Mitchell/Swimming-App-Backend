@@ -10,8 +10,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attrubutes :
         // ------------------------------------------------
 
-        public bool GoalTime { get; set; } = false;
-
         public required double Time { get; set; }
 
         public required Stroke Stroke { get; set; } // Stroke type
@@ -59,6 +57,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
         }
 
         public int? StrokeRate { get; set; }
+
+        public int? StrokeCount { get; set; }
 
         public int? Pace { get; set; }
 

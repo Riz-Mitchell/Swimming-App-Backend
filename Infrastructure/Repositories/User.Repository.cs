@@ -16,6 +16,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task<GetUserResDTO?> GetUserByAttribute(string? phoneNumber);
         Task UpdateUserRefreshTokenAsync(Guid id, string refreshToken, DateTime dateTimeAdd60Days);
         Task<GetUserResDTO?> GetUserAndCheckRefreshToken(Guid id, string refreshToken);
+        Task InvalidateRefreshToken(Guid id);
     }
 
     public class UserRepository : IUserRepository
@@ -197,6 +198,17 @@ namespace SwimmingAppBackend.Domain.Services
             {
                 return null;
             }
+        }
+
+        public async Task InvalidateRefreshToken(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            user!.RefreshToken = null;
+            user!.RefreshTokenExpiry = null;
+
+            await _context.SaveChangesAsync();
+            // No need to return anything, just invalidate the token
         }
     }
 

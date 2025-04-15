@@ -12,6 +12,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task<GetUserResDTO?> GetUserByPhoneNumber(string phoneNumber);
         Task SaveRefreshTokenAsync(Guid id, string refreshToken, DateTime dateTime);
         Task<GetUserResDTO?> FindUserAndRefreshToken(Guid id, string refreshToken);
+        Task InvalidateRefreshToken(Guid id);
     }
 
     public class UserService : IUserService
@@ -71,6 +72,11 @@ namespace SwimmingAppBackend.Domain.Services
             {
                 return getUserResDTO;
             }
+        }
+
+        public async Task InvalidateRefreshToken(Guid id)
+        {
+            await _userRepository.InvalidateRefreshToken(id);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SwimmingAppBackend.Api.Controllers
             var foundUsers = await _userService.GetUsersByQuery(new GetUsersQuery
             {
                 PageNumber = 1,
-                NameContains = null
+                NameContains = nameContains
             });
 
             return Ok(foundUsers);
@@ -47,6 +47,7 @@ namespace SwimmingAppBackend.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> PostUser([FromBody] CreateUserReqDTO createUserReqDTO)
         {
@@ -63,7 +64,7 @@ namespace SwimmingAppBackend.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutUser(int id, [FromBody] UpdateUserReqDTO userUpdates)
+        public async Task<ActionResult> PutUser(Guid id, [FromBody] UpdateUserReqDTO userUpdates)
         {
             if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
             {
