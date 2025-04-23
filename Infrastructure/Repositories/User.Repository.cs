@@ -4,7 +4,7 @@ using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Infrastructure.Context;
 using SwimmingAppBackend.Infrastructure.Models;
 
-namespace SwimmingAppBackend.Domain.Services
+namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface IUserRepository
     {
