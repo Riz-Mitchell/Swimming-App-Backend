@@ -18,7 +18,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public ICollection<User>? Members { get; set; }
 
-        public ICollection<TimeTable>? TimeTables { get; set; }
+        public ICollection<Timetable>? Timetables { get; set; }
 
         public Guid? ClubId { get; set; }
 

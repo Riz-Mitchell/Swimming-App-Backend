@@ -2,14 +2,17 @@ using SwimmingAppBackend.Enum;
 
 namespace SwimmingAppBackend.Infrastructure.Models
 {
-    public class TimeTable
+    public class Timetable
     {
         public Guid Id { get; set; }  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------
 
-
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string? Name { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // ------------------------------------------------
 

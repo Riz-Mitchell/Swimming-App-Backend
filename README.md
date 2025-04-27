@@ -2,6 +2,11 @@
 
 This file contains the documentation for a swimming application
 
+Splashbook
+
+Swimsync
+
+
 ## Content
 
 - [Things To Do](#things-to-do)

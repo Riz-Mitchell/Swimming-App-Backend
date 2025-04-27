@@ -28,7 +28,7 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<Swim> Swims { get; set; }
 
-        public DbSet<TimeTable> TimeTables { get; set; }
+        public DbSet<Timetable> Timetables { get; set; }
 
         public DbSet<User> Users { get; set; }
 
@@ -63,9 +63,9 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Session>()
-                .HasOne(s => s.TimeTable)
+                .HasOne(s => s.Timetable)
                 .WithMany(tt => tt.Sessions)
-                .HasForeignKey(s => s.TimeTableId);
+                .HasForeignKey(s => s.TimetableId);
 
             modelBuilder.Entity<Session>()
                 .HasOne(s => s.CoachDataOwner)
@@ -98,9 +98,9 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .HasForeignKey(s => s.AthleteDataOwnerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<TimeTable>()
+            modelBuilder.Entity<Timetable>()
                 .HasOne(tt => tt.Squad)
-                .WithMany(s => s.TimeTables)
+                .WithMany(s => s.Timetables)
                 .HasForeignKey(tt => tt.SquadId)
                 .OnDelete(DeleteBehavior.Cascade);
 

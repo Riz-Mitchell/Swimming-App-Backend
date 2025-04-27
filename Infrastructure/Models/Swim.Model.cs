@@ -11,11 +11,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // ------------------------------------------------
 
         public required double Time { get; set; }
-
         public required Stroke Stroke { get; set; } // Stroke type
-
         public required int Distance { get; set; }
-
         public double? PercentageOffPB
         {
             get
@@ -34,7 +31,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
                 return ((this.Time - pbTime) / pbTime) * 100;
             }
         }
-
         public double? PercentageOffGoalTime
         {
             get
@@ -55,17 +51,11 @@ namespace SwimmingAppBackend.Infrastructure.Models
                 return ((this.Time - goalTime) / goalTime) * 100;
             }
         }
-
         public int? StrokeRate { get; set; }
-
         public int? StrokeCount { get; set; }
-
         public int? Pace { get; set; }
-
         public int? PerceivedExertion { get; set; }
-
         public required bool Dive { get; set; }
-
         public DateTime RecordedAt { get; set; } = DateTime.UtcNow;
 
         // ------------------------------------------------

@@ -25,6 +25,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? PerceivedExertion { get; set; }
         public required bool Dive { get; set; }
         public DateTime RecordedAt { get; set; }
+        public required Guid EventId { get; set; }
     }
 
     public class CreateSwimReqDTO
@@ -38,6 +39,8 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? PerceivedExertion { get; set; }
         public required bool Dive { get; set; }
         public DateTime RecordedAt { get; set; }
+        public required Guid AthleteDataOwnerId { get; set; }
+        public required Guid EventId { get; set; }
     }
 
 

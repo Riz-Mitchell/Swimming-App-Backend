@@ -16,9 +16,9 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++\
 
-        public Guid? TimeTableId { get; set; }
+        public Guid? TimetableId { get; set; }
 
-        public TimeTable? TimeTable { get; set; }
+        public Timetable? Timetable { get; set; }
 
         public required Guid CoachDataOwnerId { get; set; }
 

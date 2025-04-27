@@ -84,6 +84,66 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema)
         {
+            var foundAthlete = await _context.AthleteDatas.FindAsync(swimSchema.AthleteDataOwnerId);
+            if (foundAthlete == null)
+            {
+                throw new Exception("Athlete not found");
+            }
+
+
+            double? PercentageOffPB(AthleteData athleteData)
+            {
+                if (athleteData.Swims == null || athleteData.Swims.Count == 0)
+                {
+                    return null;
+                }
+
+                // Try to find pb for a given distance and calculate percentage off of that
+                var matchingSwims = athleteData.Swims?
+                    .Where(s => s.EventId == swimSchema.EventId && s.Distance == swimSchema.Distance);
+
+                if (matchingSwims == null || !matchingSwims.Any())
+                {
+                    // Calculate based off of timesheet
+                    var timeSheet = _context.TimeSheets
+                        .Include(ts => ts.TimeSheetItems)
+                        .FirstOrDefault(ts => ts.EventId == swimSchema.EventId) ?? throw new Exception("Timesheet not found");
+
+                    var timeSheetTime =
+                }
+                else
+                {
+                    var pbTime = matchingSwims.Min(s => s.Time);
+                    // Now you can safely use pbTime
+                }
+
+                // If distance is == event distance then calculate pb
+
+                // If not find the time at which distance == timesheet interval
+
+                // Return percentage off the pb
+
+                return (swimSchema.Time - pbTime) / pbTime * 100;
+            }
+
+            double? PercentageOffGoalTime(AthleteData athleteData)
+            {
+                if (athleteData.GoalSwims == null || athleteData.GoalSwims.Count == 0)
+                {
+                    return null;
+                }
+
+                // Goal times in same event with same distance
+                var goalTimes = athleteData.GoalSwims
+                    .Where(gs => gs.EventId == swimSchema.EventId && gs.Distance == swimSchema.Distance)
+                    .ToList();
+
+                var goalTime = goalTimes.Min(s => s.Time);
+
+                return (swimSchema.Time - goalTime) / goalTime * 100;
+            }
+
+
             var swim = new Swim
             {
                 Time = swimSchema.Time,
@@ -94,7 +154,9 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Pace = swimSchema.Pace ?? null,
                 PerceivedExertion = swimSchema.PerceivedExertion ?? null,
                 Dive = swimSchema.Dive,
-                RecordedAt = swimSchema.RecordedAt
+                RecordedAt = swimSchema.RecordedAt,
+                AthleteDataOwnerId = swimSchema.AthleteDataOwnerId,
+                AthleteDataOwner = foundAthlete
             };
             _context.Swims.Add(swim);
             await _context.SaveChangesAsync();

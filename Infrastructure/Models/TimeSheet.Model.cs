@@ -19,7 +19,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public required ICollection<TimeSheetItem> TimeSheetItems { get; set; }
+        public ICollection<TimeSheetItem> TimeSheetItems { get; set; }
 
         public required Guid EventId { get; set; }
 
