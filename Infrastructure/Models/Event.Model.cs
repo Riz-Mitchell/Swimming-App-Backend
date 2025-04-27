@@ -16,6 +16,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required int Distance { get; set; }
 
+        public required EventEnum EventEnum { get; set; } // Event type
+
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
