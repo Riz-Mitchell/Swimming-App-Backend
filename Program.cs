@@ -9,6 +9,7 @@ using System.Text;
 using SwimmingAppBackend.Domain.Services;
 using SwimmingAppBackend.Infrastructure.Context;
 using System.Text.Json.Serialization;
+using SwimmingAppBackend.Infrastructure.Repositories;
 
 Env.Load();
 
@@ -83,6 +84,10 @@ else
 }
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IAthleteDataRepository, AthleteDataRepository>();
+builder.Services.AddScoped<ISwimRepository, SwimRepository>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IJwtService, JwtService>();

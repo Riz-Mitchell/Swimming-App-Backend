@@ -9,7 +9,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid swimId);
         Task<GetSwimResDTO?> CreateSwimAsync(Guid userId, CreateSwimReqDTO createSchema);
         // Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema);
-        Task DeleteSwimAsync(Guid swimId);
+        Task DeleteSwimAsync(Guid swimId, Guid userId);
     }
 
     public class SwimService : ISwimService
@@ -58,9 +58,9 @@ namespace SwimmingAppBackend.Domain.Services
         //     var updatedSwimResDTO = _swimRepository.UpdateSwimAsync(userId, swimId, updateSchema);
         // }
 
-        public async Task DeleteSwimAsync(Guid swimId)
+        public async Task DeleteSwimAsync(Guid swimId, Guid userId)
         {
-            await _swimRepository.DeleteSwimAsync(swimId);
+            await _swimRepository.DeleteSwimAsync(swimId, userId);
         }
     }
 }
