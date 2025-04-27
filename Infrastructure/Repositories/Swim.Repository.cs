@@ -12,7 +12,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id);
         Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId, Guid eventId);
         // Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema);
-        Task DeleteSwimAsync(Guid id);
+        Task DeleteSwimAsync(Guid swimId, Guid userId);
         Task<double?> PercentageOffPBTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
         Task<double?> PercentageOffPBStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
         Task<double?> PercentageOffGoalTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
@@ -89,13 +89,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId, Guid eventId)
         {
-            var foundAthlete = await _context.AthleteDatas.FindAsync(athleteDataOwnerId);
-            if (foundAthlete == null)
-            {
-                throw new Exception("Athlete not found");
-            }
-
-
+            var foundAthlete = await _context.AthleteDatas.FindAsync(athleteDataOwnerId) ?? throw new Exception("Athlete not found");
             var swim = new Swim
             {
                 Time = swimSchema.Time,
@@ -182,11 +176,16 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             return getSwimResDTO;
         }
 
-        public async Task DeleteSwimAsync(Guid id)
+        public async Task DeleteSwimAsync(Guid swimId, Guid userId)
         {
-            var foundSwim = await _context.Swims.FindAsync(id);
+            var foundAthleteDataOwnerId = await _context.AthleteDatas
+                .Where(ad => ad.UserOwnerId == userId)
+                .Select(e => e.Id)
+                .FirstOrDefaultAsync();
 
-            if (foundSwim != null)
+            var foundSwim = await _context.Swims.FindAsync(swimId);
+
+            if (foundSwim != null && foundSwim.AthleteDataOwnerId == foundAthleteDataOwnerId)
             {
                 _context.Swims.Remove(foundSwim);
                 await _context.SaveChangesAsync();
