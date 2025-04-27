@@ -2,14 +2,142 @@
 
 This file contains the documentation for a swimming application
 
+Splashbook
+
+Swimsync
+
+
 ## Content
 
+- [Things To Do](#things-to-do)
 - [Random Scribble Notes](#random-scribble-notes)
 - [Business Requirements](#business-requirements)
 - [Features](#features)
 - [Data and Architecture](#data-and-architecture)
 - [Technology Stack](#technology-stack)
 - [Pricing Plans](#pricing-plans)
+
+## Things To Do
+
+### Authentication
+
+- [ ] Authentication Service
+  - [ ] Twilio Class
+    - [ ] Submit application to buy phone number
+    - [ ] Buy phone number
+  - [ ] JWT Class
+    - [ ] refresh token generation function
+    - [ ] access token generation function
+    - [ ] renew access function
+- [ ] Authentication Controller
+  - [ ] Login endpoint
+  - [ ] Logout endpoint
+  - [ ] Refresh endpoint
+
+### Notifications
+
+- [ ] Notification Service
+  - [ ] Send notification Function
+  - [ ] Implement placeholders of notifications
+    - [ ] `x sent you a friend request`
+    - [ ] `x just hit a pb in y event`
+    - [ ] `x just aquired a badge`
+    - [ ] `x has requested to join your squad`
+    - [ ] `x has requested to join your club`
+    - [ ] ...
+- [ ] Firebase Messaging Service
+
+### Users
+
+- [ ] User Controller
+  - [ ] GetUsers
+    - [ ] Add Query Params
+  - [ ] GetUser
+  - [ ] PostUser
+  - [ ] PatchUser
+  - [ ] DeleteUser
+- [ ] User Service
+- [ ] User Repo
+- [ ] User Model
+  - [ ] Add Friend Table Relationship
+
+### Swim
+
+- [ ] Swim Controller
+  - [ ] GetSwims
+    - [ ] Add Query Params
+    - [ ] Search by userId
+  - [ ] GetSwim
+  - [ ] PostSwim
+    - [ ] Check achievements on post
+  - [ ] PatchSwim
+  - [ ] DeleteSwim
+- [ ] Swim Service
+  - [ ] Calculate statistics when fetching swims
+    - [ ] Stroke rate % off PB
+    - [ ] Stroke rate % off Goal
+    - [ ] Exertion above or below average
+    - [ ] Heart rate above or below average 
+    - [ ] Event
+    - [ ] Time % Off PB
+    - [ ] Time % Off Goal
+
+### Squad
+
+- [ ] Squad Controller
+  - [ ] GetSquads
+  - [ ] GetSquad
+  - [ ] PostSquad
+  - [ ] PatchSquad
+  - [ ] DeleteSquad
+- [ ] Squad Service
+  - [ ] Transfer Ownership
+  - [ ] Add coach
+  - [ ] Remove coach
+
+### Club
+
+- [ ] Club Controller
+  - [ ] GetClubs
+  - [ ] GetClub
+  - [ ] PostClub
+  - [ ] PatchClub
+  - [ ] DeleteClub
+- [ ] Club Service
+  - [ ] Transfer Ownership
+  - [ ] Add Admin
+  - [ ] Remove Admin
+
+### Timetable
+
+- [ ] Timetable Controller
+  - [ ] GetTimeTables
+  - [ ] GetTimetable
+  - [ ] PostTimetable
+  - [ ] DeleteTimetable
+- [ ] Timetable Service
+  - [ ] Add Session
+  - [ ] Remove Session
+
+### Session
+
+- [ ] Session Controller
+  - [ ] GetSessions
+    - [ ] ByCoach
+    - [ ] ByTimetable
+    - [ ] BySquad
+  - [ ] GetSession
+  - [ ] PostSession
+  - [ ] PatchSession
+  - [ ] DeleteSession
+- [ ] Session Service
+  - [ ] Attach Session to Timetable
+  - [ ] Detach Session from Timetable
+
+### SessionItem
+
+
+
 
 ## Random Scribble Notes
 
@@ -45,13 +173,22 @@ public class Club {
   public int Id;
   public int Name;
   public Link? ProfilePicture;
+
+  // 1 Club can have 1 or more squads
+  public ICollection<Squad>? squads;
 }
 
 public class Squad {
   public int Id;
   public int Name;
-  public List<Swimmer> Swimmers;
-  public List<Coach>
+
+  // 1 Squad belongs to 1 and Only 1 Club
+  required public int clubId;
+  required public Club club;
+
+
+  public ICollection<SwimmerProfile>? swimmers; 
+  public ICollection<CoachProfile>? coaches;
 }
 
 public abstract class User {
@@ -63,7 +200,7 @@ public abstract class User {
   public Link? ProfilePicture;
 }
 
-public Swimmer : User {
+public SwimmerProfile : User {
   public string MainStroke;
   public int MainDistance;
   public string GoalTime;
