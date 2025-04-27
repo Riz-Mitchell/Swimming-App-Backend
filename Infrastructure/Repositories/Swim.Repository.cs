@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Infrastructure.Context;
@@ -9,9 +10,13 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
     {
         Task<List<GetSwimResDTO>> GetSwimsByQueryAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id);
-        Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema);
-        Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema);
+        Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId, Guid eventId);
+        // Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema);
         Task DeleteSwimAsync(Guid id);
+        Task<double?> PercentageOffPBTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
+        Task<double?> PercentageOffPBStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
+        Task<double?> PercentageOffGoalTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
+        Task<double?> PercentageOffGoalStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId);
     }
 
 
@@ -38,15 +43,15 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Time = swim.Time,
                 Stroke = swim.Stroke,
                 Distance = swim.Distance,
-                PercentageOffPB = swim.PercentageOffPB,
+                PercentageOffPBTime = swim.PercentageOffPBTime,
                 PercentageOffGoalTime = swim.PercentageOffGoalTime,
-                PercentageOffGoalStrokeRate = swim.PercentageOffGoalStrokeRate,         // Need to implement these calculations
-                PercentageOffGoalStrokeCount = swim.PercentageOffGoalStrokeCount,       // Need to implement these calculations
+                PercentageOffGoalStrokeRate = swim.PercentageOffGoalStrokeRate,         // Need to implement these calculations       // Need to implement these calculations
                 StrokeRate = swim.StrokeRate,
                 StrokeCount = swim.StrokeCount,
                 Pace = swim.Pace,
                 PerceivedExertion = swim.PerceivedExertion,
                 Dive = swim.Dive,
+                GoalSwim = swim.GoalSwim,
                 RecordedAt = swim.RecordedAt
             }).ToList();
 
@@ -67,80 +72,27 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Time = foundSwim.Time,
                 Stroke = foundSwim.Stroke,
                 Distance = foundSwim.Distance,
-                PercentageOffPB = foundSwim.PercentageOffPB,
+                PercentageOffPBTime = foundSwim.PercentageOffPBTime,
                 PercentageOffGoalTime = foundSwim.PercentageOffGoalTime,
-                PercentageOffGoalStrokeRate = foundSwim.PercentageOffGoalStrokeRate,         // Need to implement these calculations
-                PercentageOffGoalStrokeCount = foundSwim.PercentageOffGoalStrokeCount,       // Need to implement these calculations
+                PercentageOffGoalStrokeRate = foundSwim.PercentageOffGoalStrokeRate,         // Need to implement these calculations       // Need to implement these calculations
                 StrokeRate = foundSwim.StrokeRate,
                 StrokeCount = foundSwim.StrokeCount,
                 Pace = foundSwim.Pace,
                 PerceivedExertion = foundSwim.PerceivedExertion,
                 Dive = foundSwim.Dive,
+                GoalSwim = foundSwim.GoalSwim,
                 RecordedAt = foundSwim.RecordedAt
             };
 
             return getSwimResDTO;
         }
 
-        public async Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema)
+        public async Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId, Guid eventId)
         {
-            var foundAthlete = await _context.AthleteDatas.FindAsync(swimSchema.AthleteDataOwnerId);
+            var foundAthlete = await _context.AthleteDatas.FindAsync(athleteDataOwnerId);
             if (foundAthlete == null)
             {
                 throw new Exception("Athlete not found");
-            }
-
-
-            double? PercentageOffPB(AthleteData athleteData)
-            {
-                if (athleteData.Swims == null || athleteData.Swims.Count == 0)
-                {
-                    return null;
-                }
-
-                // Try to find pb for a given distance and calculate percentage off of that
-                var matchingSwims = athleteData.Swims?
-                    .Where(s => s.EventId == swimSchema.EventId && s.Distance == swimSchema.Distance);
-
-                if (matchingSwims == null || !matchingSwims.Any())
-                {
-                    // Calculate based off of timesheet
-                    var timeSheet = _context.TimeSheets
-                        .Include(ts => ts.TimeSheetItems)
-                        .FirstOrDefault(ts => ts.EventId == swimSchema.EventId) ?? throw new Exception("Timesheet not found");
-
-                    var timeSheetTime =
-                }
-                else
-                {
-                    var pbTime = matchingSwims.Min(s => s.Time);
-                    // Now you can safely use pbTime
-                }
-
-                // If distance is == event distance then calculate pb
-
-                // If not find the time at which distance == timesheet interval
-
-                // Return percentage off the pb
-
-                return (swimSchema.Time - pbTime) / pbTime * 100;
-            }
-
-            double? PercentageOffGoalTime(AthleteData athleteData)
-            {
-                if (athleteData.GoalSwims == null || athleteData.GoalSwims.Count == 0)
-                {
-                    return null;
-                }
-
-                // Goal times in same event with same distance
-                var goalTimes = athleteData.GoalSwims
-                    .Where(gs => gs.EventId == swimSchema.EventId && gs.Distance == swimSchema.Distance)
-                    .ToList();
-
-                var goalTime = goalTimes.Min(s => s.Time);
-
-                return (swimSchema.Time - goalTime) / goalTime * 100;
             }
 
 
@@ -149,14 +101,19 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Time = swimSchema.Time,
                 Stroke = swimSchema.Stroke,
                 Distance = swimSchema.Distance,
+                PercentageOffPBTime = await PercentageOffPBTime(swimSchema, foundAthlete, athleteDataOwnerId, eventId),
+                PercentageOffPBStrokeRate = await PercentageOffPBStrokeRate(swimSchema, foundAthlete, athleteDataOwnerId, eventId),
+                PercentageOffGoalTime = await PercentageOffGoalTime(swimSchema, foundAthlete, athleteDataOwnerId, eventId),
+                PercentageOffGoalStrokeRate = await PercentageOffGoalStrokeRate(swimSchema, foundAthlete, athleteDataOwnerId, eventId),         // Need to implement these calculations
                 StrokeRate = swimSchema.StrokeRate ?? null,
                 StrokeCount = swimSchema.StrokeCount ?? null,
                 Pace = swimSchema.Pace ?? null,
                 PerceivedExertion = swimSchema.PerceivedExertion ?? null,
-                Dive = swimSchema.Dive,
-                RecordedAt = swimSchema.RecordedAt,
-                AthleteDataOwnerId = swimSchema.AthleteDataOwnerId,
-                AthleteDataOwner = foundAthlete
+                Dive = swimSchema.Dive ?? false,
+                AthleteDataOwnerId = athleteDataOwnerId,
+                AthleteDataOwner = foundAthlete,
+                EventId = eventId,
+                Event = await _context.Events.FindAsync(eventId) ?? throw new Exception("Event not found")
             };
             _context.Swims.Add(swim);
             await _context.SaveChangesAsync();
@@ -167,15 +124,16 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Time = swim.Time,
                 Stroke = swim.Stroke,
                 Distance = swim.Distance,
-                PercentageOffPB = swim.PercentageOffPB,
+                PercentageOffPBTime = swim.PercentageOffPBTime,
+                PercentageOffPBStrokeRate = swim.PercentageOffPBStrokeRate,
                 PercentageOffGoalTime = swim.PercentageOffGoalTime,
                 PercentageOffGoalStrokeRate = swim.PercentageOffGoalStrokeRate,         // Need to implement these calculations
-                PercentageOffGoalStrokeCount = swim.PercentageOffGoalStrokeCount,       // Need to implement these calculations
                 StrokeRate = swim.StrokeRate,
                 StrokeCount = swim.StrokeCount,
                 Pace = swim.Pace,
                 PerceivedExertion = swim.PerceivedExertion,
                 Dive = swim.Dive,
+                GoalSwim = swim.GoalSwim,
                 RecordedAt = swim.RecordedAt
             };
 
@@ -209,15 +167,15 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Time = foundSwim.Time,
                 Stroke = foundSwim.Stroke,
                 Distance = foundSwim.Distance,
-                PercentageOffPB = foundSwim.PercentageOffPB,
+                PercentageOffPBTime = foundSwim.PercentageOffPBTime,
                 PercentageOffGoalTime = foundSwim.PercentageOffGoalTime,
                 PercentageOffGoalStrokeRate = foundSwim.PercentageOffGoalStrokeRate,         // Need to implement these calculations
-                PercentageOffGoalStrokeCount = foundSwim.PercentageOffGoalStrokeCount,       // Need to implement these calculations
                 StrokeRate = foundSwim.StrokeRate,
                 StrokeCount = foundSwim.StrokeCount,
                 Pace = foundSwim.Pace,
                 PerceivedExertion = foundSwim.PerceivedExertion,
                 Dive = foundSwim.Dive,
+                GoalSwim = foundSwim.GoalSwim,
                 RecordedAt = foundSwim.RecordedAt
             };
 
@@ -232,6 +190,150 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 _context.Swims.Remove(foundSwim);
                 await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<double?> PercentageOffPBTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId)
+        {
+            var foundEvent = await _context.Events.FindAsync(eventId) ?? throw new Exception("Event not found");
+            var swimsInSameEvent = athleteData.Swims
+                .Where(s => s.EventId == eventId && s.GoalSwim == false)
+                .ToList();
+
+            if (swimsInSameEvent.Count == 0 || swimsInSameEvent == null)
+            {
+                return null;        // Pb does not exist thus there is no comparison
+            }
+            else
+            {
+                var eventPB = swimsInSameEvent
+                    .Where(s => s.Distance == foundEvent.Distance)
+                    .Select(s => (double?)s.Time)
+                    .Min();
+
+                // If there is a PB for the event
+                if (eventPB.HasValue)
+                {
+                    if (swimSchema.Distance == foundEvent.Distance)
+                    {
+                        return (swimSchema.Time - eventPB) / eventPB * 100;
+                    }
+                    else
+                    {
+                        var timeSheetTime = foundEvent.TimeSheet.TimeSheetItems
+                            .Where(tsi => tsi.CurrentInterval == swimSchema.Distance)
+                            .Select(tsi => (double?)tsi.Time)
+                            .FirstOrDefault() ?? throw new Exception("Time sheet not found");
+
+                        return (swimSchema.Time - timeSheetTime) / timeSheetTime * 100;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<double?> PercentageOffPBStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId)
+        {
+            if (swimSchema.StrokeRate == null)
+            {
+                return null;        // Stroke rate does not exist thus there is no comparison
+            }
+
+            var foundEvent = await _context.Events.FindAsync(eventId) ?? throw new Exception("Event not found");
+            var swimsInSameEvent = athleteData.Swims
+                .Where(s => s.EventId == eventId && s.GoalSwim == false)
+                .ToList();
+
+            if (swimsInSameEvent.Count == 0 || swimsInSameEvent == null)
+            {
+                return null;        // Pb does not exist thus there is no comparison
+            }
+            else
+            {
+                var eventPBStrokeRate = swimsInSameEvent
+                    .Where(s => s.Distance == foundEvent.Distance)
+                    .Select(s => (double?)s.StrokeRate)
+                    .Min();
+
+                if (eventPBStrokeRate.HasValue)
+                {
+                    return (swimSchema.StrokeRate - eventPBStrokeRate) / eventPBStrokeRate * 100;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<double?> PercentageOffGoalTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId)
+        {
+            var foundEvent = await _context.Events.FindAsync(eventId) ?? throw new Exception("Event not found");
+            var goalTimes = athleteData.Swims
+                .Where(s => s.EventId == eventId && s.GoalSwim == true)
+                .ToList();
+
+            if (goalTimes.Count == 0 || goalTimes == null)
+            {
+                return null;        // Goal time does not exist thus there is no comparison
+            }
+            else
+            {
+                var goalTime = goalTimes
+                    .Where(s => s.Distance == foundEvent.Distance)
+                    .Select(s => (double?)s.Time)
+                    .Min();
+
+                if (goalTime.HasValue)
+                {
+                    return (swimSchema.Time - goalTime) / goalTime * 100;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<double?> PercentageOffGoalStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId, Guid eventId)
+        {
+            if (swimSchema.StrokeRate == null)
+            {
+                return null;        // Stroke rate is not provided thus there is no comparison
+            }
+
+            var foundEvent = await _context.Events.FindAsync(eventId) ?? throw new Exception("Event not found");
+            var goalSwimList = athleteData.Swims
+                .Where(s => s.EventId == eventId && s.GoalSwim == true)
+                .ToList();
+
+            if (goalSwimList.Count == 0 || goalSwimList == null)
+            {
+                return null;        // Goal stroke rate does not exist thus there is no comparison
+            }
+
+            if (goalSwimList.Count > 1)
+            {
+                throw new Exception("Multiple goal swims found for the same event");
+            }
+            else
+            {
+                var goalStrokeRate = goalSwimList
+                    .Where(s => s.Distance == foundEvent.Distance)
+                    .Select(s => (double?)s.StrokeRate)
+                    .Min();
+
+                if (goalStrokeRate.HasValue)
+                {
+                    return (swimSchema.StrokeRate - goalStrokeRate) / goalStrokeRate * 100;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }
