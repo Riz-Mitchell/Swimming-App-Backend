@@ -1,6 +1,7 @@
 using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Infrastructure.Repositories;
+using System.Runtime.InteropServices;
 
 namespace SwimmingAppBackend.Domain.Services
 {
@@ -33,9 +34,11 @@ namespace SwimmingAppBackend.Domain.Services
         public async Task<GetSwimResDTO?> CreateSwimAsync(Guid userId, CreateSwimReqDTO createSchema)
         {
             var athleteDataOwnerId = await _athleteDataRepository.GetAthleteDataOwnerIdByUserIdAsync(userId);
+            // Console.WriteLine($"AthleteDataOwnerId: {athleteDataOwnerId}");
 
             if (athleteDataOwnerId == null)
             {
+                Console.WriteLine($"AthleteDataOwnerId is null for UserId: {userId}");
                 return null;
             }
 
@@ -43,6 +46,7 @@ namespace SwimmingAppBackend.Domain.Services
 
             if (eventId == null)
             {
+                Console.WriteLine($"EventId is null for Event: {createSchema.Event}");
                 return null;
             }
 
