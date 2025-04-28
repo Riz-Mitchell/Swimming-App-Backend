@@ -117,7 +117,7 @@ namespace SwimmingAppBackend.Infrastructure.Context
             modelBuilder.Entity<User>()
                 .HasOne(u => u.CoachData)
                 .WithOne(ad => ad.UserOwner)
-                .HasForeignKey<User>(u => u.AthleteDataId);
+                .HasForeignKey<User>(u => u.CoachDataId);
 
             modelBuilder.Entity<Event>()
                 .HasOne(e => e.TimeSheet)
