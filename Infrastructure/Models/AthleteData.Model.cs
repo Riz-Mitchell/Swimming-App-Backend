@@ -19,7 +19,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required User UserOwner { get; set; }
 
-        public ICollection<Swim>? Swims { get; set; }
+        public ICollection<Swim> Swims { get; set; } = [];
 
         public ICollection<GoalSwim>? GoalSwims { get; set; }
 
