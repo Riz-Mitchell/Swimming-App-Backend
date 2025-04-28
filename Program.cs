@@ -87,8 +87,12 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IAthleteDataRepository, AthleteDataRepository>();
 builder.Services.AddScoped<ISwimRepository, SwimRepository>();
+builder.Services.AddScoped<ITimeSheetRepository, TimeSheetRepository>();
+
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISwimService, SwimService>();
+
 
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ITwilioService, TwilioService>();
