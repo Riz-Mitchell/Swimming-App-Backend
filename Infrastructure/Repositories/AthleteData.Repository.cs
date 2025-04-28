@@ -19,12 +19,20 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<Guid?> GetAthleteDataOwnerIdByUserIdAsync(Guid userId)
         {
+
+            var foundUser = await _context.Users
+                .Where(u => u.Id == userId)
+                .FirstOrDefaultAsync();
+            Console.WriteLine($"Athlete data in found user:\n {foundUser.AthleteDataId}");
+
             var foundAthleteDataOwnerId = await _context.AthleteDatas
                 .Where(ad => ad.UserOwnerId == userId)
                 .Select(e => e.Id)
                 .FirstOrDefaultAsync();
 
-            if (foundAthleteDataOwnerId == Guid.Empty)
+            Console.WriteLine($"Found AthleteDataOwnerId: {foundAthleteDataOwnerId} for UserId: {userId}");
+
+            if (foundAthleteDataOwnerId != Guid.Empty)
             {
                 return foundAthleteDataOwnerId; ;
             }
