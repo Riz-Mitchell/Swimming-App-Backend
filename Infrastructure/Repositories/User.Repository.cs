@@ -75,9 +75,34 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Email = userSchema.Email ?? null,
                 Age = userSchema.Age ?? null,
                 UserType = userSchema.UserType,
-
             };
+
             _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            // Now, the user has an ID that we can use for AthleteData or CoachData
+            if (userSchema.UserType == Enum.UserType.Swimmer)
+            {
+                user.AthleteData = new AthleteData
+                {
+                    UserOwnerId = user.Id, // Use the generated user ID
+                    UserOwner = user,
+                };
+
+                _context.AthleteDatas.Add(user.AthleteData);
+            }
+            else if (userSchema.UserType == Enum.UserType.Coach)
+            {
+                user.CoachData = new CoachData
+                {
+                    UserOwnerId = user.Id, // Use the generated user ID
+                    UserOwner = user,
+                };
+
+                _context.CoachDatas.Add(user.CoachData);
+            }
+
+            // Save the changes after adding AthleteData or CoachData
             await _context.SaveChangesAsync();
 
             var getUserResDTO = new GetUserResDTO
