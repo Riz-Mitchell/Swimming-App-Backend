@@ -25,7 +25,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 .Select(e => e.Id)
                 .FirstOrDefaultAsync();
 
-            if (foundEventId == Guid.Empty)
+            if (foundEventId != Guid.Empty)
             {
                 return foundEventId; ;
             }
