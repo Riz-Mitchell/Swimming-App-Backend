@@ -1,4 +1,5 @@
 using SwimmingAppBackend.Api.DTOs;
+using SwimmingAppBackend.Infrastructure.Repositories;
 
 namespace SwimmingAppBackend.Domain.Services
 {
