@@ -41,7 +41,10 @@ namespace SwimmingAppBackend.Api.Controllers
             if (userId == null)
             {
                 return BadRequest("User ID not found in claims");
+
             }
+
+            Console.WriteLine($"User ID: {userId}");
 
 
             var swim = await _swimService.CreateSwimAsync((Guid)userId, createSwimReqDTO);
