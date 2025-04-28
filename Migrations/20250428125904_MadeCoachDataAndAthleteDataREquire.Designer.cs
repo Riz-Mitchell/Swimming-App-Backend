@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SwimmingAppBackend.Infrastructure.Context;
@@ -11,9 +12,11 @@ using SwimmingAppBackend.Infrastructure.Context;
 namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    partial class SwimmingAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250428125904_MadeCoachDataAndAthleteDataREquire")]
+    partial class MadeCoachDataAndAthleteDataREquire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -386,10 +389,10 @@ namespace Swimming_App_Backend.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<Guid?>("AthleteDataId")
+                    b.Property<Guid>("AthleteDataId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("CoachDataId")
+                    b.Property<Guid>("CoachDataId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Email")
@@ -418,9 +421,6 @@ namespace Swimming_App_Backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AthleteDataId")
-                        .IsUnique();
-
-                    b.HasIndex("CoachDataId")
                         .IsUnique();
 
                     b.HasIndex("SquadId");
@@ -586,15 +586,17 @@ namespace Swimming_App_Backend.Migrations
 
             modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.User", b =>
                 {
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", "CoachData")
+                        .WithOne("UserOwner")
+                        .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.User", "AthleteDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SwimmingAppBackend.Infrastructure.Models.AthleteData", "AthleteData")
                         .WithOne("UserOwner")
                         .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.User", "AthleteDataId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.CoachData", "CoachData")
-                        .WithOne("UserOwner")
-                        .HasForeignKey("SwimmingAppBackend.Infrastructure.Models.User", "CoachDataId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SwimmingAppBackend.Infrastructure.Models.Squad", "Squad")
                         .WithMany("Members")
