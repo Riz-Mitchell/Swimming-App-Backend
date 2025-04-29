@@ -13,6 +13,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
         public required double Time { get; set; }
         public required Stroke Stroke { get; set; } // Stroke type
         public required int Distance { get; set; }
+        public required EventEnum Event { get; set; } // E.g: 50m Freestyle
         public double? PercentageOffPBTime { get; set; }
         public double? PercentageOffPBStrokeRate { get; set; }
         public double? PercentageOffGoalTime { get; set; }
@@ -29,10 +30,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
-
-        public required Guid EventId { get; set; }
-
-        public required Event Event { get; set; }
 
         public required Guid AthleteDataOwnerId { get; set; }
 
