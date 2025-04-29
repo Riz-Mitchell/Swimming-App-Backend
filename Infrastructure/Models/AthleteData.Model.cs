@@ -21,8 +21,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public ICollection<Swim> Swims { get; set; } = [];
 
-        public ICollection<GoalSwim>? GoalSwims { get; set; }
-
         public ICollection<Achievement>? Achievements { get; set; }
 
         public ICollection<Award>? Awards { get; set; }
