@@ -34,7 +34,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Id = foundTimeSheet.Id,
                 Interval = foundTimeSheet.Interval,
                 StartInterval = foundTimeSheet.StartInterval,
-                EventId = foundTimeSheet.EventId, // Set the required EventId property
+                Event = foundTimeSheet.Event,
                 TimeSheetItems = [.. foundTimeSheet.TimeSheetItems.Select(item => new GetTimeSheetItemResDTO
                 {
                     Id = item.Id,
@@ -48,13 +48,11 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<GetTimeSheetResDTO> CreateTimeSheetAsync(CreateTimeSheetReqDTO createSchema)
         {
-            var foundEvent = await _context.Events.FindAsync(createSchema.EventId) ?? throw new Exception("Event not found");
             var timeSheet = new TimeSheet
             {
                 Interval = createSchema.Interval,
                 StartInterval = createSchema.StartInterval,
-                EventId = createSchema.EventId,
-                Event = foundEvent,
+                Event = createSchema.Event,
             };
 
             timeSheet.TimeSheetItems = [.. createSchema.TimeSheetItems.Select(item => new TimeSheetItem
@@ -73,13 +71,13 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Id = timeSheet.Id,
                 Interval = timeSheet.Interval,
                 StartInterval = timeSheet.StartInterval,
+                Event = timeSheet.Event,
                 TimeSheetItems = [.. timeSheet.TimeSheetItems.Select(item => new GetTimeSheetItemResDTO
                 {
                     Id = item.Id,
                     Time = item.Time,
                     CurrentInterval = item.CurrentInterval,
                 })],
-                EventId = timeSheet.EventId
             };
         }
 
