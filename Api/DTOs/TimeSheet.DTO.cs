@@ -1,4 +1,6 @@
 
+using SwimmingAppBackend.Enum;
+
 namespace SwimmingAppBackend.Api.DTOs
 {
     public class GetTimeSheetResDTO
@@ -6,7 +8,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public required Guid Id { get; set; }
         public required int Interval { get; set; }
         public required int StartInterval { get; set; }
-        public required Guid EventId { get; set; }
+        public required EventEnum Event { get; set; }
         public required ICollection<GetTimeSheetItemResDTO> TimeSheetItems { get; set; }
     }
 
@@ -15,7 +17,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public required int Interval { get; set; }
         public required int StartInterval { get; set; }
         public required ICollection<CreateTimeSheetItemReqDTO> TimeSheetItems { get; set; }
-        public required Guid EventId { get; set; }
+        public required EventEnum Event { get; set; }
     }
 
     public class UpdateTimeSheetReqDTO
@@ -23,6 +25,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? Interval { get; set; }
         public int? StartInterval { get; set; }
         public ICollection<UpdateTimeSheetItemReqDTO>? TimeSheetItems { get; set; }
-        public Guid? EventId { get; set; }
+        public EventEnum? Event { get; set; }
     }
 }
