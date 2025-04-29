@@ -12,7 +12,7 @@ namespace SwimmingAppBackend.Api.DTOs
     public class GetSwimResDTO
     {
         public required Guid Id { get; set; }  // Primary Key
-        // public required EventEnum Event { get; set; } // Event type
+        public required EventEnum Event { get; set; } // Event type
         public required double Time { get; set; }
         public required Stroke Stroke { get; set; } // Stroke type
         public required int Distance { get; set; }
