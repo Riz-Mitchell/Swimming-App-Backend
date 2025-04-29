@@ -55,7 +55,7 @@ namespace SwimmingAppBackend.Api.Controllers
             }
             else
             {
-                return CreatedAtAction(nameof(GetSwim), new { id = swim.Id }, swim);
+                return CreatedAtAction(nameof(GetSwim), new { swimId = swim.Id }, swim);
             }
         }
 
