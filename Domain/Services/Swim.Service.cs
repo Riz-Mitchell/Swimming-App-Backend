@@ -16,14 +16,12 @@ namespace SwimmingAppBackend.Domain.Services
     public class SwimService : ISwimService
     {
         private readonly ISwimRepository _swimRepository;
-        private readonly IEventRepository _eventRepository;
         private readonly IAthleteDataRepository _athleteDataRepository;
 
-        public SwimService(ISwimRepository swimRepository, IEventRepository eventRepository, IAthleteDataRepository athleteDataRepository)
+        public SwimService(ISwimRepository swimRepository, IAthleteDataRepository athleteDataRepository)
         {
             _swimRepository = swimRepository;
             _athleteDataRepository = athleteDataRepository;
-            _eventRepository = eventRepository;
         }
 
         public async Task<GetSwimResDTO?> GetSwimByIdAsync(Guid swimId)
@@ -42,15 +40,7 @@ namespace SwimmingAppBackend.Domain.Services
                 return null;
             }
 
-            var eventId = await _eventRepository.GetEventIdByEventEnumAsync(createSchema.Event);
-
-            if (eventId == null)
-            {
-                Console.WriteLine($"EventId is null for Event: {createSchema.Event}");
-                return null;
-            }
-
-            var newSwimResDTO = await _swimRepository.CreateSwimAsync(createSchema, (Guid)athleteDataOwnerId, (Guid)eventId);
+            var newSwimResDTO = await _swimRepository.CreateSwimAsync(createSchema, (Guid)athleteDataOwnerId);
 
             return newSwimResDTO;
         }
