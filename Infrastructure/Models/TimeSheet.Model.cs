@@ -10,6 +10,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attrubutes :
         // ------------------------------------------------
 
+        public required EventEnum Event { get; set; } // E.g: 50m Freestyle
+
         public required int Interval;       // E.g: Time at 5m intervals
 
         public required int StartInterval;  // E.g: The distance at which intervals start
@@ -21,9 +23,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public ICollection<TimeSheetItem> TimeSheetItems { get; set; }
 
-        public required Guid EventId { get; set; }
 
-        public required Event Event { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
