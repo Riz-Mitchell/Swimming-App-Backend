@@ -1,4 +1,7 @@
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using SwimmingAppBackend.Domain.Helpers;
 using SwimmingAppBackend.Enum;
 using SwimmingAppBackend.Infrastructure.Models;
 
@@ -35,11 +38,17 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<TimeSheet> TimeSheets { get; set; }
 
-        public DbSet<TimeSheetItem> TimeSheetsItems { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            var splitsConverter = new ValueConverter<List<SplitData>, string>(
+                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+                v => JsonSerializer.Deserialize<List<SplitData>>(v, (JsonSerializerOptions)null));
+
+            modelBuilder.Entity<TimeSheet>()
+                .Property(ts => ts.SplitDataForTimes)
+                .HasConversion(splitsConverter);
 
             modelBuilder.Entity<AthleteData>()
                 .HasOne(ad => ad.UserOwner)
@@ -115,12 +124,6 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .HasOne(u => u.CoachData)
                 .WithOne(ad => ad.UserOwner)
                 .HasForeignKey<User>(u => u.CoachDataId);
-
-            modelBuilder.Entity<TimeSheetItem>()
-                .HasOne(tsi => tsi.TimeSheet)
-                .WithMany(ts => ts.TimeSheetItems)
-                .HasForeignKey(tsi => tsi.TimeSheetId)
-                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }
