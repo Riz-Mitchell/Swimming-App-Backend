@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using SwimmingAppBackend.Domain.Helpers;
 using SwimmingAppBackend.Enum;
 
 namespace SwimmingAppBackend.Infrastructure.Models
@@ -12,16 +13,12 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required EventEnum Event { get; set; } // E.g: 50m Freestyle
 
-        public required int Interval;       // E.g: Time at 5m intervals
-
-        public required int StartInterval;  // E.g: The distance at which intervals start
+        public List<SplitData> SplitDataForTimes { get; set; } = [];
 
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
-
-        public ICollection<TimeSheetItem> TimeSheetItems { get; set; }
 
 
 
