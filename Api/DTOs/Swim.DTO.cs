@@ -20,6 +20,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public double? PercentageOffPBStrokeRate { get; set; }
         public double? PercentageOffGoalTime { get; set; }
         public double? PercentageOffGoalStrokeRate { get; set; }
+        public double? PotentialRaceTime { get; set; }
         public int? StrokeRate { get; set; }
         public int? StrokeCount { get; set; }
         public int? Pace { get; set; }
