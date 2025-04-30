@@ -2,7 +2,6 @@ import pandas as pd
 import json
 import sys
 import re
-import os
 from pathlib import Path
 
 def convert_time_to_seconds(value):
@@ -22,14 +21,15 @@ def process_file(input_csv, output_json):
 
     output = []
     for _, row in df.iterrows():
-        splits = []
+        splits_dict = {}
         for i, value in enumerate(row):
             clean_time = convert_time_to_seconds(value)
-            splits.append({intervals[i]: round(clean_time, 2)})
-        total_time = round(list(splits[-1].values())[0], 2)
+            splits_dict[intervals[i]] = round(clean_time, 2)
+
+        total_time = splits_dict[max(splits_dict.keys())]
         output.append({
             "TotalTime": total_time,
-            "SplitsByDistance": splits
+            "SplitsByDistance": splits_dict
         })
 
     with open(output_json, 'w') as f:
@@ -42,12 +42,15 @@ def main(input_folder):
 
     for csv_file in input_folder.glob("*.csv"):
         output_json = output_folder / (csv_file.stem + ".json")
-        process_file(csv_file, output_json)
-        print(f"Converted {csv_file.name} → {output_json.name}")
+        try:
+            process_file(csv_file, output_json)
+            print(f"Converted {csv_file.name} → {output_json.name}")
+        except Exception as e:
+            print(f"Error processing {csv_file.name}: {e}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python convert.py input_folder/")
         sys.exit(1)
-    
+
     main(sys.argv[1])
