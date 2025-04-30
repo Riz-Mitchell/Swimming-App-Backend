@@ -1,2264 +1,1737 @@
 [
     {
-        "totalTime": 45.0,
-        "splits": [
+        "TotalTime": 45.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.2
+                "15": 5.2
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 7.56
+                "20": 7.56
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 9.79
+                "25": 9.79
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.09
+                "30": 12.09
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 14.4
+                "35": 14.4
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 16.71
+                "40": 16.71
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 19.02
+                "45": 19.02
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 21.56
+                "50": 21.56
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 25.55
+                "60": 25.55
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 27.94
+                "65": 27.94
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 30.32
+                "70": 30.32
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 32.71
+                "75": 32.71
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 35.21
+                "80": 35.21
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 37.71
+                "85": 37.71
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 40.21
+                "90": 40.21
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 42.7
+                "95": 42.7
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 45.0
+                "100": 45.0
             }
         ]
     },
     {
-        "totalTime": 45.5,
-        "splits": [
+        "TotalTime": 45.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.28
+                "15": 5.28
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 7.66
+                "20": 7.66
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 9.91
+                "25": 9.91
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.24
+                "30": 12.24
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 14.58
+                "35": 14.58
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 16.9
+                "40": 16.9
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 19.24
+                "45": 19.24
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 21.81
+                "50": 21.81
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 25.85
+                "60": 25.85
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 28.26
+                "65": 28.26
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 30.67
+                "70": 30.67
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 33.09
+                "75": 33.09
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 35.61
+                "80": 35.61
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 38.14
+                "85": 38.14
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 40.66
+                "90": 40.66
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 43.18
+                "95": 43.18
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 45.5
+                "100": 45.5
             }
         ]
     },
     {
-        "totalTime": 46.0,
-        "splits": [
+        "TotalTime": 46.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.35
+                "15": 5.35
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 7.76
+                "20": 7.76
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.03
+                "25": 10.03
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.39
+                "30": 12.39
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 14.75
+                "35": 14.75
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 17.1
+                "40": 17.1
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 19.46
+                "45": 19.46
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 22.06
+                "50": 22.06
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 26.15
+                "60": 26.15
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 28.59
+                "65": 28.59
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 31.02
+                "70": 31.02
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 33.47
+                "75": 33.47
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 36.01
+                "80": 36.01
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 38.56
+                "85": 38.56
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 41.11
+                "90": 41.11
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 43.66
+                "95": 43.66
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 46.0
+                "100": 46.0
             }
         ]
     },
     {
-        "totalTime": 46.5,
-        "splits": [
+        "TotalTime": 46.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.42
+                "15": 5.42
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 7.85
+                "20": 7.85
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.16
+                "25": 10.16
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.54
+                "30": 12.54
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 14.92
+                "35": 14.92
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 17.3
+                "40": 17.3
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 19.68
+                "45": 19.68
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 22.31
+                "50": 22.31
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 26.45
+                "60": 26.45
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 28.91
+                "65": 28.91
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 31.38
+                "70": 31.38
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 33.84
+                "75": 33.84
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 36.41
+                "80": 36.41
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 38.99
+                "85": 38.99
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 41.56
+                "90": 41.56
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 44.13
+                "95": 44.13
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 46.5
+                "100": 46.5
             }
         ]
     },
     {
-        "totalTime": 47.0,
-        "splits": [
+        "TotalTime": 47.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.5
+                "15": 5.5
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 7.95
+                "20": 7.95
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.28
+                "25": 10.28
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.68
+                "30": 12.68
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.09
+                "35": 15.09
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 17.5
+                "40": 17.5
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 19.91
+                "45": 19.91
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 22.56
+                "50": 22.56
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 26.75
+                "60": 26.75
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 29.24
+                "65": 29.24
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 31.73
+                "70": 31.73
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 34.22
+                "75": 34.22
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 36.81
+                "80": 36.81
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 39.41
+                "85": 39.41
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 42.01
+                "90": 42.01
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 44.61
+                "95": 44.61
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 47.0
+                "100": 47.0
             }
         ]
     },
     {
-        "totalTime": 47.5,
-        "splits": [
+        "TotalTime": 47.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.57
+                "15": 5.57
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.05
+                "20": 8.05
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.4
+                "25": 10.4
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.83
+                "30": 12.83
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.27
+                "35": 15.27
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 17.7
+                "40": 17.7
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 20.13
+                "45": 20.13
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 22.81
+                "50": 22.81
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 27.05
+                "60": 27.05
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 29.56
+                "65": 29.56
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 32.08
+                "70": 32.08
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 34.6
+                "75": 34.6
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 37.22
+                "80": 37.22
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 39.84
+                "85": 39.84
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 42.46
+                "90": 42.46
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 45.08
+                "95": 45.08
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 47.5
+                "100": 47.5
             }
         ]
     },
     {
-        "totalTime": 48.0,
-        "splits": [
+        "TotalTime": 48.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.64
+                "15": 5.64
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.15
+                "20": 8.15
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.52
+                "25": 10.52
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 12.98
+                "30": 12.98
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.44
+                "35": 15.44
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 17.89
+                "40": 17.89
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 20.35
+                "45": 20.35
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 23.07
+                "50": 23.07
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 27.34
+                "60": 27.34
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 29.89
+                "65": 29.89
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 32.43
+                "70": 32.43
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 34.97
+                "75": 34.97
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 37.62
+                "80": 37.62
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 40.27
+                "85": 40.27
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 42.92
+                "90": 42.92
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 45.56
+                "95": 45.56
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 48.0
+                "100": 48.0
             }
         ]
     },
     {
-        "totalTime": 48.5,
-        "splits": [
+        "TotalTime": 48.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.71
+                "15": 5.71
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.25
+                "20": 8.25
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.65
+                "25": 10.65
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.13
+                "30": 13.13
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.61
+                "35": 15.61
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 18.09
+                "40": 18.09
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 20.57
+                "45": 20.57
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 23.32
+                "50": 23.32
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 27.64
+                "60": 27.64
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 30.21
+                "65": 30.21
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 32.78
+                "70": 32.78
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 35.35
+                "75": 35.35
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 38.02
+                "80": 38.02
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 40.69
+                "85": 40.69
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 43.37
+                "90": 43.37
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 46.04
+                "95": 46.04
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 48.5
+                "100": 48.5
             }
         ]
     },
     {
-        "totalTime": 49.0,
-        "splits": [
+        "TotalTime": 49.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.79
+                "15": 5.79
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.35
+                "20": 8.35
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.77
+                "25": 10.77
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.27
+                "30": 13.27
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.78
+                "35": 15.78
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 18.29
+                "40": 18.29
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 20.8
+                "45": 20.8
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 23.57
+                "50": 23.57
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 27.94
+                "60": 27.94
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 30.53
+                "65": 30.53
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 33.13
+                "70": 33.13
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 35.73
+                "75": 35.73
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 38.42
+                "80": 38.42
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 41.12
+                "85": 41.12
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 43.82
+                "90": 43.82
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 46.51
+                "95": 46.51
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 49.0
+                "100": 49.0
             }
         ]
     },
     {
-        "totalTime": 49.5,
-        "splits": [
+        "TotalTime": 49.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.86
+                "15": 5.86
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.45
+                "20": 8.45
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 10.89
+                "25": 10.89
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.42
+                "30": 13.42
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 15.96
+                "35": 15.96
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 18.49
+                "40": 18.49
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 21.02
+                "45": 21.02
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 23.82
+                "50": 23.82
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 28.24
+                "60": 28.24
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 30.86
+                "65": 30.86
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 33.48
+                "70": 33.48
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 36.1
+                "75": 36.1
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 38.82
+                "80": 38.82
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 41.55
+                "85": 41.55
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 44.27
+                "90": 44.27
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 46.99
+                "95": 46.99
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 49.5
+                "100": 49.5
             }
         ]
     },
     {
-        "totalTime": 50.0,
-        "splits": [
+        "TotalTime": 50.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 5.93
+                "15": 5.93
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.54
+                "20": 8.54
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.01
+                "25": 11.01
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.57
+                "30": 13.57
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.13
+                "35": 16.13
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 18.68
+                "40": 18.68
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 21.24
+                "45": 21.24
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 24.07
+                "50": 24.07
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 28.54
+                "60": 28.54
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 31.18
+                "65": 31.18
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 33.83
+                "70": 33.83
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 36.48
+                "75": 36.48
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 39.22
+                "80": 39.22
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 41.97
+                "85": 41.97
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 44.72
+                "90": 44.72
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 47.46
+                "95": 47.46
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 50.0
+                "100": 50.0
             }
         ]
     },
     {
-        "totalTime": 50.5,
-        "splits": [
+        "TotalTime": 50.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.01
+                "15": 6.01
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.64
+                "20": 8.64
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.14
+                "25": 11.14
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.72
+                "30": 13.72
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.3
+                "35": 16.3
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 18.88
+                "40": 18.88
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 21.46
+                "45": 21.46
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 24.32
+                "50": 24.32
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 28.84
+                "60": 28.84
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 31.51
+                "65": 31.51
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 34.18
+                "70": 34.18
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 36.86
+                "75": 36.86
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 39.63
+                "80": 39.63
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 42.4
+                "85": 42.4
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 45.17
+                "90": 45.17
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 47.94
+                "95": 47.94
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 50.5
+                "100": 50.5
             }
         ]
     },
     {
-        "totalTime": 51.0,
-        "splits": [
+        "TotalTime": 51.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.08
+                "15": 6.08
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.74
+                "20": 8.74
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.26
+                "25": 11.26
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 13.86
+                "30": 13.86
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.47
+                "35": 16.47
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 19.08
+                "40": 19.08
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 21.69
+                "45": 21.69
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 24.58
+                "50": 24.58
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 29.14
+                "60": 29.14
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 31.83
+                "65": 31.83
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 34.53
+                "70": 34.53
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 37.23
+                "75": 37.23
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 40.03
+                "80": 40.03
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 42.82
+                "85": 42.82
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 45.62
+                "90": 45.62
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 48.42
+                "95": 48.42
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 51.0
+                "100": 51.0
             }
         ]
     },
     {
-        "totalTime": 51.5,
-        "splits": [
+        "TotalTime": 51.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.15
+                "15": 6.15
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.84
+                "20": 8.84
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.38
+                "25": 11.38
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.01
+                "30": 14.01
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.65
+                "35": 16.65
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 19.28
+                "40": 19.28
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 21.91
+                "45": 21.91
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 24.83
+                "50": 24.83
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 29.43
+                "60": 29.43
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 32.16
+                "65": 32.16
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 34.88
+                "70": 34.88
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 37.61
+                "75": 37.61
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 40.43
+                "80": 40.43
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 43.25
+                "85": 43.25
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 46.07
+                "90": 46.07
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 48.89
+                "95": 48.89
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 51.5
+                "100": 51.5
             }
         ]
     },
     {
-        "totalTime": 52.0,
-        "splits": [
+        "TotalTime": 52.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.22
+                "15": 6.22
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 8.94
+                "20": 8.94
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.5
+                "25": 11.5
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.16
+                "30": 14.16
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.82
+                "35": 16.82
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 19.47
+                "40": 19.47
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 22.13
+                "45": 22.13
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 25.08
+                "50": 25.08
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 29.73
+                "60": 29.73
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 32.48
+                "65": 32.48
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 35.23
+                "70": 35.23
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 37.99
+                "75": 37.99
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 40.83
+                "80": 40.83
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 43.68
+                "85": 43.68
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 46.53
+                "90": 46.53
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 49.37
+                "95": 49.37
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 52.0
+                "100": 52.0
             }
         ]
     },
     {
-        "totalTime": 52.5,
-        "splits": [
+        "TotalTime": 52.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.3
+                "15": 6.3
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.04
+                "20": 9.04
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.63
+                "25": 11.63
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.31
+                "30": 14.31
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 16.99
+                "35": 16.99
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 19.67
+                "40": 19.67
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 22.36
+                "45": 22.36
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 25.33
+                "50": 25.33
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 30.03
+                "60": 30.03
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 32.81
+                "65": 32.81
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 35.58
+                "70": 35.58
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 38.36
+                "75": 38.36
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 41.23
+                "80": 41.23
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 44.1
+                "85": 44.1
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 46.98
+                "90": 46.98
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 49.84
+                "95": 49.84
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 52.5
+                "100": 52.5
             }
         ]
     },
     {
-        "totalTime": 53.0,
-        "splits": [
+        "TotalTime": 53.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.37
+                "15": 6.37
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.13
+                "20": 9.13
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.75
+                "25": 11.75
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.45
+                "30": 14.45
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 17.16
+                "35": 17.16
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 19.87
+                "40": 19.87
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 22.58
+                "45": 22.58
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 25.58
+                "50": 25.58
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 30.33
+                "60": 30.33
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 33.13
+                "65": 33.13
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 35.93
+                "70": 35.93
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 38.74
+                "75": 38.74
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 41.63
+                "80": 41.63
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 44.53
+                "85": 44.53
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 47.43
+                "90": 47.43
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 50.32
+                "95": 50.32
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 53.0
+                "100": 53.0
             }
         ]
     },
     {
-        "totalTime": 53.5,
-        "splits": [
+        "TotalTime": 53.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.44
+                "15": 6.44
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.23
+                "20": 9.23
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.87
+                "25": 11.87
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.6
+                "30": 14.6
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 17.34
+                "35": 17.34
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 20.07
+                "40": 20.07
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 22.8
+                "45": 22.8
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 25.84
+                "50": 25.84
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 30.63
+                "60": 30.63
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 33.46
+                "65": 33.46
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 36.28
+                "70": 36.28
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 39.12
+                "75": 39.12
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 42.03
+                "80": 42.03
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 44.96
+                "85": 44.96
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 47.88
+                "90": 47.88
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 50.8
+                "95": 50.8
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 53.5
+                "100": 53.5
             }
         ]
     },
     {
-        "totalTime": 54.0,
-        "splits": [
+        "TotalTime": 54.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.52
+                "15": 6.52
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.33
+                "20": 9.33
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 11.99
+                "25": 11.99
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.75
+                "30": 14.75
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 17.51
+                "35": 17.51
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 20.26
+                "40": 20.26
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 23.02
+                "45": 23.02
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 26.09
+                "50": 26.09
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 30.93
+                "60": 30.93
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 33.78
+                "65": 33.78
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 36.63
+                "70": 36.63
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 39.49
+                "75": 39.49
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 42.44
+                "80": 42.44
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 45.38
+                "85": 45.38
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 48.33
+                "90": 48.33
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 51.27
+                "95": 51.27
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 54.0
+                "100": 54.0
             }
         ]
     },
     {
-        "totalTime": 54.5,
-        "splits": [
+        "TotalTime": 54.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.59
+                "15": 6.59
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.43
+                "20": 9.43
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.12
+                "25": 12.12
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 14.9
+                "30": 14.9
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 17.68
+                "35": 17.68
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 20.46
+                "40": 20.46
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 23.25
+                "45": 23.25
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 26.34
+                "50": 26.34
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 31.23
+                "60": 31.23
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 34.11
+                "65": 34.11
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 36.98
+                "70": 36.98
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 39.87
+                "75": 39.87
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 42.84
+                "80": 42.84
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 45.81
+                "85": 45.81
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 48.78
+                "90": 48.78
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 51.75
+                "95": 51.75
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 54.5
+                "100": 54.5
             }
         ]
     },
     {
-        "totalTime": 55.0,
-        "splits": [
+        "TotalTime": 55.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.66
+                "15": 6.66
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.53
+                "20": 9.53
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.24
+                "25": 12.24
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.04
+                "30": 15.04
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 17.85
+                "35": 17.85
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 20.66
+                "40": 20.66
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 23.47
+                "45": 23.47
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 26.59
+                "50": 26.59
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 31.52
+                "60": 31.52
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 34.43
+                "65": 34.43
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 37.34
+                "70": 37.34
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 40.25
+                "75": 40.25
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 43.24
+                "80": 43.24
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 46.24
+                "85": 46.24
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 49.23
+                "90": 49.23
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 52.22
+                "95": 52.22
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 55.0
+                "100": 55.0
             }
         ]
     },
     {
-        "totalTime": 55.5,
-        "splits": [
+        "TotalTime": 55.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.73
+                "15": 6.73
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.63
+                "20": 9.63
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.36
+                "25": 12.36
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.19
+                "30": 15.19
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.03
+                "35": 18.03
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 20.86
+                "40": 20.86
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 23.69
+                "45": 23.69
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 26.84
+                "50": 26.84
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 31.82
+                "60": 31.82
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 34.75
+                "65": 34.75
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 37.69
+                "70": 37.69
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 40.62
+                "75": 40.62
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 43.64
+                "80": 43.64
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 46.66
+                "85": 46.66
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 49.68
+                "90": 49.68
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 52.7
+                "95": 52.7
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 55.5
+                "100": 55.5
             }
         ]
     },
     {
-        "totalTime": 56.0,
-        "splits": [
+        "TotalTime": 56.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.81
+                "15": 6.81
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.72
+                "20": 9.72
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.48
+                "25": 12.48
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.34
+                "30": 15.34
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.2
+                "35": 18.2
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 21.05
+                "40": 21.05
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 23.91
+                "45": 23.91
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 27.09
+                "50": 27.09
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 32.12
+                "60": 32.12
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 35.08
+                "65": 35.08
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 38.04
+                "70": 38.04
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 41.0
+                "75": 41.0
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 44.04
+                "80": 44.04
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 47.09
+                "85": 47.09
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 50.13
+                "90": 50.13
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 53.18
+                "95": 53.18
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 56.0
+                "100": 56.0
             }
         ]
     },
     {
-        "totalTime": 56.5,
-        "splits": [
+        "TotalTime": 56.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.88
+                "15": 6.88
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.82
+                "20": 9.82
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.61
+                "25": 12.61
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.49
+                "30": 15.49
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.37
+                "35": 18.37
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 21.25
+                "40": 21.25
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 24.14
+                "45": 24.14
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 27.35
+                "50": 27.35
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 32.42
+                "60": 32.42
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 35.4
+                "65": 35.4
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 38.39
+                "70": 38.39
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 41.38
+                "75": 41.38
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 44.44
+                "80": 44.44
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 47.51
+                "85": 47.51
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 50.59
+                "90": 50.59
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 53.65
+                "95": 53.65
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 56.5
+                "100": 56.5
             }
         ]
     },
     {
-        "totalTime": 57.0,
-        "splits": [
+        "TotalTime": 57.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 6.95
+                "15": 6.95
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 9.92
+                "20": 9.92
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.73
+                "25": 12.73
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.63
+                "30": 15.63
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.54
+                "35": 18.54
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 21.45
+                "40": 21.45
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 24.36
+                "45": 24.36
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 27.6
+                "50": 27.6
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 32.72
+                "60": 32.72
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 35.73
+                "65": 35.73
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 38.74
+                "70": 38.74
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 41.75
+                "75": 41.75
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 44.84
+                "80": 44.84
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 47.94
+                "85": 47.94
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 51.04
+                "90": 51.04
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 54.13
+                "95": 54.13
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 57.0
+                "100": 57.0
             }
         ]
     },
     {
-        "totalTime": 57.5,
-        "splits": [
+        "TotalTime": 57.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.03
+                "15": 7.03
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.02
+                "20": 10.02
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.85
+                "25": 12.85
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.78
+                "30": 15.78
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.72
+                "35": 18.72
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 21.65
+                "40": 21.65
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 24.58
+                "45": 24.58
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 27.85
+                "50": 27.85
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 33.02
+                "60": 33.02
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 36.05
+                "65": 36.05
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 39.09
+                "70": 39.09
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 42.13
+                "75": 42.13
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 45.25
+                "80": 45.25
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 48.37
+                "85": 48.37
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 51.49
+                "90": 51.49
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 54.6
+                "95": 54.6
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 57.5
+                "100": 57.5
             }
         ]
     },
     {
-        "totalTime": 58.0,
-        "splits": [
+        "TotalTime": 58.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.1
+                "15": 7.1
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.12
+                "20": 10.12
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 12.97
+                "25": 12.97
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 15.93
+                "30": 15.93
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 18.89
+                "35": 18.89
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 21.84
+                "40": 21.84
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 24.8
+                "45": 24.8
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 28.1
+                "50": 28.1
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 33.32
+                "60": 33.32
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 36.38
+                "65": 36.38
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 39.44
+                "70": 39.44
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 42.51
+                "75": 42.51
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 45.65
+                "80": 45.65
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 48.79
+                "85": 48.79
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 51.94
+                "90": 51.94
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 55.08
+                "95": 55.08
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 58.0
+                "100": 58.0
             }
         ]
     },
     {
-        "totalTime": 58.5,
-        "splits": [
+        "TotalTime": 58.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.17
+                "15": 7.17
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.22
+                "20": 10.22
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 13.1
+                "25": 13.1
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 16.08
+                "30": 16.08
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 19.06
+                "35": 19.06
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 22.04
+                "40": 22.04
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 25.03
+                "45": 25.03
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 28.35
+                "50": 28.35
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 33.61
+                "60": 33.61
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 36.7
+                "65": 36.7
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 39.79
+                "70": 39.79
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 42.88
+                "75": 42.88
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 46.05
+                "80": 46.05
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 49.22
+                "85": 49.22
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 52.39
+                "90": 52.39
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 55.55
+                "95": 55.55
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 58.5
+                "100": 58.5
             }
         ]
     },
     {
-        "totalTime": 59.0,
-        "splits": [
+        "TotalTime": 59.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.25
+                "15": 7.25
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.31
+                "20": 10.31
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 13.22
+                "25": 13.22
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 16.22
+                "30": 16.22
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 19.23
+                "35": 19.23
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 22.24
+                "40": 22.24
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 25.25
+                "45": 25.25
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 28.6
+                "50": 28.6
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 33.91
+                "60": 33.91
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 37.03
+                "65": 37.03
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 40.14
+                "70": 40.14
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 43.26
+                "75": 43.26
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 46.45
+                "80": 46.45
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 49.65
+                "85": 49.65
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 52.84
+                "90": 52.84
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 56.03
+                "95": 56.03
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 59.0
+                "100": 59.0
             }
         ]
     },
     {
-        "totalTime": 59.5,
-        "splits": [
+        "TotalTime": 59.5,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.32
+                "15": 7.32
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.41
+                "20": 10.41
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 13.34
+                "25": 13.34
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 16.37
+                "30": 16.37
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 19.41
+                "35": 19.41
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 22.44
+                "40": 22.44
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 25.47
+                "45": 25.47
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 28.86
+                "50": 28.86
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 34.21
+                "60": 34.21
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 37.35
+                "65": 37.35
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 40.49
+                "70": 40.49
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 43.64
+                "75": 43.64
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 46.85
+                "80": 46.85
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 50.07
+                "85": 50.07
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 53.29
+                "90": 53.29
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 56.51
+                "95": 56.51
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 59.5
+                "100": 59.5
             }
         ]
     },
     {
-        "totalTime": 60.0,
-        "splits": [
+        "TotalTime": 60.0,
+        "SplitsByDistance": [
             {
-                "intervalInMeters": 15,
-                "intervalTime": 7.39
+                "15": 7.39
             },
             {
-                "intervalInMeters": 20,
-                "intervalTime": 10.51
+                "20": 10.51
             },
             {
-                "intervalInMeters": 25,
-                "intervalTime": 13.46
+                "25": 13.46
             },
             {
-                "intervalInMeters": 30,
-                "intervalTime": 16.52
+                "30": 16.52
             },
             {
-                "intervalInMeters": 35,
-                "intervalTime": 19.58
+                "35": 19.58
             },
             {
-                "intervalInMeters": 40,
-                "intervalTime": 22.63
+                "40": 22.63
             },
             {
-                "intervalInMeters": 45,
-                "intervalTime": 25.69
+                "45": 25.69
             },
             {
-                "intervalInMeters": 50,
-                "intervalTime": 29.11
+                "50": 29.11
             },
             {
-                "intervalInMeters": 60,
-                "intervalTime": 34.51
+                "60": 34.51
             },
             {
-                "intervalInMeters": 65,
-                "intervalTime": 37.68
+                "65": 37.68
             },
             {
-                "intervalInMeters": 70,
-                "intervalTime": 40.84
+                "70": 40.84
             },
             {
-                "intervalInMeters": 75,
-                "intervalTime": 44.01
+                "75": 44.01
             },
             {
-                "intervalInMeters": 80,
-                "intervalTime": 47.25
+                "80": 47.25
             },
             {
-                "intervalInMeters": 85,
-                "intervalTime": 50.5
+                "85": 50.5
             },
             {
-                "intervalInMeters": 90,
-                "intervalTime": 53.74
+                "90": 53.74
             },
             {
-                "intervalInMeters": 95,
-                "intervalTime": 56.98
+                "95": 56.98
             },
             {
-                "intervalInMeters": 100,
-                "intervalTime": 60.0
+                "100": 60.0
             }
         ]
     }
