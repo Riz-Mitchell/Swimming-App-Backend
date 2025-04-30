@@ -23,7 +23,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public double? PotentialRaceTime { get; set; }
         public int? StrokeRate { get; set; }
         public int? StrokeCount { get; set; }
-        public int? Pace { get; set; }
         public int? PerceivedExertion { get; set; }
         public required bool Dive { get; set; }
         public required bool GoalSwim { get; set; }
@@ -38,7 +37,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public required int Distance { get; set; }
         public int? StrokeRate { get; set; }
         public int? StrokeCount { get; set; }
-        public int? Pace { get; set; }
         public int? PerceivedExertion { get; set; }
         public bool? Dive { get; set; }
         public bool? GoalSwim { get; set; }
@@ -53,7 +51,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? Distance { get; set; }
         public int? StrokeRate { get; set; }
         public int? StrokeCount { get; set; }
-        public int? Pace { get; set; }
         public int? PerceivedExertion { get; set; }
         public bool? Dive { get; set; }
         public bool? GoalSwim { get; set; }
