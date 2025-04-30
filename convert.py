@@ -1,20 +1,14 @@
 import pandas as pd
 import json
 import sys
-
 import re
+import os
+from pathlib import Path
 
 def convert_time_to_seconds(value):
-    """
-    Converts a time string or float to seconds.
-    If in 'mm:ss.ss' format, converts to total seconds.
-    If already in seconds (e.g. '54.80'), returns as float.
-    """
     if isinstance(value, float):
         value = f"{value}"
-
     mmss_pattern = re.match(r'^(\d+):(\d+(?:\.\d+)?)$', value)
-    
     if mmss_pattern:
         minutes = int(mmss_pattern.group(1))
         seconds = float(mmss_pattern.group(2))
@@ -22,39 +16,38 @@ def convert_time_to_seconds(value):
     else:
         return float(value)
 
-
-def main(input_csv, output_json):
+def process_file(input_csv, output_json):
     df = pd.read_csv(input_csv)
-    
-    # print(df.head())  # Debugging line to check the DataFrame content
-    
     intervals = [int(col.strip('m')) for col in df.columns]
-    
-    # print(intervals)  # Debugging line to check the intervals
 
     output = []
     for _, row in df.iterrows():
         splits = []
         for i, value in enumerate(row):
             clean_time = convert_time_to_seconds(value)
-            splits.append({
-                "intervalInMeters": intervals[i],
-                "intervalTime": clean_time
-            })
-        total_time = splits[-1]["intervalTime"]
+            splits.append({intervals[i]: round(clean_time, 2)})
+        total_time = round(list(splits[-1].values())[0], 2)
         output.append({
-            "totalTime": total_time,
-            "splits": splits
+            "TotalTime": total_time,
+            "SplitsByDistance": splits
         })
 
     with open(output_json, 'w') as f:
         json.dump(output, f, indent=4)
 
+def main(input_folder):
+    input_folder = Path(input_folder)
+    output_folder = input_folder.parent / "Timesheets-In-JSON"
+    output_folder.mkdir(exist_ok=True)
+
+    for csv_file in input_folder.glob("*.csv"):
+        output_json = output_folder / (csv_file.stem + ".json")
+        process_file(csv_file, output_json)
+        print(f"Converted {csv_file.name} → {output_json.name}")
+
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python convert_csv_to_json.py input.csv output.json")
+    if len(sys.argv) != 2:
+        print("Usage: python convert.py input_folder/")
         sys.exit(1)
     
-    input_csv = sys.argv[1]
-    output_json = sys.argv[2]
-    main(input_csv, output_json)
+    main(sys.argv[1])
