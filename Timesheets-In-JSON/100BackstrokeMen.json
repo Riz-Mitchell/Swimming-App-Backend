@@ -1,0 +1,2265 @@
+[
+    {
+        "totalTime": 51.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.01
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 8.58
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.16
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 13.81
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 16.47
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 19.14
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 21.79
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 24.68
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 28.83
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 31.57
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 34.32
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 37.06
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 39.9
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 42.73
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 45.57
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 48.4
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 51.0
+            }
+        ]
+    },
+    {
+        "totalTime": 51.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.09
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 8.69
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.29
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 13.97
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 16.65
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 19.34
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 22.02
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 24.93
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 29.14
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 31.9
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 34.67
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 37.44
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 40.3
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 43.16
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 46.02
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 48.88
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 51.5
+            }
+        ]
+    },
+    {
+        "totalTime": 52.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.18
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 8.8
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.42
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.12
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 16.83
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 19.54
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 22.25
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 25.19
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 29.45
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 32.23
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 35.03
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 37.82
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 40.71
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 43.59
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 46.47
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 49.35
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 52.0
+            }
+        ]
+    },
+    {
+        "totalTime": 52.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.27
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 8.91
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.55
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.28
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.01
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 19.75
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 22.47
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 25.44
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 29.75
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 32.56
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 35.38
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 38.2
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 41.11
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 44.02
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 46.92
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 49.83
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 52.5
+            }
+        ]
+    },
+    {
+        "totalTime": 53.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.35
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.01
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.68
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.43
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.19
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 19.95
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 22.7
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 25.69
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 30.06
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 32.89
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 35.74
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 38.58
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 41.51
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 44.44
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 47.37
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 50.3
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 53.0
+            }
+        ]
+    },
+    {
+        "totalTime": 53.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.44
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.12
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.81
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.59
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.37
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 20.15
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 22.93
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 25.95
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 30.36
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 33.22
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 36.09
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 38.96
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 41.92
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 44.87
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 47.82
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 50.78
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 53.5
+            }
+        ]
+    },
+    {
+        "totalTime": 54.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.52
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.23
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 11.94
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.74
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.55
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 20.36
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 23.16
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 26.2
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 30.67
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 33.56
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 36.45
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 39.34
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 42.32
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 45.3
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 48.27
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 51.26
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 54.0
+            }
+        ]
+    },
+    {
+        "totalTime": 54.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.61
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.34
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.08
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 14.9
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.73
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 20.56
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 23.38
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 26.45
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 30.97
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 33.89
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 36.8
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 39.72
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 42.72
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 45.72
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 48.72
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 51.73
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 54.5
+            }
+        ]
+    },
+    {
+        "totalTime": 55.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.7
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.45
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.21
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.06
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 17.91
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 20.76
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 23.61
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 26.71
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 31.28
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 34.22
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 37.16
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 40.1
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 43.13
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 46.15
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 49.18
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 52.21
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 55.0
+            }
+        ]
+    },
+    {
+        "totalTime": 55.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.78
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.56
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.34
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.21
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.09
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 20.97
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 23.84
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 26.96
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 31.59
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 34.55
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 37.51
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 40.48
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 43.53
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 46.58
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 49.63
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 52.68
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 55.5
+            }
+        ]
+    },
+    {
+        "totalTime": 56.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.87
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.67
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.47
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.37
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.27
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 21.17
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 24.06
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 27.22
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 31.89
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 34.88
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 37.87
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 40.86
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 43.93
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 47.01
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 50.08
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 53.16
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 56.0
+            }
+        ]
+    },
+    {
+        "totalTime": 56.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 6.95
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.77
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.6
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.52
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.45
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 21.37
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 24.29
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 27.47
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 32.2
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 35.21
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 38.22
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 41.23
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 44.34
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 47.43
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 50.53
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 53.63
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 56.5
+            }
+        ]
+    },
+    {
+        "totalTime": 57.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.04
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.88
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.73
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.68
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.63
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 21.57
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 24.52
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 27.72
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 32.5
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 35.54
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 38.58
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 41.61
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 44.74
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 47.86
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 50.98
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 54.11
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 57.0
+            }
+        ]
+    },
+    {
+        "totalTime": 57.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.12
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 9.99
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 12.86
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.83
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.8
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 21.78
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 24.75
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 27.98
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 32.81
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 35.87
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 38.93
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 41.99
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 45.14
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 48.29
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 51.43
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 54.58
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 57.5
+            }
+        ]
+    },
+    {
+        "totalTime": 58.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.21
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.1
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.0
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 15.99
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 18.98
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 21.98
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 24.97
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 28.23
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 33.12
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 36.2
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 39.28
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 42.37
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 45.55
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 48.72
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 51.88
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 55.06
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 58.0
+            }
+        ]
+    },
+    {
+        "totalTime": 58.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.3
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.21
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.13
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.14
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 19.16
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 22.18
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 25.2
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 28.48
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 33.42
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 36.53
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 39.64
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 42.75
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 45.95
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 49.14
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 52.34
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 55.53
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 58.5
+            }
+        ]
+    },
+    {
+        "totalTime": 59.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.38
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.32
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.26
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.3
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 19.34
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 22.39
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 25.43
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 28.74
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 33.73
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 36.86
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 39.99
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 43.13
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 46.35
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 49.57
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 52.79
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 56.01
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 59.0
+            }
+        ]
+    },
+    {
+        "totalTime": 59.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.47
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.43
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.39
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.45
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 19.52
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 22.59
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 25.65
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 28.99
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 34.03
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 37.19
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 40.35
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 43.51
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 46.76
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 50.0
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 53.24
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 56.48
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 59.5
+            }
+        ]
+    },
+    {
+        "totalTime": 60.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.55
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.54
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.52
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.61
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 19.7
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 22.79
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 25.88
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 29.25
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 34.34
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 37.52
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 40.7
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 43.89
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 47.16
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 50.42
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 53.69
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 56.96
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 60.0
+            }
+        ]
+    },
+    {
+        "totalTime": 60.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.64
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.64
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.65
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.76
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 19.88
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 23.0
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 26.11
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 29.5
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 34.65
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 37.85
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 41.06
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 44.27
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 47.56
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 50.85
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 54.14
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 57.44
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 60.5
+            }
+        ]
+    },
+    {
+        "totalTime": 61.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.73
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.75
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.78
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 16.92
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.06
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 23.2
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 26.34
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 29.75
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 34.95
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 38.18
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 41.41
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 44.65
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 47.97
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 51.28
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 54.59
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 57.91
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 61.0
+            }
+        ]
+    },
+    {
+        "totalTime": 61.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.81
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.86
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 13.92
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.07
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.24
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 23.4
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 26.56
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 30.01
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 35.26
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 38.51
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 41.77
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 45.03
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 48.37
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 51.71
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 55.04
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 58.39
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 61.5
+            }
+        ]
+    },
+    {
+        "totalTime": 62.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.9
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 10.97
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.05
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.23
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.42
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 23.61
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 26.79
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 30.26
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 35.56
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 38.84
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 42.12
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 45.4
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 48.77
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 52.13
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 55.49
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 58.86
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 62.0
+            }
+        ]
+    },
+    {
+        "totalTime": 62.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 7.98
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.08
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.18
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.38
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.6
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 23.81
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 27.02
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 30.51
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 35.87
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 39.17
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 42.48
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 45.78
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 49.17
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 52.56
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 55.95
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 59.34
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 62.5
+            }
+        ]
+    },
+    {
+        "totalTime": 63.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.07
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.19
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.31
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.54
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.78
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 24.01
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 27.24
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 30.77
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 36.18
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 39.5
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 42.83
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 46.16
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 49.58
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 52.99
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 56.4
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 59.81
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 63.0
+            }
+        ]
+    },
+    {
+        "totalTime": 63.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.16
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.3
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.44
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.7
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 20.96
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 24.22
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 27.47
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 31.02
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 36.48
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 39.83
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 43.19
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 46.54
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 49.98
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 53.41
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 56.85
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 60.29
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 63.5
+            }
+        ]
+    },
+    {
+        "totalTime": 64.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.24
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.4
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.57
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 17.85
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 21.14
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 24.42
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 27.7
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 31.28
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 36.79
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 40.16
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 43.54
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 46.92
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 50.38
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 53.84
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 57.3
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 60.76
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 64.0
+            }
+        ]
+    },
+    {
+        "totalTime": 64.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.33
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.51
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.7
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 18.01
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 21.31
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 24.62
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 27.92
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 31.53
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 37.09
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 40.49
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 43.9
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 47.3
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 50.79
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 54.27
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 57.75
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 61.24
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 64.5
+            }
+        ]
+    },
+    {
+        "totalTime": 65.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.41
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.62
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.84
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 18.16
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 21.49
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 24.83
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 28.15
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 31.78
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 37.4
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 40.82
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 44.25
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 47.68
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 51.19
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 54.7
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 58.2
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 61.71
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 65.0
+            }
+        ]
+    },
+    {
+        "totalTime": 65.5,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.5
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.73
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 14.97
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 18.32
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 21.67
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 25.03
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 28.38
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 32.04
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 37.71
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 41.15
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 44.61
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 48.06
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 51.59
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 55.12
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 58.65
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 62.19
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 65.5
+            }
+        ]
+    },
+    {
+        "totalTime": 66.0,
+        "splits": [
+            {
+                "intervalInMeters": 15,
+                "intervalTime": 8.59
+            },
+            {
+                "intervalInMeters": 20,
+                "intervalTime": 11.84
+            },
+            {
+                "intervalInMeters": 25,
+                "intervalTime": 15.1
+            },
+            {
+                "intervalInMeters": 30,
+                "intervalTime": 18.47
+            },
+            {
+                "intervalInMeters": 35,
+                "intervalTime": 21.85
+            },
+            {
+                "intervalInMeters": 40,
+                "intervalTime": 25.23
+            },
+            {
+                "intervalInMeters": 45,
+                "intervalTime": 28.61
+            },
+            {
+                "intervalInMeters": 50,
+                "intervalTime": 32.29
+            },
+            {
+                "intervalInMeters": 60,
+                "intervalTime": 38.01
+            },
+            {
+                "intervalInMeters": 65,
+                "intervalTime": 41.48
+            },
+            {
+                "intervalInMeters": 70,
+                "intervalTime": 44.96
+            },
+            {
+                "intervalInMeters": 75,
+                "intervalTime": 48.44
+            },
+            {
+                "intervalInMeters": 80,
+                "intervalTime": 52.0
+            },
+            {
+                "intervalInMeters": 85,
+                "intervalTime": 55.55
+            },
+            {
+                "intervalInMeters": 90,
+                "intervalTime": 59.1
+            },
+            {
+                "intervalInMeters": 95,
+                "intervalTime": 62.66
+            },
+            {
+                "intervalInMeters": 100,
+                "intervalTime": 66.0
+            }
+        ]
+    }
+]
