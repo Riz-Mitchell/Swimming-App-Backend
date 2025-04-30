@@ -10,6 +10,9 @@ using SwimmingAppBackend.Domain.Services;
 using SwimmingAppBackend.Infrastructure.Context;
 using System.Text.Json.Serialization;
 using SwimmingAppBackend.Infrastructure.Repositories;
+using System.Text.Json;
+using SwimmingAppBackend.Infrastructure.Models;
+using SwimmingAppBackend.Domain.Helpers;
 
 Env.Load();
 
@@ -86,7 +89,6 @@ else
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAthleteDataRepository, AthleteDataRepository>();
 builder.Services.AddScoped<ISwimRepository, SwimRepository>();
-builder.Services.AddScoped<ITimeSheetRepository, TimeSheetRepository>();
 
 
 builder.Services.AddScoped<IUserService, UserService>();
@@ -106,6 +108,54 @@ using (var scope = app.Services.CreateScope())
 
     // Apply migrations automatically
     dbContext.Database.Migrate();
+
+    // Directory containing your JSON files
+    string jsonDirectory = "Timesheets-In-JSON";
+
+    foreach (var file in Directory.GetFiles(jsonDirectory, "*.json"))
+    {
+        Console.WriteLine($"Processing file: {file}");
+        try
+        {
+            // Read and deserialize the JSON data
+            string json = File.ReadAllText(file);
+
+            // Deserialize into List<SplitData>
+            var splitDataList = JsonSerializer.Deserialize<List<SplitData>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (splitDataList != null)
+            {
+                // Create a new TimeSheet entry
+                var eventName = Path.GetFileNameWithoutExtension(file);
+                if (eventName.EndsWith("Men"))
+                {
+                    eventName = eventName.Substring(0, eventName.Length - 3); // Remove the "Men"
+                }
+
+                var timeSheet = new TimeSheet
+                {
+                    Event = Enum.TryParse<SwimmingAppBackend.Enum.EventEnum>(eventName, true, out var parsedEvent)
+                        ? parsedEvent
+                        : throw new InvalidOperationException($"Invalid event name: {eventName}"), // Use file name as event name
+                    SplitDataForTimes = splitDataList // Assign the deserialized SplitData list
+                };
+
+                // Add to DbContext
+                dbContext.TimeSheets.Add(timeSheet);
+            }
+
+            // Commit the changes to the database after processing each file
+            dbContext.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            // Log or handle any exceptions (file errors, deserialization errors, etc.)
+            Console.WriteLine($"Error processing file {file}: {ex.Message}");
+        }
+    }
 }
 
 // Configure the HTTP request pipeline.
