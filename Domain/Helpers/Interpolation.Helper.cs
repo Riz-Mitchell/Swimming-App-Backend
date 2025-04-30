@@ -2,7 +2,7 @@ namespace SwimmingAppBackend.Domain.Helpers
 {
     public static class InterpolationHelper
     {
-        public static double PredictTotalTime(List<SplitData> data, double splitTime, int distance)
+        public static double GetPotentialRaceTime(List<SplitData> data, double splitTime, int distance)
         {
             var ordered = data
                 .Where(d => d.SplitsByDistance.ContainsKey(distance))
@@ -40,6 +40,6 @@ namespace SwimmingAppBackend.Domain.Helpers
     public class SplitData
     {
         public double TotalTime { get; set; }
-        public Dictionary<int, double> SplitsByDistance { get; set; } = new();
+        public Dictionary<int, double> SplitsByDistance { get; set; } = [];
     }
 }
