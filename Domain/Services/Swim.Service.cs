@@ -10,7 +10,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task<List<GetSwimResDTO>?> GetSwimsAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid swimId);
         Task<GetSwimResDTO?> CreateSwimAsync(Guid userId, CreateSwimReqDTO createSchema);
-        // Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema);
+        Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema);
         Task DeleteSwimAsync(Guid swimId, Guid userId);
     }
 
@@ -51,12 +51,13 @@ namespace SwimmingAppBackend.Domain.Services
             return newSwimResDTO;
         }
 
-        // public Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema)
-        // {
+        public async Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema)
+        {
 
+            var updatedSwimResDTO = await _swimRepository.UpdateSwimAsync(swimId, userId, updateSchema);
 
-        //     var updatedSwimResDTO = _swimRepository.UpdateSwimAsync(userId, swimId, updateSchema);
-        // }
+            return updatedSwimResDTO;
+        }
 
         public async Task DeleteSwimAsync(Guid swimId, Guid userId)
         {
