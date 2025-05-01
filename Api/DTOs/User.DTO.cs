@@ -5,10 +5,9 @@ namespace SwimmingAppBackend.Api.DTOs
     // DTO for querying users
     public class GetUsersQuery
     {
-        public string? NameContains { get; set; }
-        public string? OrderBy { get; set; } // Property to specify the field to order by
-        public bool IsAscending { get; set; } = true; // Property to specify ascending or descending order
-        public int PageNumber { get; set; } = 1; // Page number to retrieve
+        public required string NameContains { get; set; }
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
     }
 
     // DTO for user response
