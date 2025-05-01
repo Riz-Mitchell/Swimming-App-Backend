@@ -4,9 +4,17 @@ namespace SwimmingAppBackend.Api.DTOs
 {
     public class GetSwimsQuery
     {
-        public int PageNumber { get; set; } = 1;
-        public int? Distance { get; set; }
-        public Stroke? Stroke { get; set; }
+        public Guid? UserId { get; set; }
+        public EventEnum? Event { get; set; }
+        public bool? OnlyPersonalBest { get; set; } = false;
+        public bool? OnlyGoalSwim { get; set; } = false;
+        public bool? OnlyDive { get; set; } = false;
+
+        public TimePeriod? TimePeriod { get; set; } = Enum.TimePeriod.Week;
+
+
+        public int Page { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
     }
 
     public class GetSwimResDTO
