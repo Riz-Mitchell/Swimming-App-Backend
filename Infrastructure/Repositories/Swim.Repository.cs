@@ -14,7 +14,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         Task<List<GetSwimResDTO>> GetSwimsAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id);
         Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId);
-        // Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema);
+        Task<GetSwimResDTO?> UpdateSwimAsync(Guid swimId, Guid userId, UpdateSwimReqDTO updateSchema);
         Task DeleteSwimAsync(Guid swimId, Guid userId);
         Task<double?> PercentageOffPBTime(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId);
         double? PercentageOffPBTimeStrokeRate(CreateSwimReqDTO swimSchema, AthleteData athleteData, Guid athleteDataOwnerId);
@@ -214,15 +214,73 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             return getSwimResDTO;
         }
 
-        public async Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema)
+        public async Task<GetSwimResDTO?> UpdateSwimAsync(Guid swimId, Guid userId, UpdateSwimReqDTO updateSchema)
         {
-            var foundSwim = await _context.Swims.FindAsync(id);
+            var foundSwim = await _context.Swims.FindAsync(swimId);
 
             if (foundSwim == null)
             {
                 return null;
             }
 
+            var foundAthleteDataId = await _context.Users
+                .Where(u => u.Id == userId)
+                .Select(u => u.AthleteDataId)
+                .FirstOrDefaultAsync();
+
+            if (foundSwim.AthleteDataOwnerId != foundAthleteDataId)
+            {
+                throw new Exception("User does not have permission to update this swim");
+            }
+
+
+
+            if (updateSchema.Event != foundSwim.Event || updateSchema.Distance != foundSwim.Distance || updateSchema.Time != foundSwim.Time || updateSchema.Stroke != foundSwim.Stroke)
+            {
+                // Recalculate the percentage off PB time
+                foundSwim.PercentageOffPBTime = await PercentageOffPBTime(new CreateSwimReqDTO
+                {
+                    Event = updateSchema.Event ?? foundSwim.Event,
+                    Stroke = updateSchema.Stroke ?? foundSwim.Stroke,
+                    Distance = updateSchema.Distance ?? foundSwim.Distance,
+                    Time = updateSchema.Time ?? foundSwim.Time
+                }, foundSwim.AthleteDataOwner, foundSwim.AthleteDataOwnerId);
+
+                foundSwim.PercentageOffPBStrokeRate = PercentageOffPBTimeStrokeRate(new CreateSwimReqDTO
+                {
+                    Event = updateSchema.Event ?? foundSwim.Event,
+                    Stroke = updateSchema.Stroke ?? foundSwim.Stroke,
+                    Distance = updateSchema.Distance ?? foundSwim.Distance,
+                    Time = updateSchema.Time ?? foundSwim.Time
+                }, foundSwim.AthleteDataOwner, foundSwim.AthleteDataOwnerId);
+
+                foundSwim.PercentageOffGoalTime = await PercentageOffGoalTime(new CreateSwimReqDTO
+                {
+                    Event = updateSchema.Event ?? foundSwim.Event,
+                    Stroke = updateSchema.Stroke ?? foundSwim.Stroke,
+                    Distance = updateSchema.Distance ?? foundSwim.Distance,
+                    Time = updateSchema.Time ?? foundSwim.Time
+                }, foundSwim.AthleteDataOwner, foundSwim.AthleteDataOwnerId);
+                foundSwim.PercentageOffGoalStrokeRate = PercentageOffGoalTimeStrokeRate(new CreateSwimReqDTO
+                {
+                    Event = updateSchema.Event ?? foundSwim.Event,
+                    Stroke = updateSchema.Stroke ?? foundSwim.Stroke,
+                    Distance = updateSchema.Distance ?? foundSwim.Distance,
+                    Time = updateSchema.Time ?? foundSwim.Time
+                }, foundSwim.AthleteDataOwner, foundSwim.AthleteDataOwnerId);         // Need to implement these calculations
+                foundSwim.PotentialRaceTime = await GetPotentialRaceTime(new CreateSwimReqDTO
+                {
+                    Event = updateSchema.Event ?? foundSwim.Event,
+                    Stroke = updateSchema.Stroke ?? foundSwim.Stroke,
+                    Distance = updateSchema.Distance ?? foundSwim.Distance,
+                    Time = updateSchema.Time ?? foundSwim.Time
+                });
+            }
+            {
+                // Recalculate the time percentage off
+            }
+
+            foundSwim.Event = updateSchema.Event ?? foundSwim.Event;
             foundSwim.Time = updateSchema.Time ?? foundSwim.Time;
             foundSwim.Stroke = updateSchema.Stroke ?? foundSwim.Stroke;
             foundSwim.Distance = updateSchema.Distance ?? foundSwim.Distance;
@@ -230,6 +288,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             foundSwim.StrokeCount = updateSchema.StrokeCount ?? foundSwim.StrokeCount;
             foundSwim.PerceivedExertion = updateSchema.PerceivedExertion ?? foundSwim.PerceivedExertion;
             foundSwim.Dive = updateSchema.Dive ?? foundSwim.Dive;
+            foundSwim.GoalSwim = updateSchema.GoalSwim ?? foundSwim.GoalSwim;
 
             _context.Swims.Update(foundSwim);
             await _context.SaveChangesAsync();
