@@ -94,27 +94,20 @@ namespace SwimmingAppBackend.Api.Controllers
             }
         }
 
-        // [HttpPut("{id}")]
-        // public async Task<ActionResult> PutSwim(Guid id, [FromBody] UpdateSwimDTO updateSwimDTO)
-        // {
-        //     var userId = User.GetUserId();
+        [HttpPut("{swimId}")]
+        public async Task<ActionResult> PutSwim(Guid swimId, [FromBody] UpdateSwimReqDTO updateSwimDTO)
+        {
+            var userId = User.GetUserId();
 
-        //     if (userId == null)
-        //     {
-        //         return BadRequest("User ID not found in claims");
-        //     }
+            if (userId == null)
+            {
+                return BadRequest("User ID not found in claims");
+            }
 
-        //     var foundSwim = await _swimService.GetSwimByIdAsync(id);
+            var updatedSwim = await _swimService.UpdateSwimAsync((Guid)userId, swimId, updateSwimDTO);
 
-        //     if (foundSwim == null)
-        //     {
-        //         return BadRequest("No swim found with the given ID");
-        //     }
-
-        //     var updatedSwim = await _swimService.UpdateSwimAsync(userId, updateSwimDTO);
-
-        //     return Ok(updatedSwim);
-        // }
+            return Ok(updatedSwim);
+        }
 
 
         [HttpDelete("{swimId}")]
