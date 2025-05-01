@@ -27,7 +27,7 @@ namespace SwimmingAppBackend.Domain.Services
 
         public async Task<List<GetUserResDTO>> GetUsersByQuery(GetUsersQuery queryParams)
         {
-            var users = await _userRepository.GetUsersByQueryAsync(queryParams);
+            var users = await _userRepository.GetUsersAsync(queryParams);
 
             return users;
         }
