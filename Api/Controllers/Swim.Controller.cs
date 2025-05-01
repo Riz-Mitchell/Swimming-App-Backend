@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Domain.Services;
@@ -6,6 +8,7 @@ using SwimmingAppBackend.Extensions;
 
 namespace SwimmingAppBackend.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SwimController : ControllerBase
@@ -15,6 +18,38 @@ namespace SwimmingAppBackend.Api.Controllers
         public SwimController(ISwimService swimService)
         {
             _swimService = swimService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetSwims([FromQuery] GetSwimsQuery query)
+        {
+            if (query.UserId == null)
+            {
+                var userId = User.GetUserId();
+
+                if (userId == null)
+                {
+                    return BadRequest("Requires a UserId");
+                }
+                else
+                {
+                    query.UserId = (Guid)userId;
+                }
+
+
+            }
+
+            var swims = await _swimService.GetSwimsAsync(query);
+
+            if (swims == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(swims);
+            }
+
         }
 
         [HttpGet("{swimId}")]
