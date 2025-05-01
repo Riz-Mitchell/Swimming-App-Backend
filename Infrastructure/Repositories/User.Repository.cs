@@ -8,7 +8,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface IUserRepository
     {
-        Task<List<GetUserResDTO>> GetUsersByQueryAsync(GetUsersQuery query);
+        Task<List<GetUserResDTO>> GetUsersAsync(GetUsersQuery query);
         Task<GetUserResDTO?> GetUserByIdAsync(Guid id);
         Task<GetUserResDTO> CreateUserAsync(CreateUserReqDTO userSchema);
         Task<GetUserResDTO?> UpdateUserAsync(Guid id, UpdateUserReqDTO updateSchema);
@@ -28,16 +28,25 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<GetUserResDTO>> GetUsersByQueryAsync(GetUsersQuery query)
+        public async Task<List<GetUserResDTO>> GetUsersAsync(GetUsersQuery query)
         {
 
-            var foundUsers = await _context.Users
-                .Where(x => query.NameContains != null && x.Name.Contains(query.NameContains))
-                .Skip((query.PageNumber - 1) * 10)
-                .Take(10)
+            var userQuery = _context.Users.AsQueryable();
+
+            if (query.NameContains.Length < 3)
+            {
+                throw new ArgumentException("Name must be at least 3 characters long.");
+            }
+
+            userQuery = userQuery.Where(x => x.Name.ToLower().Contains(query.NameContains.ToLower()));
+
+            var userQueryResult = await userQuery
+                .OrderBy(x => x.Name)
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
                 .ToListAsync();
 
-            var getUserResDTOs = foundUsers.Select(user => new GetUserResDTO
+            var getUserResDTOs = userQueryResult.Select(user => new GetUserResDTO
             {
                 Id = user.Id,
                 Name = user.Name,
