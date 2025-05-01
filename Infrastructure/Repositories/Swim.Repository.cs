@@ -4,12 +4,14 @@ using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Infrastructure.Context;
 using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Domain.Helpers;
+using SwimmingAppBackend.Enum;
+using Google.Apis.Logging;
 
 namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface ISwimRepository
     {
-        Task<List<GetSwimResDTO>> GetSwimsByQueryAsync(GetSwimsQuery query);
+        Task<List<GetSwimResDTO>> GetSwimsAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id);
         Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId);
         // Task<GetSwimResDTO?> UpdateSwimAsync(Guid id, UpdateSwimReqDTO updateSchema);
@@ -32,25 +34,90 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<GetSwimResDTO>> GetSwimsByQueryAsync(GetSwimsQuery query)
+        public async Task<List<GetSwimResDTO>?> GetSwimsAsync(GetSwimsQuery query)
         {
-            var foundSwims = await _context.Swims
-                .Where(x => query.Distance != null && x.Distance == query.Distance)
-                .Skip((query.PageNumber - 1) * 10)
-                .Take(10)
+            AthleteData? foundAthleteData = await _context.AthleteDatas
+                .FirstOrDefaultAsync(a => a.UserOwnerId == query.UserId);
+
+            if (foundAthleteData == null)
+            {
+                return null;
+            }
+
+            var swimsQuery = _context.Swims
+                .Where(s => s.AthleteDataOwnerId == foundAthleteData.Id)
+                .AsQueryable();
+
+            if (query.Event != null)
+            {
+                swimsQuery = swimsQuery.Where(s => s.Event == query.Event);
+            }
+
+            if (query.OnlyPersonalBest == true)
+            {
+                swimsQuery = swimsQuery
+                    .Where(s => s.Distance == EventHelper.GetDistance(s.Event))
+                    .GroupBy(s => s.Event)
+                    .Select(g => g.OrderBy(s => s.Time).First());
+            }
+
+            if (query.OnlyGoalSwim == true)
+            {
+                swimsQuery = swimsQuery.Where(s => s.GoalSwim == true);
+            }
+
+            if (query.TimePeriod != null)
+            {
+                switch (query.TimePeriod)
+                {
+                    case TimePeriod.Week:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddDays(-7));
+                        break;
+                    case TimePeriod.Month:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddMonths(-1));
+                        break;
+                    case TimePeriod.ThreeMonths:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddMonths(-3));
+                        break;
+                    case TimePeriod.SixMonths:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddMonths(-6));
+                        break;
+                    case TimePeriod.Year:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddYears(-1));
+                        break;
+                    case TimePeriod.AllTime:
+                        // No filter needed
+                        break;
+                }
+            }
+
+            if (query.OnlyDive == true)
+            {
+                swimsQuery = swimsQuery.Where(s => s.Dive == true);
+            }
+
+            var swimsQueryResult = await swimsQuery
+                .OrderByDescending(s => s.RecordedAt)
+                .Skip((query.Page - 1) * query.PageSize)
+                .Take(query.PageSize)
                 .ToListAsync();
 
-            var getSwimResDTOs = foundSwims.Select(swim => new GetSwimResDTO
+            if (swimsQueryResult == null || swimsQueryResult.Count == 0)
+            {
+                return null;
+            }
+
+            return swimsQueryResult.Select(swim => new GetSwimResDTO
             {
                 Id = swim.Id,
                 Time = swim.Time,
                 Stroke = swim.Stroke,
-                Distance = swim.Distance,
                 Event = swim.Event,
+                Distance = swim.Distance,
                 PercentageOffPBTime = swim.PercentageOffPBTime,
                 PercentageOffPBStrokeRate = swim.PercentageOffPBStrokeRate,
                 PercentageOffGoalTime = swim.PercentageOffGoalTime,
-                PercentageOffGoalStrokeRate = swim.PercentageOffGoalStrokeRate,         // Need to implement these calculations       // Need to implement these calculations
+                PercentageOffGoalStrokeRate = swim.PercentageOffGoalStrokeRate,
                 PotentialRaceTime = swim.PotentialRaceTime,
                 StrokeRate = swim.StrokeRate,
                 StrokeCount = swim.StrokeCount,
@@ -59,8 +126,6 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 GoalSwim = swim.GoalSwim,
                 RecordedAt = swim.RecordedAt
             }).ToList();
-
-            return getSwimResDTOs;
         }
 
         public async Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id)
