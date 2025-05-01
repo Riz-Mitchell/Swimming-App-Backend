@@ -7,6 +7,7 @@ namespace SwimmingAppBackend.Domain.Services
 {
     public interface ISwimService
     {
+        Task<List<GetSwimResDTO>?> GetSwimsAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid swimId);
         Task<GetSwimResDTO?> CreateSwimAsync(Guid userId, CreateSwimReqDTO createSchema);
         // Task<GetSwimResDTO?> UpdateSwimAsync(Guid userId, Guid swimId, UpdateSwimReqDTO updateSchema);
@@ -22,6 +23,11 @@ namespace SwimmingAppBackend.Domain.Services
         {
             _swimRepository = swimRepository;
             _athleteDataRepository = athleteDataRepository;
+        }
+
+        public Task<List<GetSwimResDTO>?> GetSwimsAsync(GetSwimsQuery query)
+        {
+            return _swimRepository.GetSwimsAsync(query);
         }
 
         public async Task<GetSwimResDTO?> GetSwimByIdAsync(Guid swimId)
