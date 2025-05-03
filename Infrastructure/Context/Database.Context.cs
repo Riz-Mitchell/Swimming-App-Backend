@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwimmingAppBackend.Domain.Helpers;
 using SwimmingAppBackend.Enum;
 using SwimmingAppBackend.Infrastructure.Models;
+using SwimmingAppBackend.Infrastructure.Seeders;
 
 
 namespace SwimmingAppBackend.Infrastructure.Context
@@ -22,8 +23,6 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<Swim> Swims { get; set; }
 
-        public DbSet<Timetable> Timetables { get; set; }
-
         public DbSet<User> Users { get; set; }
 
         public DbSet<TimeSheet> TimeSheets { get; set; }
@@ -39,6 +38,13 @@ namespace SwimmingAppBackend.Infrastructure.Context
             modelBuilder.Entity<TimeSheet>()
                 .Property(ts => ts.SplitDataForTimes)
                 .HasConversion(splitsConverter);
+
+            modelBuilder.Entity<Achievement>()
+                .HasData(AchievementSeeder.GetPredifinedAchievements());
+
+            modelBuilder.Entity<Achievement>()
+                .HasIndex(a => a.Name)
+                .IsUnique();
 
             modelBuilder.Entity<UserAchievement>()
                 .HasIndex(ua => new { ua.UserId, ua.AchievementId })
@@ -72,12 +78,6 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .HasOne(s => s.AthleteDataOwner)
                 .WithMany(ado => ado.Swims)
                 .HasForeignKey(s => s.AthleteDataOwnerId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Timetable>()
-                .HasOne(tt => tt.Squad)
-                .WithMany(s => s.Timetables)
-                .HasForeignKey(tt => tt.SquadId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()
