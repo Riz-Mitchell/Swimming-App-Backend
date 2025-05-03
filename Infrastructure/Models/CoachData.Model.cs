@@ -16,12 +16,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required User UserOwner { get; set; }
 
-        public ICollection<Session>? Sessions { get; set; }
-
-        public ICollection<Achievement>? Achievements { get; set; }
-
-        public ICollection<Award>? Awards { get; set; }
-
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
 }
