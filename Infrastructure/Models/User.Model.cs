@@ -31,8 +31,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public Guid? SquadId { get; set; }
-        public Squad? Squad { get; set; }
+        public required ICollection<UserAchievement> UserAchievements { get; set; } = [];
 
         public Guid? AthleteDataId { get; set; }
         public AthleteData? AthleteData { get; set; }
