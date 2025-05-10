@@ -89,10 +89,12 @@ else
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAthleteDataRepository, AthleteDataRepository>();
 builder.Services.AddScoped<ISwimRepository, SwimRepository>();
+builder.Services.AddScoped<IUserAchievementRepository, UserAchievementsRepository>();
 
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISwimService, SwimService>();
+builder.Services.AddScoped<IUserAchievementService, UserAchievementService>();
 
 
 builder.Services.AddScoped<IJwtService, JwtService>();
