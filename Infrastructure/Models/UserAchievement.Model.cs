@@ -7,11 +7,11 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attributes :
         // ------------------------------------------------
 
-        public int Pgrogress { get; set; } = 0;
+        public int Progress { get; set; } = 0;
 
         public bool IsCompleted { get; set; } = false;
 
-        public DateTime? EarnedAt { get; set; }
+        public DateTime? EarnedAt { get; set; } = null;
 
         // ------------------------------------------------
 
