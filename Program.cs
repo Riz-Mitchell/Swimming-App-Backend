@@ -14,12 +14,7 @@ using System.Text.Json;
 using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Domain.Helpers;
 
-// Only load .env in local development
-if (Environment.GetEnvironmentVariable("DOTNET_ENV") == "DEV")
-{
-    Env.Load(); // Loads from .env file
-    Console.WriteLine("=========================\nLoading .env for DEV\n=========================\n");
-}
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +31,14 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // JWT setup
-var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_KEY")!);
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY");
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new Exception("JWT_KEY environment variable is missing.");
+}
+
+var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
+
 var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER");
 var audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
 
@@ -55,7 +57,7 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = audience,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key)
+        IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
     };
     options.Events = new JwtBearerEvents
     {
