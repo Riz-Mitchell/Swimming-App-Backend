@@ -1,5 +1,5 @@
 # Use the official .NET SDK image to build the application
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copy the .csproj file(s) and restore any dependencies (via nuget)
@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o /out
 
 # Use the official .NET runtime image for the final stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /out .
 
