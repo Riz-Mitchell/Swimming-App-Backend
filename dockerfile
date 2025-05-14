@@ -16,8 +16,7 @@ WORKDIR /app
 COPY --from=build /out .
 
 # Expose the ports for your application (HTTP and HTTPS)
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5000
 
 # Set the command to run your application with hot reload (via dotnet watch)
 CMD ["dotnet", "Swimming_App_Backend.dll"]

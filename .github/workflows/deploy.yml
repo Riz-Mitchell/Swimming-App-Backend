@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t your-docker-username/your-app-name:latest .
+        run: docker build -t mrmitchell14/swim-sync-backend:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push your-docker-username/your-app-name:latest
+        run: docker push mrmitchell14/swim-sync-backend:latest
