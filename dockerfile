@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore
-COPY Swimming_App_Backend/Swimming_App_Backend.csproj ./Swimming_App_Backend/
-RUN dotnet restore ./Swimming_App_Backend/Swimming_App_Backend.csproj
+COPY Swimming_App_Backend.csproj ./
+RUN dotnet restore
 
 # Copy full source and publish
 COPY . .
