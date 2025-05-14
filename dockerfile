@@ -19,4 +19,4 @@ COPY --from=build /out .
 EXPOSE 5075
 
 # Set the command to run your application with hot reload (via dotnet watch)
-CMD ["dotnet", "Swimming_App_Backend.dll"]
+CMD ["dotnet", "Swimming-App-Backend.dll"]
