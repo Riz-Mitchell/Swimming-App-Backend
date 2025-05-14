@@ -73,7 +73,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
-
+// change to force deploy
 // Configure DB context
 var env = Environment.GetEnvironmentVariable("DOTNET_ENV");
 Console.WriteLine($"=========================\nENV: {env}\n=========================");
