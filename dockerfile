@@ -1,22 +1,21 @@
-# Use the official .NET SDK image to build the application
+# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copy the .csproj file(s) and restore any dependencies (via nuget)
-COPY *.csproj ./
-RUN dotnet restore
+# Copy csproj and restore
+COPY Swimming_App_Backend/Swimming_App_Backend.csproj ./Swimming_App_Backend/
+RUN dotnet restore ./Swimming_App_Backend/Swimming_App_Backend.csproj
 
-# Copy the rest of the application code
-COPY . ./
+# Copy full source and publish
+COPY . .
+WORKDIR /src/Swimming_App_Backend
 RUN dotnet publish -c Release -o /out
 
-# Use the official .NET runtime image for the final stage
+# Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /out .
 
-# Expose the ports for your application (HTTP and HTTPS)
-EXPOSE 5000
+EXPOSE 5075
 
-# Set the command to run your application with hot reload (via dotnet watch)
 CMD ["dotnet", "Swimming_App_Backend.dll"]
