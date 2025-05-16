@@ -157,6 +157,7 @@ using (var scope = app.Services.CreateScope())
             }
         }
     }
+    else Console.WriteLine("Skipping data seeding as RUN_DATA_SEED is not set to true.");
 }
 
 // Middleware
