@@ -3,12 +3,15 @@ using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Api.DTOs;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Enum;
+using System.Globalization;
 
 namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface IUserAchievementRepository
     {
         Task<List<GetUserAchievementResDTO>> GetUserAchievementsAsync(UserAchievementsQuery querySchema);
+        Task EnsureUserHasAllAchievementsAsync(Guid userId);
+        Task IncramentDistanceAchievementsAsync(Guid userId, int distance);
     }
 
     public class UserAchievementsRepository : IUserAchievementRepository
@@ -23,35 +26,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<List<GetUserAchievementResDTO>> GetUserAchievementsAsync(UserAchievementsQuery querySchema)
         {
-            // Step 1: Ensure all achievements exist for the user
-            var allAchievements = await _context.Achievements.ToListAsync();
+            await _context.Database.EnsureCreatedAsync();
 
-            var existingAchievementIds = await _context.UserAchievements
-                .Where(ua => ua.UserId == querySchema.UserId)
-                .Select(ua => ua.AchievementId)
-                .ToListAsync();
-
-            var missingAchievements = allAchievements
-                .Where(a => !existingAchievementIds.Contains(a.Id))
-                .ToList();
-
-            if (missingAchievements.Any())
-            {
-                var newUserAchievements = missingAchievements.Select(a => new UserAchievement
-                {
-                    Id = Guid.NewGuid(),
-                    UserId = (Guid)querySchema.UserId!,
-                    AchievementId = a.Id,
-                    Progress = 0,
-                    IsCompleted = false,
-                    EarnedAt = null
-                }).ToList();
-
-                _context.UserAchievements.AddRange(newUserAchievements);
-                await _context.SaveChangesAsync(); // Ensure they're written before querying below
-            }
-
-            // Step 2: Proceed with normal retrieval
             IQueryable<UserAchievement> query = _context.UserAchievements
                 .Where(ua => ua.UserId == querySchema.UserId)
                 .Include(ua => ua.Achievement);
@@ -89,5 +65,62 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             }).ToList();
         }
 
+        public async Task EnsureUserHasAllAchievementsAsync(Guid userId)
+        {
+            // Get all achievement IDs
+            var allAchievementIds = await _context.Achievements
+                .Select(a => a.Id)
+                .ToListAsync();
+
+            // Get achievement IDs that the user already has
+            var userAchievementIds = await _context.UserAchievements
+                .Where(ua => ua.UserId == userId)
+                .Select(ua => ua.AchievementId)
+                .ToListAsync();
+
+            // Identify missing achievement IDs
+            var missingAchievementIds = allAchievementIds.Except(userAchievementIds).ToList();
+
+            if (missingAchievementIds.Count > 0)
+            {
+                // Create and add missing user achievements
+                var newUserAchievements = missingAchievementIds.Select(id => new UserAchievement
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    AchievementId = id,
+                    Progress = 0,
+                    IsCompleted = false,
+                    EarnedAt = null
+                });
+
+                _context.UserAchievements.AddRange(newUserAchievements);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task IncramentDistanceAchievementsAsync(Guid userId, int distance)
+        {
+            await EnsureUserHasAllAchievementsAsync(userId);
+
+            var marathonAchievement = await _context.Achievements
+                .FirstOrDefaultAsync(a => a.Name == "Marathon Swimmer");
+
+            if (marathonAchievement == null)
+            {
+                throw new Exception("Marathon Swimmer achievement not found.");
+            }
+
+            var userProgress = await _context.UserAchievements
+                .FirstOrDefaultAsync(ua => ua.AchievementId == marathonAchievement.Id);
+
+            if (userProgress == null)
+            {
+                throw new Exception("User progress not found.");
+            }
+
+            userProgress.Progress += distance;
+            await _context.SaveChangesAsync();
+        }
     }
 }
