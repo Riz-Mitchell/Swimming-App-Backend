@@ -13,6 +13,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         Task EnsureUserHasAllAchievementsAsync(Guid userId);
         Task CheckDistanceAchievementsAsync(Guid userId, int totalDistance);
         Task CheckNumSwimsAchievementsAsync(Guid userId, int numSwims);
+        Task CheckAccountAgeAchievementsAsync(Guid userId, DateTime accountCreationDate);
+
     }
 
     public class UserAchievementsRepository : IUserAchievementRepository
@@ -182,5 +184,69 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task CheckAccountAgeAchievementsAsync(Guid userId, DateTime accountCreationDate)
+        {
+            await EnsureUserHasAllAchievementsAsync(userId);
+
+            var accAgeAchievements = await _context.Achievements
+                .Where(a => a.Name == "Unc status" ||
+                a.Name == "Fossil")
+                .ToListAsync();
+
+            if (accAgeAchievements == null || accAgeAchievements.Count == 0)
+            {
+                throw new Exception("Account age achievement not found.");
+            }
+
+            var userProgresses = await _context.UserAchievements
+                .Where(ua => accAgeAchievements.Select(a => a.Id).Contains(ua.AchievementId))
+                .ToListAsync();
+
+            if (userProgresses == null || userProgresses.Count == 0)
+            {
+                throw new Exception("User progresses not found.");
+            }
+
+            foreach (var userProgress in userProgresses)
+            {
+                var accAge = DateTime.UtcNow - accountCreationDate;
+
+                var achievementName = userProgress.Achievement.Name;
+
+                switch (achievementName)
+                {
+                    case "Unc status":
+                        if (accAge.Days >= 365)
+                        {
+                            userProgress.Progress = 1;
+                            userProgress.IsCompleted = true;
+                            userProgress.EarnedAt = DateTime.UtcNow;
+                        }
+                        else
+                        {
+                            userProgress.Progress = 0;
+                            userProgress.IsCompleted = false;
+                            userProgress.EarnedAt = null;
+                        }
+                        break;
+                    case "Fossil":
+                        if (accAge.Days >= 365 * 2)
+                        {
+                            userProgress.Progress = 1;
+                            userProgress.IsCompleted = true;
+                            userProgress.EarnedAt = DateTime.UtcNow;
+                        }
+                        else
+                        {
+                            userProgress.Progress = 0;
+                            userProgress.IsCompleted = false;
+                            userProgress.EarnedAt = null;
+                        }
+                        break;
+                    default:
+                        continue;
+                }
+            }
+        }
     }
 }
