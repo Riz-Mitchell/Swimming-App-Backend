@@ -11,7 +11,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
     {
         Task<List<GetUserAchievementResDTO>> GetUserAchievementsAsync(UserAchievementsQuery querySchema);
         Task EnsureUserHasAllAchievementsAsync(Guid userId);
-        Task IncramentDistanceAchievementsAsync(Guid userId, int distance);
+        Task CheckDistanceAchievementsAsync(Guid userId, int totalDistance);
+        Task CheckNumSwimsAchievementsAsync(Guid userId, int numSwims);
     }
 
     public class UserAchievementsRepository : IUserAchievementRepository
@@ -99,7 +100,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             }
         }
 
-        public async Task IncramentDistanceAchievementsAsync(Guid userId, int distance)
+        public async Task CheckDistanceAchievementsAsync(Guid userId, int totalDistance)
         {
             await EnsureUserHasAllAchievementsAsync(userId);
 
@@ -119,8 +120,67 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 throw new Exception("User progress not found.");
             }
 
-            userProgress.Progress += distance;
+            if (totalDistance >= marathonAchievement.TargetValue)
+            {
+                userProgress.Progress = marathonAchievement.TargetValue;
+                userProgress.IsCompleted = true;
+                userProgress.EarnedAt = DateTime.UtcNow;
+            }
+            else
+            {
+                userProgress.Progress = totalDistance;
+                userProgress.IsCompleted = false;
+                userProgress.EarnedAt = null;
+            }
+
             await _context.SaveChangesAsync();
         }
+
+        public async Task CheckNumSwimsAchievementsAsync(Guid userId, int numSwims)
+        {
+            await EnsureUserHasAllAchievementsAsync(userId);
+
+            var numSwimsAchievement = await _context.Achievements
+                .Where(a => a.Name == "First Swim" ||
+                            a.Name == "Getting it done" ||
+                            a.Name == "Busy cooking" ||
+                            a.Name == "Proper chef" ||
+                            a.Name == "Gotta do at least 20 bro" ||
+                            a.Name == "Ashton Hall")
+                .ToListAsync();
+
+            if (numSwimsAchievement == null || numSwimsAchievement.Count == 0)
+            {
+                throw new Exception("Num swims achievement not found.");
+            }
+
+            var userProgresses = await _context.UserAchievements
+                .Where(ua => numSwimsAchievement.Select(a => a.Id).Contains(ua.AchievementId))
+                .ToListAsync();
+
+            if (userProgresses == null || userProgresses.Count == 0)
+            {
+                throw new Exception("User progresses not found.");
+            }
+
+            foreach (var userProgress in userProgresses)
+            {
+                if (numSwims >= userProgress.Achievement.TargetValue)
+                {
+                    userProgress.Progress = userProgress.Achievement.TargetValue;
+                    userProgress.IsCompleted = true;
+                    userProgress.EarnedAt = DateTime.UtcNow;
+                }
+                else
+                {
+                    userProgress.Progress = numSwims;
+                    userProgress.IsCompleted = false;
+                    userProgress.EarnedAt = null;
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
     }
 }
