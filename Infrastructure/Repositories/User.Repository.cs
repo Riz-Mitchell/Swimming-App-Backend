@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Infrastructure.Context;
+using SwimmingAppBackend.Infrastructure.Helpers;
 using SwimmingAppBackend.Infrastructure.Models;
 
 namespace SwimmingAppBackend.Infrastructure.Repositories
@@ -50,8 +51,10 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = user.Id,
                 Name = user.Name,
-                Age = user.Age ?? null,
+                Age = UserHelper.CalculateAge(user.DateOfBirth),
+                Height = user.Height,
                 UserType = user.UserType,
+
             }).ToList();
 
             return getUserResDTOs;
@@ -69,7 +72,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = foundUser.Id,
                 Name = foundUser.Name,
-                Age = foundUser.Age ?? null,
+                Age = UserHelper.CalculateAge(foundUser.DateOfBirth),
+                Height = foundUser.Height,
                 UserType = foundUser.UserType,
             };
             return getUserResDTO;
@@ -82,7 +86,9 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Name = userSchema.Name,
                 PhoneNumber = userSchema.PhoneNumber,
                 Email = userSchema.Email ?? null,
-                Age = userSchema.Age ?? null,
+                DateOfBirth = userSchema.DateOfBirth,
+                Height = userSchema.Height ?? null,
+                CreatedAt = DateTime.UtcNow,
                 UserType = userSchema.UserType,
             };
 
@@ -118,7 +124,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = user.Id,
                 Name = user.Name,
-                Age = user.Age ?? null,
+                Age = UserHelper.CalculateAge(user.DateOfBirth),
+                Height = user.Height,
                 UserType = user.UserType,
             };
             return getUserResDTO;
@@ -134,7 +141,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             }
 
             if (updateSchema.Name != null) foundUser.Name = updateSchema.Name;
-            if (updateSchema.Age != null) foundUser.Age = updateSchema.Age;
+            if (updateSchema.DateOfBirth != null) foundUser.DateOfBirth = updateSchema.DateOfBirth.Value;
+            if (updateSchema.Height != null) foundUser.Height = updateSchema.Height.Value;
             if (updateSchema.Email != null) foundUser.Email = updateSchema.Email;
 
             _context.Users.Update(foundUser);
@@ -144,7 +152,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = foundUser.Id,
                 Name = foundUser.Name,
-                Age = foundUser.Age ?? null,
+                Age = UserHelper.CalculateAge(foundUser.DateOfBirth),
+                Height = foundUser.Height,
                 UserType = foundUser.UserType,
             };
             return getUserResDTO;
@@ -178,7 +187,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 {
                     Id = foundUser.Id,
                     Name = foundUser.Name,
-                    Age = foundUser.Age ?? null,
+                    Age = UserHelper.CalculateAge(foundUser.DateOfBirth),
+                    Height = foundUser.Height,
                     UserType = foundUser.UserType,
                 };
                 return getUserResDTO;
@@ -218,7 +228,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                     {
                         Id = foundUser.Id,
                         Name = foundUser.Name,
-                        Age = foundUser.Age ?? null,
+                        Age = UserHelper.CalculateAge(foundUser.DateOfBirth),
+                        Height = foundUser.Height,
                         UserType = foundUser.UserType,
                     };
                     return getUserResDTO;
