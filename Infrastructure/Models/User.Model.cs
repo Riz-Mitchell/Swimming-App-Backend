@@ -18,13 +18,17 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required UserType UserType { get; set; }
 
-        public int? Age { get; set; }
+        public required DateTime Age { get; set; }
 
-        public string? Email { get; set; }
+        public Double? Height { get; set; } = null;
+
+        public string? Email { get; set; } = null;
 
         public string? RefreshToken { get; set; } = null;
 
         public DateTime? RefreshTokenExpiry { get; set; } = null;
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // ------------------------------------------------
 
