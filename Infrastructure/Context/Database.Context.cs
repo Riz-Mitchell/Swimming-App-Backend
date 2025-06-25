@@ -25,6 +25,8 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Friendship> Friendships { get; set; }
+
         public DbSet<TimeSheet> TimeSheets { get; set; }
 
 

@@ -14,6 +14,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         Task CheckDistanceAchievementsAsync(Guid userId, int totalDistance);
         Task CheckNumSwimsAchievementsAsync(Guid userId, int numSwims);
         Task CheckAccountAgeAchievementsAsync(Guid userId, DateTime accountCreationDate);
+        Task CheckAccountCreationAchievementsAsync(Guid userId, int numUsers);
+
 
     }
 
@@ -246,6 +248,53 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                     default:
                         continue;
                 }
+            }
+        }
+
+        public async Task CheckAccountCreationAchievementsAsync(Guid userId, int numUsers)
+        {
+            await EnsureUserHasAllAchievementsAsync(userId);
+
+            var joinBracketAchievements = await _context.Achievements
+                .Where(a => a.Name == "Founding member" ||
+                            a.Name == "Early adopter" ||
+                            a.Name == "First 1000")
+                .ToListAsync();
+
+            if (joinBracketAchievements == null || joinBracketAchievements.Count == 0)
+            {
+                throw new Exception("Join bracket achievement not found.");
+            }
+
+
+            var userProg = await _context.UserAchievements
+                .Where(ua => joinBracketAchievements.Select(a => a.Id).Contains(ua.AchievementId))
+                .ToListAsync();
+
+            var achievementToAward = (numUsers <= 20) ? joinBracketAchievements.FirstOrDefault(a => a.Name == "Founding member")
+                         : (numUsers <= 100) ? joinBracketAchievements.FirstOrDefault(a => a.Name == "Early adopter")
+                         : (numUsers <= 1000) ? joinBracketAchievements.FirstOrDefault(a => a.Name == "First 1000")
+                         : null;
+
+            if (achievementToAward == null)
+            {
+                return; // No achievement to award
+            }
+
+            var userProgress = await _context.UserAchievements
+                .FirstOrDefaultAsync(ua => ua.UserId == userId && ua.AchievementId == achievementToAward.Id);
+
+            if (userProgress != null && !userProgress.IsCompleted)
+            {
+                userProgress.Progress = achievementToAward.TargetValue;
+                userProgress.IsCompleted = true;
+                userProgress.EarnedAt = DateTime.UtcNow;
+
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("User progress not found or achievement already completed");
             }
         }
     }
