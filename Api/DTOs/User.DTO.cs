@@ -15,7 +15,8 @@ namespace SwimmingAppBackend.Api.DTOs
     {
         public required Guid Id { get; set; }
         public required string Name { get; set; }
-        public int? Age { get; set; }
+        public int Age { get; set; }
+        public Double? Height { get; set; }
         public UserType UserType { get; set; }
     }
 
@@ -24,7 +25,8 @@ namespace SwimmingAppBackend.Api.DTOs
     {
         public required string Name { get; set; }
         public required string PhoneNumber { get; set; }
-        public int? Age { get; set; }
+        public required DateTime DateOfBirth { get; set; }
+        public Double? Height { get; set; }
         public string? Email { get; set; }
         public UserType UserType { get; set; }
     }
@@ -33,7 +35,8 @@ namespace SwimmingAppBackend.Api.DTOs
     public class UpdateUserReqDTO
     {
         public string? Name { get; set; }
-        public int? Age { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public Double? Height { get; set; }
         public string? Email { get; set; }
     }
 }

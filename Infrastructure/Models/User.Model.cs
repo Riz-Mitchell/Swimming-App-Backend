@@ -18,7 +18,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required UserType UserType { get; set; }
 
-        public required DateTime Age { get; set; }
+        public required DateTime DateOfBirth { get; set; }
 
         public Double? Height { get; set; } = null;
 
