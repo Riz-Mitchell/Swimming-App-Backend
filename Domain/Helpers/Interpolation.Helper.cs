@@ -35,7 +35,41 @@ namespace SwimmingAppBackend.Domain.Helpers
             // Scale total time proportionally
             return nearestTotal * (splitTime / nearestSplit);
         }
+
+        public static double GetPotentialSplitTime(List<SplitData> data, double totalTime, int distance)
+        {
+            var ordered = data
+                .Where(d => d.SplitsByDistance.ContainsKey(distance))
+                .OrderBy(d => d.TotalTime)
+                .ToList();
+
+            for (int i = 0; i < ordered.Count - 1; i++)
+            {
+                double y1 = ordered[i].TotalTime;
+                double y2 = ordered[i + 1].TotalTime;
+
+                if (totalTime >= y1 && totalTime <= y2)
+                {
+                    double x1 = ordered[i].SplitsByDistance[distance];
+                    double x2 = ordered[i + 1].SplitsByDistance[distance];
+
+                    // Linear interpolation (inverse)
+                    return x1 + (totalTime - y1) * (x2 - x1) / (y2 - y1);
+                }
+            }
+
+            // Outside known range – scale from nearest point
+            var nearest = ordered
+                .OrderBy(d => Math.Abs(d.TotalTime - totalTime))
+                .First();
+
+            double nearestTotal = nearest.TotalTime;
+            double nearestSplit = nearest.SplitsByDistance[distance];
+
+            return nearestSplit * (totalTime / nearestTotal);
+        }
     }
+
 
     public class SplitData
     {
