@@ -23,6 +23,8 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<Swim> Swims { get; set; }
 
+        public DbSet<Split> Splits { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<Friendship> Friendships { get; set; }
@@ -80,6 +82,12 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .HasOne(s => s.AthleteDataOwner)
                 .WithMany(ado => ado.Swims)
                 .HasForeignKey(s => s.AthleteDataOwnerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Split>()
+                .HasOne(s => s.Swim)
+                .WithMany(sw => sw.Splits)
+                .HasForeignKey(s => s.SwimId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()
