@@ -1,4 +1,5 @@
 using SwimmingAppBackend.Enum;
+using SwimmingAppBackend.Infrastructure.Models;
 
 namespace SwimmingAppBackend.Api.DTOs
 {
@@ -19,13 +20,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public double? PerOffGoalStrokeRate { get; set; } // Percentage off goal stroke rate for this split
         public required bool Dive { get; set; } // Indicates if this split was from a dive start
         public DateTime RecordedAt { get; set; }
-
-        // ------------------------------------------------
-
-        // Foreign Keys / Relations:
-        // ++++++++++++++++++++++++++++++++++++++++++++++++
-
-        public required Guid SwimId { get; set; }
     }
 
     public class CreateSplitReqDTO
@@ -45,5 +39,38 @@ namespace SwimmingAppBackend.Api.DTOs
         public double? PerOffGoalTime { get; set; } // Percentage off goal time for this split
         public double? PerOffGoalStrokeRate { get; set; } // Percentage off goal stroke rate for this split
         public required bool Dive { get; set; } // Indicates if this split was from a dive start
+    }
+
+    public static class SplitMapper
+    {
+        public static GetSplitResDTO ModelToRes(Split modelObj)
+        {
+            return new GetSplitResDTO
+            {
+                Id = modelObj.Id,
+                Stroke = modelObj.Stroke,
+                IntervalTime = modelObj.IntervalTime,
+                IntervalDistance = modelObj.IntervalDistance,
+                IntervalStrokeRate = modelObj.IntervalStrokeRate,
+                IntervalStrokeCount = modelObj.IntervalStrokeCount,
+                PerOffPBIntervalTime = modelObj.PerOffPBIntervalTime,
+                PerOffPBStrokeRate = modelObj.PerOffPBStrokeRate,
+                PerOffGoalTime = modelObj.PerOffGoalTime,
+                PerOffGoalStrokeRate = modelObj.PerOffGoalStrokeRate,
+                Dive = modelObj.Dive
+            };
+        }
+
+        public static List<GetSplitResDTO> ListModelToListRes(List<Split> modelList)
+        {
+            List<GetSplitResDTO> returnList = [];
+
+            foreach (Split modelObj in modelList)
+            {
+                returnList.Add(ModelToRes(modelObj));
+            }
+
+            return returnList;
+        }
     }
 }
