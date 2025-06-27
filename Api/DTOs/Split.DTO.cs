@@ -61,9 +61,9 @@ namespace SwimmingAppBackend.Api.DTOs
             };
         }
 
-        public static List<GetSplitResDTO> ListModelToListRes(List<Split> modelList)
+        public static ICollection<GetSplitResDTO> ListModelToListRes(ICollection<Split> modelList)
         {
-            List<GetSplitResDTO> returnList = [];
+            ICollection<GetSplitResDTO> returnList = [];
 
             foreach (Split modelObj in modelList)
             {
