@@ -10,7 +10,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface ISplitRepository
     {
-        Task<GetSplitResDTO> CreateSplitAsync(CreateSplitReqDTO splitSchema, Guid parentSwimId, Guid athleteDataOwnerId);
+        Task<Split> CreateSplitAsyncNoSaveChanges(CreateSplitReqDTO splitSchema, Swim parentSwim, Guid athleteDataOwnerId);
         Task<double?> PercentageOffPBTime(CreateSplitReqDTO splitSchema, Guid athleteDataOwnerId, EventEnum swimEvent);
         Task<double?> PercentageOffPBTimeStrokeRate(CreateSplitReqDTO splitSchema, Guid athleteDataOwnerId, EventEnum swimEvent);
         Task<double?> PercentageOffGoalTime(CreateSplitReqDTO splitSchema, Guid athleteDataOwnerId, EventEnum swimEvent);
@@ -27,14 +27,11 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<GetSplitResDTO> CreateSplitAsync(CreateSplitReqDTO splitSchema, Guid parentSwimId, Guid athleteDataOwnerId)
+        public async Task<Split> CreateSplitAsyncNoSaveChanges(CreateSplitReqDTO splitSchema, Swim parentSwim, Guid athleteDataOwnerId)
         {
-            var swim = await _context.Swims
-                .FirstOrDefaultAsync(s => s.Id == parentSwimId && s.AthleteDataOwnerId == athleteDataOwnerId);
-
-            if (swim == null)
+            if (parentSwim == null || parentSwim.AthleteDataOwnerId != athleteDataOwnerId)
             {
-                throw new Exception("Swim not found or does not belong to the specified athlete.");
+                throw new Exception("Swim is null or does not belong to the specified athlete.");
             }
 
             var split = new Split
@@ -45,34 +42,19 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 IntervalStrokeRate = splitSchema.IntervalStrokeRate,
                 IntervalStrokeCount = splitSchema.IntervalStrokeCount,
                 Dive = splitSchema.Dive,
-                SwimId = swim.Id
+                SwimId = parentSwim.Id
             };
 
             // Calculate percentages off PB and Goal times
-            split.PerOffPBIntervalTime = await PercentageOffPBTime(splitSchema, athleteDataOwnerId, swim.Event);
-            split.PerOffPBStrokeRate = await PercentageOffPBTimeStrokeRate(splitSchema, athleteDataOwnerId, swim.Event);
-            split.PerOffGoalTime = await PercentageOffGoalTime(splitSchema, athleteDataOwnerId, swim.Event);
-            split.PerOffGoalStrokeRate = await PercentageOffGoalTimeStrokeRate(splitSchema, athleteDataOwnerId, swim.Event);
+            split.PerOffPBIntervalTime = await PercentageOffPBTime(splitSchema, athleteDataOwnerId, parentSwim.Event);
+            split.PerOffPBStrokeRate = await PercentageOffPBTimeStrokeRate(splitSchema, athleteDataOwnerId, parentSwim.Event);
+            split.PerOffGoalTime = await PercentageOffGoalTime(splitSchema, athleteDataOwnerId, parentSwim.Event);
+            split.PerOffGoalStrokeRate = await PercentageOffGoalTimeStrokeRate(splitSchema, athleteDataOwnerId, parentSwim.Event);
 
-            _context.Splits.Add(split);
-            await _context.SaveChangesAsync();
+            // Attach to context if not using swim.Splits.Add(split)
+            _context.Splits.Add(split); // Optional if using parentSwim.Splits.Add(split)
 
-            return new GetSplitResDTO
-            {
-                Id = split.Id,
-                Stroke = split.Stroke,
-                IntervalTime = split.IntervalTime,
-                IntervalDistance = split.IntervalDistance,
-                IntervalStrokeRate = split.IntervalStrokeRate,
-                IntervalStrokeCount = split.IntervalStrokeCount,
-                PerOffPBIntervalTime = split.PerOffPBIntervalTime,
-                PerOffPBStrokeRate = split.PerOffPBStrokeRate,
-                PerOffGoalTime = split.PerOffGoalTime,
-                PerOffGoalStrokeRate = split.PerOffGoalStrokeRate,
-                Dive = split.Dive,
-                RecordedAt = split.RecordedAt,
-                SwimId = split.SwimId
-            };
+            return split;
         }
 
         public async Task<double?> PercentageOffPBTime(CreateSplitReqDTO splitSchema, Guid athleteDataOwnerId, EventEnum swimEvent)
