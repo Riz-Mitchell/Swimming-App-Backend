@@ -21,7 +21,7 @@ namespace SwimmingAppBackend.Api.DTOs
     {
         public required Guid Id { get; set; }  // Primary Key
         public required EventEnum Event { get; set; } // Event type
-        public required List<GetSplitResDTO> Splits { get; set; }
+        public required ICollection<GetSplitResDTO> Splits { get; set; }
 
         public int? PerceivedExertion { get; set; }
         public required bool GoalSwim { get; set; }
@@ -32,7 +32,7 @@ namespace SwimmingAppBackend.Api.DTOs
     {
         public required EventEnum Event { get; set; } // Event type
         public int? PerceivedExertion { get; set; }
-        public required List<CreateSplitReqDTO> Splits { get; set; } = [];
+        public required ICollection<CreateSplitReqDTO> Splits { get; set; } = [];
         public bool GoalSwim { get; set; } = false;
     }
 
