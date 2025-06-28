@@ -103,6 +103,16 @@ builder.Services.AddScoped<ISwimService, SwimService>();
 builder.Services.AddScoped<IUserAchievementService, UserAchievementService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ITwilioService, TwilioService>();
+builder.Services.AddScoped<ISplitRepository, SplitRepository>();
+builder.Services.AddScoped<IFirebaseService>(provider =>
+{
+    var serviceAccountPath = Environment.GetEnvironmentVariable("FIREBASE_SERVICE_ACCOUNT_PATH");
+    if (string.IsNullOrEmpty(serviceAccountPath))
+    {
+        throw new Exception("FIREBASE_SERVICE_ACCOUNT_PATH environment variable is missing.");
+    }
+    return new FirebaseService(serviceAccountPath);
+});
 
 var app = builder.Build();
 
