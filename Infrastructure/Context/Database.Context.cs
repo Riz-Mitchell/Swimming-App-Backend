@@ -34,6 +34,23 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Friendship>(entity =>
+            {
+                entity.HasOne(f => f.Requester)
+                    .WithMany(u => u.SentFriendRequests)
+                    .HasForeignKey(f => f.RequesterId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(f => f.Addressee)
+                    .WithMany(u => u.ReceivedFriendRequests)
+                    .HasForeignKey(f => f.AddresseeId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasIndex(f => f.RequesterId);
+                entity.HasIndex(f => f.AddresseeId);
+                entity.HasIndex(f => new { f.RequesterId, f.AddresseeId }).IsUnique(); // prevent duplicates
+                entity.HasIndex(f => f.IsConfirmed);
+            });
 
             var splitsConverter = new ValueConverter<List<SplitData>, string>(
                 v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
