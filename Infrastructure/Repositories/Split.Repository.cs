@@ -102,6 +102,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                     }
                     else
                     {
+                        Console.WriteLine($"Finding timesheet for event: {swimEvent} for Distance: {splitSchema.IntervalDistance} with Time: {splitSchema.IntervalTime}");
                         var foundTimeSheet = await _context.TimeSheets
                             .FirstOrDefaultAsync(ts => ts.Event == swimEvent) ?? throw new Exception("Time sheet not found");
 
