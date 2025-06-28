@@ -24,9 +24,6 @@ namespace SwimmingAppBackend.Api.DTOs
 
     public class CreateSplitReqDTO
     {
-
-        public Guid Id { get; set; }  // Primary Key
-
         // Attributes:
         // ------------------------------------------------
         public required Stroke Stroke { get; set; } // Stroke type for this split
@@ -34,10 +31,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public required int IntervalDistance { get; set; } // Distance for this split in meters
         public int? IntervalStrokeRate { get; set; } // Stroke rate for this split
         public int? IntervalStrokeCount { get; set; } // Stroke count for this split
-        public double? PerOffPBIntervalTime { get; set; } // Percentage off personal best time for this split
-        public double? PerOffPBStrokeRate { get; set; }
-        public double? PerOffGoalTime { get; set; } // Percentage off goal time for this split
-        public double? PerOffGoalStrokeRate { get; set; } // Percentage off goal stroke rate for this split
         public required bool Dive { get; set; } // Indicates if this split was from a dive start
     }
 
