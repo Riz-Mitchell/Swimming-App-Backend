@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwimmingAppBackend.Domain.Helpers;
 using SwimmingAppBackend.Enum;
@@ -56,9 +57,18 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
                 v => JsonSerializer.Deserialize<List<SplitData>>(v, (JsonSerializerOptions)null));
 
+            var splitsComparer = new ValueComparer<List<SplitData>>(
+                (c1, c2) => JsonSerializer.Serialize(c1, (JsonSerializerOptions)null) == JsonSerializer.Serialize(c2, (JsonSerializerOptions)null),
+                c => c == null ? 0 : JsonSerializer.Serialize(c, (JsonSerializerOptions)null).GetHashCode(),
+                c => JsonSerializer.Deserialize<List<SplitData>>(JsonSerializer.Serialize(c, (JsonSerializerOptions)null), (JsonSerializerOptions)null)
+            );
+
+
             modelBuilder.Entity<TimeSheet>()
                 .Property(ts => ts.SplitDataForTimes)
-                .HasConversion(splitsConverter);
+                .HasConversion(splitsConverter)
+                .Metadata.SetValueComparer(splitsComparer);
+
 
             modelBuilder.Entity<Achievement>()
                 .HasData(AchievementSeeder.GetPredifinedAchievements());
