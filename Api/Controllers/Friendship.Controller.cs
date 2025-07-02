@@ -62,13 +62,13 @@ namespace SwimmingAppBackend.Api.Controllers
             return success ? NoContent() : NotFound();
         }
 
-        // GET: api/friendships
-        [HttpGet]
-        public async Task<ActionResult<List<GetFriendshipResDTO>>> GetMyFriendships()
-        {
-            var
-            var result = await _friendshipService.GetAllForUserAsync(userId);
-            return Ok(result);
-        }
+        // // GET: api/friendships
+        // [HttpGet]
+        // public async Task<ActionResult<List<GetFriendshipResDTO>>> GetMyFriendships()
+        // {
+        //     var
+        //     var result = await _friendshipService.GetAllForUserAsync(userId);
+        //     return Ok(result);
+        // }
     }
 }

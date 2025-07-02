@@ -71,5 +71,10 @@ namespace SwimmingAppBackend.Domain.Services
             await _friendshipRepository.UpdateAsync(updateReq);
             return true;
         }
+
+        public Task GetAllForUserAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
