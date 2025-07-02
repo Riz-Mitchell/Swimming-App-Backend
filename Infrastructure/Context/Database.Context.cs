@@ -127,6 +127,10 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .WithOne(ad => ad.UserOwner)
                 .HasForeignKey<User>(u => u.CoachDataId);
 
+            modelBuilder.Entity<User>()
+                .HasIndex(u => new { u.PhoneNumber, u.Id })
+                .IsUnique();
+
         }
     }
 }
