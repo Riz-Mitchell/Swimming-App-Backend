@@ -62,13 +62,24 @@ namespace SwimmingAppBackend.Api.Controllers
             return success ? NoContent() : NotFound();
         }
 
-        // // GET: api/friendships
-        // [HttpGet]
-        // public async Task<ActionResult<List<GetFriendshipResDTO>>> GetMyFriendships()
-        // {
-        //     var
-        //     var result = await _friendshipService.GetAllForUserAsync(userId);
-        //     return Ok(result);
-        // }
+        // GET: api/friendships
+        [HttpGet]
+        public async Task<ActionResult> GetAllFriendShips([FromQuery] GetFriendshipQuery query)
+        {
+            if (query.UserId == Guid.Empty)
+            {
+                if (User.GetUserId() != null)
+                {
+                    query.UserId = User.GetUserId()!.Value;
+                }
+                else
+                {
+                    return BadRequest("Need userId");
+                }
+            }
+
+            var friendShipsForUser = await _friendshipService.GetAllForUserAsync(query);
+            return Ok(friendShipsForUser);
+        }
     }
 }
