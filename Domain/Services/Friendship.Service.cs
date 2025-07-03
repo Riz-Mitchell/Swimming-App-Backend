@@ -9,7 +9,7 @@ namespace SwimmingAppBackend.Domain.Services
         Task<GetFriendshipResDTO?> GetFriendshipBetweenUsersAsync(Guid user1Id, Guid user2Id);
         Task<bool> RemoveFriendshipAsync(Guid friendshipId, Guid userId);
         Task<bool> AcceptFriendRequestAsync(Guid addresseeId, Guid friendshipId);
-        Task GetAllForUserAsync(Guid userId);
+        Task<List<GetFriendshipResDTO>> GetAllForUserAsync(GetFriendshipQuery query);
     }
 
     public class FriendshipService : IFriendshipService
@@ -72,9 +72,11 @@ namespace SwimmingAppBackend.Domain.Services
             return true;
         }
 
-        public Task GetAllForUserAsync(Guid userId)
+        public async Task<List<GetFriendshipResDTO>> GetAllForUserAsync(GetFriendshipQuery query)
         {
-            throw new NotImplementedException();
+            var friendShips = await _friendshipRepository.GetAllForUserAsync(query);
+
+            return friendShips;
         }
     }
 }
