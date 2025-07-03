@@ -203,7 +203,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         {
             var foundUser = await _context.Users.FindAsync(id);
 
-            foundUser.RefreshToken = refreshToken;
+            foundUser!.RefreshToken = refreshToken;
             foundUser.RefreshTokenExpiry = dateTimeAdd60Days;
 
             _context.Users.Update(foundUser);

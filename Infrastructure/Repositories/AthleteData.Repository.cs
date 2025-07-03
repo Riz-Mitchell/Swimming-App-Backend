@@ -23,7 +23,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             var foundUser = await _context.Users
                 .Where(u => u.Id == userId)
                 .FirstOrDefaultAsync();
-            Console.WriteLine($"Athlete data in found user:\n {foundUser.AthleteDataId}");
+            Console.WriteLine($"Athlete data in found user:\n {foundUser!.AthleteDataId}");
 
             var foundAthleteDataOwnerId = await _context.AthleteDatas
                 .Where(ad => ad.UserOwnerId == userId)

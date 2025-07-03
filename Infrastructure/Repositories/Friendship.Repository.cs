@@ -12,6 +12,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
         Task<GetFriendshipResDTO> AddAsync(Guid requesterId, Guid addresseeId);
         Task<bool> DeleteAsync(Guid friendshipId);
         Task<bool> UpdateAsync(UpdateFriendshipReqDTO updateReq);
+        Task<List<GetFriendshipResDTO>> GetAllForUserAsync(GetFriendshipQuery userId);
     }
 
     public class FriendshipRepository : IFriendshipRepository
@@ -33,13 +34,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 return null; // No friendship found
             }
 
-            return new GetFriendshipResDTO
-            {
-                Id = friendship.Id,
-                RequesterId = friendship.RequesterId,
-                AddresseeId = friendship.AddresseeId,
-                IsConfirmed = friendship.IsConfirmed
-            };
+            return FriendshipMapper.ModelToRes(friendship);
         }
 
         public async Task<GetFriendshipResDTO> AddAsync(Guid requesterId, Guid addresseeId)
@@ -72,13 +67,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             };
             await _context.SaveChangesAsync();
 
-            return new GetFriendshipResDTO
-            {
-                Id = newFriendship.Id,
-                RequesterId = newFriendship.RequesterId,
-                AddresseeId = newFriendship.AddresseeId,
-                IsConfirmed = newFriendship.IsConfirmed
-            };
+            return FriendshipMapper.ModelToRes(newFriendship);
         }
 
         public async Task<bool> DeleteAsync(Guid friendshipId)
@@ -108,13 +97,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 return null; // No friendship found
             }
 
-            return new GetFriendshipResDTO
-            {
-                Id = friendship.Id,
-                RequesterId = friendship.RequesterId,
-                AddresseeId = friendship.AddresseeId,
-                IsConfirmed = friendship.IsConfirmed
-            };
+            return FriendshipMapper.ModelToRes(friendship);
         }
 
         public async Task<bool> UpdateAsync(UpdateFriendshipReqDTO updateReq)
@@ -131,6 +114,23 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             _context.Friendships.Update(foundFriendship);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<List<GetFriendshipResDTO>> GetAllForUserAsync(GetFriendshipQuery query)
+        {
+            var friendshipsQuery = _context.Friendships
+                .Where(f => f.RequesterId == query.UserId || f.AddresseeId == query.UserId);
+
+            if (query.Page > 0 && query.PageSize > 0)
+            {
+                friendshipsQuery = friendshipsQuery
+                    .Skip((query.Page - 1) * query.PageSize)
+                    .Take(query.PageSize);
+            }
+
+            List<Friendship> friendshipListAsModel = await friendshipsQuery.ToListAsync();
+
+            return FriendshipMapper.ListModelToListRes(friendshipListAsModel);
         }
     }
 }

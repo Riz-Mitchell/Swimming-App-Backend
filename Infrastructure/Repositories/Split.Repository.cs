@@ -218,7 +218,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                     var foundTimeSheet = await _context.TimeSheets
                         .FirstOrDefaultAsync(ts => ts.Event == swimEvent) ?? throw new Exception("Time sheet not found");
 
-                    var potentialGoalSplitTime = InterpolationHelper.GetPotentialSplitTime(foundTimeSheet.SplitDataForTimes, fullDistSplit.IntervalTime, fullDistSplit.IntervalDistance);
+                    var potentialGoalSplitTime = InterpolationHelper.GetPotentialSplitTime(foundTimeSheet.SplitDataForTimes, fullDistSplit!.IntervalTime, fullDistSplit!.IntervalDistance);
 
                     return (potentialGoalSplitTime - fullDistSplit.IntervalTime) / fullDistSplit.IntervalTime * 100;
                 }

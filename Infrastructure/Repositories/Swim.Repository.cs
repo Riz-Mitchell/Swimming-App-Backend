@@ -11,7 +11,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 {
     public interface ISwimRepository
     {
-        Task<List<GetSwimResDTO>> GetSwimsAsync(GetSwimsQuery query);
+        Task<List<GetSwimResDTO>?> GetSwimsAsync(GetSwimsQuery query);
         Task<GetSwimResDTO?> GetSwimByIdAsync(Guid id);
         Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId);
         Task<GetSwimResDTO?> UpdateSwimAsync(Guid swimId, Guid userId, UpdateSwimReqDTO updateSchema);
