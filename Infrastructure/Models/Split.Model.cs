@@ -4,7 +4,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class Split
     {
-        public Guid Id { get; set; }  // Primary Key
+        public Guid Id { get; set; } = Guid.NewGuid();  // Primary Key
 
         // Attributes:
         // ------------------------------------------------

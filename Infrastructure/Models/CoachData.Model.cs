@@ -2,7 +2,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class CoachData
     {
-        public Guid CoachDataId { get; set; }
+        public Guid CoachDataId { get; set; } = Guid.NewGuid();
 
         // Attrubutes :
         // ------------------------------------------------

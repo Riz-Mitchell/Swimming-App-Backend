@@ -6,7 +6,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class TimeSheet
     {
-        public Guid Id { get; set; }  // Primary Key
+        public Guid Id { get; set; } = Guid.NewGuid();  // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------

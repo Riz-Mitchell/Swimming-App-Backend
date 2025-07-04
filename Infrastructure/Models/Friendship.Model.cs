@@ -3,7 +3,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
     public class Friendship
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public required Guid RequesterId { get; set; }
         public required User Requester { get; set; }

@@ -7,7 +7,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         // Attrubutes :
         // ------------------------------------------------
@@ -34,6 +34,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         // Foreign Keys / Relations:
         // ++++++++++++++++++++++++++++++++++++++++++++++++
+
+        public ICollection<UserSubscription> UserSubscriptions { get; set; } = [];
 
         // Friendships where this user sent the request
         public ICollection<Friendship> SentFriendRequests { get; set; } = [];

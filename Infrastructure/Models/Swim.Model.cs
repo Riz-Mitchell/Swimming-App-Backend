@@ -5,7 +5,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class Swim
     {
-        public Guid Id { get; set; }  // Primary Key
+        public Guid Id { get; set; } = Guid.NewGuid(); // Primary Key
 
         // Attrubutes :
         // ------------------------------------------------

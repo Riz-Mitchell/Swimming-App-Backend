@@ -5,7 +5,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 {
     public class AthleteData
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         // Attrubutes :
         // ------------------------------------------------
