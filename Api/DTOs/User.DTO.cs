@@ -17,7 +17,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public required string Name { get; set; }
         public int Age { get; set; }
         public Double? Height { get; set; }
-        public UserType UserType { get; set; }
+        public required UserType UserType { get; set; }
     }
 
     // DTO for creating a user
