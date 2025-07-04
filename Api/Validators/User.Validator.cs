@@ -41,4 +41,20 @@ namespace SwimmingAppBackend.Api.Validators
 
         }
     }
+
+    public class UpdateUserReqValidator : AbstractValidator<UpdateUserReqDTO>
+    {
+        UpdateUserReqValidator()
+        {
+            RuleFor(u => u.Name)
+                .Length(3, 30);
+            RuleFor(u => u.DateOfBirth)
+                .LessThan(DateTime.UtcNow);
+            RuleFor(u => u.Height)
+                .GreaterThan(30)
+                .LessThan(300);
+            RuleFor(u => u.Email)
+                .EmailAddress();
+        }
+    }
 }
