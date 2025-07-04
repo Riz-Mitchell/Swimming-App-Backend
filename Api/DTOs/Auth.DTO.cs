@@ -1,11 +1,11 @@
 namespace SwimmingAppBackend
 {
-    public class OTPRequest
+    public class OTPReqDTO
     {
         public required string PhoneNum { get; set; }
     }
 
-    public class LoginRequest
+    public class LoginReqDTO
     {
         public required string PhoneNum { get; set; }
         public required string OTP { get; set; }
