@@ -25,7 +25,7 @@ namespace SwimmingAppBackend.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("generate-otp")]
-        public async Task<IActionResult> GenerateOTP([FromBody] OTPRequest otpRequest)
+        public async Task<IActionResult> GenerateOTP([FromBody] OTPReqDTO otpRequest)
         {
             var phoneNum = otpRequest.PhoneNum;
 
@@ -45,7 +45,7 @@ namespace SwimmingAppBackend.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest loginReq)
+        public async Task<IActionResult> Login([FromBody] LoginReqDTO loginReq)
         {
             var phoneNum = loginReq.PhoneNum;
 
@@ -152,16 +152,5 @@ namespace SwimmingAppBackend.Api.Controllers
             return Ok(new { message = "Logged out successfully" });
         }
 
-    }
-
-    public class OTPRequest
-    {
-        public required string PhoneNum { get; set; }
-    }
-
-    public class LoginRequest
-    {
-        public required string PhoneNum { get; set; }
-        public required string OTP { get; set; }
     }
 }
