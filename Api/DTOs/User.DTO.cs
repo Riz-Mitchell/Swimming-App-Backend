@@ -28,7 +28,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public required DateTime DateOfBirth { get; set; }
         public Double? Height { get; set; }
         public string? Email { get; set; }
-        public UserType UserType { get; set; }
+        public required UserType UserType { get; set; }
     }
 
     // DTO for updating a user
