@@ -13,10 +13,14 @@ using SwimmingAppBackend.Infrastructure.Repositories;
 using System.Text.Json;
 using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Domain.Helpers;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using SwimmingAppBackend.Api.Validators;
 
 Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services
 builder.Services.AddControllers()
@@ -24,6 +28,22 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
+
+builder.Services.AddValidatorsFromAssemblyContaining<GetUsersQueryValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserReqValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserReqValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<GetSwimsQueryValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateSwimReqValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateSwimReqValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateSplitReqValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<OTPReqValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginReqValidator>();
+
+
+builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -97,6 +117,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAthleteDataRepository, AthleteDataRepository>();
 builder.Services.AddScoped<ISwimRepository, SwimRepository>();
 builder.Services.AddScoped<IUserAchievementRepository, UserAchievementsRepository>();
+
+builder.Services.AddScoped<IAppleNotificationService, AppleNotificationService>();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISwimService, SwimService>();
