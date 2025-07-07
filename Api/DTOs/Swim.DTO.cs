@@ -6,9 +6,9 @@ namespace SwimmingAppBackend.Api.DTOs
     {
         public Guid? UserId { get; set; }
         public EventEnum? Event { get; set; }
-        public bool? OnlyPersonalBest { get; set; } = false;
-        public bool? OnlyGoalSwim { get; set; } = false;
-        public bool? OnlyDive { get; set; } = false;
+        public bool OnlyPersonalBest { get; set; } = false;
+        public bool OnlyGoalSwim { get; set; } = false;
+        public bool OnlyDive { get; set; } = false;
 
         public TimePeriod? TimePeriod { get; set; } = Enum.TimePeriod.Week;
 
