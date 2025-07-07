@@ -15,7 +15,7 @@ namespace SwimmingAppBackend.Api.Validators
 
     public class CreateUserReqValidator : AbstractValidator<CreateUserReqDTO>
     {
-        CreateUserReqValidator()
+        public CreateUserReqValidator()
         {
             RuleFor(u => u.Name)
                 .NotEmpty()
@@ -44,7 +44,7 @@ namespace SwimmingAppBackend.Api.Validators
 
     public class UpdateUserReqValidator : AbstractValidator<UpdateUserReqDTO>
     {
-        UpdateUserReqValidator()
+        public UpdateUserReqValidator()
         {
             RuleFor(u => u.Name)
                 .Length(3, 30);
