@@ -93,7 +93,21 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             };
 
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+
+            var userSubscription = new UserSubscription
+            {
+                UserId = user.Id,
+                User = user,
+                Platform = Enum.Platform.Unknown, // Default value, can be updated later
+                ProductId = Enum.Product.FreeTrial, // Default value, can be updated later
+                IsActive = true,
+                StartDate = DateTime.UtcNow,
+                ExpiryDate = DateTime.UtcNow.AddDays(30),
+            };
+
+            _context.UserSubscriptions.Add(userSubscription);
+
+            user.UserSubscriptions.Add(userSubscription);
 
             // Now, the user has an ID that we can use for AthleteData or CoachData
             if (userSchema.UserType == Enum.UserType.Swimmer)
