@@ -32,6 +32,8 @@ namespace SwimmingAppBackend.Infrastructure.Context
 
         public DbSet<TimeSheet> TimeSheets { get; set; }
 
+        public DbSet<UserSubscription> UserSubscriptions { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -130,6 +132,12 @@ namespace SwimmingAppBackend.Infrastructure.Context
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.PhoneNumber)
                 .IsUnique();
+
+            modelBuilder.Entity<UserSubscription>()
+                .HasOne(us => us.User)
+                .WithMany(u => u.UserSubscriptions)
+                .HasForeignKey(us => us.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }
