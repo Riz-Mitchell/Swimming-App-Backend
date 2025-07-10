@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SwimmingAppBackend.Infrastructure.Context;
@@ -11,9 +12,11 @@ using SwimmingAppBackend.Infrastructure.Context;
 namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    partial class SwimmingAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250710000129_RequirementChangeOnSwimsNavProperty")]
+    partial class RequirementChangeOnSwimsNavProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,6 +258,9 @@ namespace Swimming_App_Backend.Migrations
 
                     b.Property<double?>("PerOffPBStrokeRate")
                         .HasColumnType("double precision");
+
+                    b.Property<DateTime>("RecordedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Stroke")
                         .HasColumnType("integer");
