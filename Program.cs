@@ -101,7 +101,12 @@ Console.WriteLine($"=========================\nENV: {env}\n=====================
 if (env == "PROD")
 {
     builder.Services.AddDbContext<SwimmingAppDBContext>(options =>
-        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_PROD")));
+        options
+            .UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_PROD"))
+            .LogTo(Console.WriteLine, LogLevel.Information)
+            .EnableSensitiveDataLogging()
+    );
+
     Console.WriteLine("✅ Running in PROD mode");
     Console.WriteLine($"DB_CONNECTION_STRING_PROD: {Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_PROD")}");
 }
