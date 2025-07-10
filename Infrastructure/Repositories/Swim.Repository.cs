@@ -142,34 +142,30 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
         public async Task<GetSwimResDTO> CreateSwimAsync(CreateSwimReqDTO swimSchema, Guid athleteDataOwnerId)
         {
-            var foundAthlete = await _context.AthleteDatas
-                .Include(a => a.Swims)
-                .FirstOrDefaultAsync(a => a.Id == athleteDataOwnerId)
-                ?? throw new Exception("Athlete not found");
+            bool athleteExists = await _context.AthleteDatas
+                .AnyAsync(a => a.Id == athleteDataOwnerId);
 
-            var swim = new Swim
+            if (!athleteExists)
+                throw new Exception("Athlete not found");
+
+            Swim swim = new()
             {
                 Event = swimSchema.Event,
                 PerceivedExertion = swimSchema.PerceivedExertion,
                 GoalSwim = swimSchema.GoalSwim,
-                AthleteDataOwner = foundAthlete,
                 AthleteDataOwnerId = athleteDataOwnerId
             };
 
-            foundAthlete.Swims.Add(swim);
+            _context.Swims.Add(swim);
+            await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();      // Save swim to db
-
-            List<Split> splitList = [];
+            List<GetSplitResDTO> splitResDTOList = [];
 
             foreach (var splitSchema in swimSchema.Splits)
             {
-                var dbSplit = await _splitRepository.CreateSplitAsyncNoSaveChanges(splitSchema, swim, athleteDataOwnerId);
-                swim.Splits.Add(dbSplit);     // Maintains object graph if needed
-                splitList.Add(dbSplit);
+                GetSplitResDTO splitRes = await _splitRepository.CreateSplitAsync(splitSchema, swim.Id, swim.Event, athleteDataOwnerId);
+                splitResDTOList.Add(splitRes);
             }
-
-            await _context.SaveChangesAsync();
 
             return new GetSwimResDTO
             {
@@ -178,7 +174,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 PerceivedExertion = swim.PerceivedExertion,
                 GoalSwim = swim.GoalSwim,
                 RecordedAt = swim.RecordedAt,
-                Splits = SplitMapper.ListModelToListRes(splitList)
+                Splits = splitResDTOList,
             };
         }
 
