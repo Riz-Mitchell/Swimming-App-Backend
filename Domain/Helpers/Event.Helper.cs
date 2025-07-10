@@ -1,9 +1,11 @@
 using SwimmingAppBackend.Enum;
 
+
 namespace SwimmingAppBackend.Domain.Helpers
 {
     public class EventHelper
     {
+
         private static readonly Dictionary<EventEnum, int> EventDistances = new()
         {
             { EventEnum.Freestyle50, 50 },
@@ -24,6 +26,45 @@ namespace SwimmingAppBackend.Domain.Helpers
             { EventEnum.IndividualMedley200, 200 },
             { EventEnum.IndividualMedley400, 400 },
         };
+
+        public static bool IsStrokeValid(Stroke stroke, EventEnum swimEvent)
+        {
+            if (IsIM(swimEvent))
+            {
+                return true;
+            }
+
+            switch (stroke)
+            {
+                case Stroke.Freestyle:
+                    return swimEvent == EventEnum.Freestyle50
+                        || swimEvent == EventEnum.Freestyle100
+                        || swimEvent == EventEnum.Freestyle200
+                        || swimEvent == EventEnum.Freestyle400
+                        || swimEvent == EventEnum.Freestyle800
+                        || swimEvent == EventEnum.Freestyle1500;
+                case Stroke.Backstroke:
+                    return swimEvent == EventEnum.Backstroke50
+                        || swimEvent == EventEnum.Backstroke100
+                        || swimEvent == EventEnum.Backstroke200;
+                case Stroke.Breaststroke:
+                    return swimEvent == EventEnum.Breaststroke50
+                        || swimEvent == EventEnum.Breaststroke100
+                        || swimEvent == EventEnum.Breaststroke200;
+                case Stroke.Butterfly:
+                    return swimEvent == EventEnum.Butterfly50
+                        || swimEvent == EventEnum.Butterfly100
+                        || swimEvent == EventEnum.Butterfly200;
+                default:
+                    return false;
+            }
+        }
+
+        private static bool IsIM(EventEnum swimEvent)
+        {
+            if (swimEvent == EventEnum.IndividualMedley200 || swimEvent == EventEnum.IndividualMedley400) return true;
+            else return false;
+        }
 
         public static int GetDistance(EventEnum swimEvent)
         {
