@@ -18,8 +18,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
         public double? PerOffGoalTime { get; set; } // Percentage off goal time for this split
         public double? PerOffGoalStrokeRate { get; set; } // Percentage off goal stroke rate for this split
         public required bool Dive { get; set; } // Indicates if this split was from a dive start
-        public DateTime RecordedAt { get; set; } = DateTime.UtcNow;
-
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
