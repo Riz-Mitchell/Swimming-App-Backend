@@ -23,7 +23,7 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         public required Guid AthleteDataOwnerId { get; set; }
 
-        public required AthleteData AthleteDataOwner { get; set; }
+        public AthleteData AthleteDataOwner { get; set; }
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++
     }
