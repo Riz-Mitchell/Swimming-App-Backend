@@ -5,7 +5,7 @@ namespace SwimmingAppBackend.Api.DTOs
 {
     public class GetSplitResDTO
     {
-        public Guid Id { get; set; }  // Primary Key
+        public required Guid Id { get; set; }  // Primary Key
 
         // Attributes:
         // ------------------------------------------------
@@ -19,7 +19,6 @@ namespace SwimmingAppBackend.Api.DTOs
         public double? PerOffGoalTime { get; set; } // Percentage off goal time for this split
         public double? PerOffGoalStrokeRate { get; set; } // Percentage off goal stroke rate for this split
         public required bool Dive { get; set; } // Indicates if this split was from a dive start
-        public DateTime RecordedAt { get; set; }
     }
 
     public class CreateSplitReqDTO
