@@ -84,7 +84,7 @@ namespace SwimmingAppBackend.Api.Controllers
                 Expires = DateTime.UtcNow.AddDays(60)
             });
 
-            return Ok(new { message = "Logged in successfully" });
+            return Ok(new LoginResDTO { UserId = foundUser.Id });
         }
 
         [HttpPost("refresh/{id}")]
