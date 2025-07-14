@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SwimmingAppBackend.Enum;
 
 namespace SwimmingAppBackend.Infrastructure.Models
 {
@@ -9,6 +10,8 @@ namespace SwimmingAppBackend.Infrastructure.Models
 
         // Attrubutes :
         // ------------------------------------------------
+
+        public Guid? ExternalSourceUserId = null;
 
         // ------------------------------------------------
 
