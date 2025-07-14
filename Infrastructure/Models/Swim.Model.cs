@@ -14,6 +14,13 @@ namespace SwimmingAppBackend.Infrastructure.Models
         public DateTime RecordedAt { get; set; } = DateTime.UtcNow;
         public bool GoalSwim { get; set; } = false;
 
+        public required PoolType PoolType { get; set; } = PoolType.LongCourseMeters;
+
+        // External deeds
+        public bool IsExternal { get; set; } = false; // Has it come from another api (Swim can be tracked as a race) from an actual event
+        public Guid? ExternalId { get; set; } = null;
+        public ExternalSource? ExternalSource { get; set; } = null;
+
         // ------------------------------------------------
 
         // Foreign Keys / Relations:
