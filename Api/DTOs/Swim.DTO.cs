@@ -26,6 +26,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? PerceivedExertion { get; set; }
         public required bool GoalSwim { get; set; }
         public required DateTime RecordedAt { get; set; }
+        public required PoolType PoolType { get; set; }
     }
 
     public class CreateSwimReqDTO
@@ -34,6 +35,7 @@ namespace SwimmingAppBackend.Api.DTOs
         public int? PerceivedExertion { get; set; }
         public required ICollection<CreateSplitReqDTO> Splits { get; set; } = [];
         public bool GoalSwim { get; set; } = false;
+        public PoolType PoolType { get; set; } = PoolType.LongCourseMeters;
     }
 
 
