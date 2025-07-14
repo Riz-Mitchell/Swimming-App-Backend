@@ -41,6 +41,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             }
 
             var swimsQuery = _context.Swims
+                .Include(s => s.Splits)
                 .Where(s => s.AthleteDataOwnerId == foundAthleteData.Id)
                 .AsQueryable();
 
@@ -115,6 +116,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Event = swim.Event,
                 PerceivedExertion = swim.PerceivedExertion,
                 GoalSwim = swim.GoalSwim,
+                PoolType = swim.PoolType,
                 RecordedAt = swim.RecordedAt
             ,
                 Splits = SplitMapper.ListModelToListRes(swim.Splits)
@@ -135,6 +137,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Event = foundSwim.Event,
                 PerceivedExertion = foundSwim.PerceivedExertion,
                 GoalSwim = foundSwim.GoalSwim,
+                PoolType = foundSwim.PoolType,
                 RecordedAt = foundSwim.RecordedAt,
                 Splits = SplitMapper.ListModelToListRes(foundSwim.Splits)
             };
@@ -153,7 +156,8 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Event = swimSchema.Event,
                 PerceivedExertion = swimSchema.PerceivedExertion,
                 GoalSwim = swimSchema.GoalSwim,
-                AthleteDataOwnerId = athleteDataOwnerId
+                AthleteDataOwnerId = athleteDataOwnerId,
+                PoolType = swimSchema.PoolType
             };
 
             _context.Swims.Add(swim);
@@ -173,6 +177,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Event = swim.Event,
                 PerceivedExertion = swim.PerceivedExertion,
                 GoalSwim = swim.GoalSwim,
+                PoolType = swim.PoolType,
                 RecordedAt = swim.RecordedAt,
                 Splits = splitResDTOList,
             };
@@ -227,6 +232,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                 Event = foundSwim.Event,
                 PerceivedExertion = foundSwim.PerceivedExertion,
                 GoalSwim = foundSwim.GoalSwim,
+                PoolType = foundSwim.PoolType,
                 RecordedAt = foundSwim.RecordedAt,
                 Splits = SplitMapper.ListModelToListRes(foundSwim.Splits)
             };
