@@ -73,6 +73,9 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 switch (query.TimePeriod)
                 {
+                    case TimePeriod.Day:
+                        swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddDays(-1));
+                        break;
                     case TimePeriod.Week:
                         swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddDays(-7));
                         break;
@@ -87,9 +90,6 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
                         break;
                     case TimePeriod.Year:
                         swimsQuery = swimsQuery.Where(s => s.RecordedAt >= DateTime.UtcNow.AddYears(-1));
-                        break;
-                    case TimePeriod.AllTime:
-                        // No filter needed
                         break;
                 }
             }
