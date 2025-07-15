@@ -107,7 +107,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
             if (swimsQueryResult == null || swimsQueryResult.Count == 0)
             {
-                return null;
+                return [];
             }
 
             return swimsQueryResult.Select(swim => new GetSwimResDTO
