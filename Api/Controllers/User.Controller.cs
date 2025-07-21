@@ -84,7 +84,7 @@ namespace SwimmingAppBackend.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(Guid id)
         {
             if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
             {
