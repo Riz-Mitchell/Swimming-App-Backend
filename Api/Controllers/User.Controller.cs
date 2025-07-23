@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SwimmingAppBackend.Api.DTOs;
 using SwimmingAppBackend.Domain.Services;
+using SwimmingAppBackend.Extensions;
 
 namespace SwimmingAppBackend.Api.Controllers
 {
@@ -68,19 +69,22 @@ namespace SwimmingAppBackend.Api.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutUser(Guid id, [FromBody] UpdateUserReqDTO userUpdates)
         {
-            if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
+            var userId = User.GetUserId();
+
+            if (userId == null)
             {
-                return BadRequest("Invalid user ID format.");
+                return BadRequest("User ID not found in claims");
+
             }
 
-            var foundUser = await _userService.GetUserById(userId);
+            var foundUser = await _userService.GetUserById((Guid)userId);
 
             if (foundUser == null)
             {
                 return Unauthorized();
             }
 
-            var updatedUser = _userService.UpdateUser(userId, userUpdates);
+            var updatedUser = _userService.UpdateUser((Guid)userId, userUpdates);
 
             return Ok(updatedUser);
         }
@@ -88,18 +92,26 @@ namespace SwimmingAppBackend.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
-            if (!Guid.TryParse(JwtRegisteredClaimNames.Sub, out var userId))
+            var userId = User.GetUserId();
+
+            if (userId == null)
             {
-                return BadRequest("Invalid user ID format.");
+                return BadRequest("User ID not found in claims");
+
             }
 
-            var foundUser = await _userService.GetUserById(userId);
+            if ((Guid)userId != id)
+            {
+                return BadRequest("User ID in token does not match the ID in the request.");
+            }
+
+            var foundUser = await _userService.GetUserById((Guid)userId);
             if (foundUser == null)
             {
                 return NotFound();
             }
 
-            await _userService.DeleteUser(userId);
+            await _userService.DeleteUser((Guid)userId);
 
             return NoContent();
         }
