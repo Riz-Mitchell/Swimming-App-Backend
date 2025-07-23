@@ -54,6 +54,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             return new GetSplitResDTO()
             {
                 Id = split.Id,
+                Stroke = split.Stroke,
                 Dive = split.Dive,
                 IntervalTime = split.IntervalTime,
                 IntervalDistance = split.IntervalDistance,
