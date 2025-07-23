@@ -7,7 +7,7 @@ namespace SwimmingAppBackend.Domain.Services
     {
         Task<List<GetUserResDTO>> GetUsersByQuery(GetUsersQuery queryParams);
         Task<GetUserResDTO?> GetUserById(Guid id);
-        Task<GetUserResDTO> CreateUser(CreateUserReqDTO userSchema);
+        Task<GetUserResDTO?> CreateUser(CreateUserReqDTO userSchema);
         Task<GetUserResDTO?> UpdateUser(Guid id, UpdateUserReqDTO userUpdates);
         Task DeleteUser(Guid id);
         Task<GetUserResDTO?> GetUserByPhoneNumber(string phoneNumber);
@@ -37,7 +37,7 @@ namespace SwimmingAppBackend.Domain.Services
 
             return user;
         }
-        public async Task<GetUserResDTO> CreateUser(CreateUserReqDTO userSchema)
+        public async Task<GetUserResDTO?> CreateUser(CreateUserReqDTO userSchema)
         {
             return await _userRepository.CreateUserAsync(userSchema);
         }

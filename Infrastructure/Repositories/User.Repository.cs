@@ -11,7 +11,7 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
     {
         Task<List<GetUserResDTO>> GetUsersAsync(GetUsersQuery query);
         Task<GetUserResDTO?> GetUserByIdAsync(Guid id);
-        Task<GetUserResDTO> CreateUserAsync(CreateUserReqDTO userSchema);
+        Task<GetUserResDTO?> CreateUserAsync(CreateUserReqDTO userSchema);
         Task<GetUserResDTO?> UpdateUserAsync(Guid id, UpdateUserReqDTO updateSchema);
         Task DeleteUserAsync(Guid id);
         Task<GetUserResDTO?> GetUserByAttribute(string? phoneNumber);
@@ -79,8 +79,13 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             return getUserResDTO;
         }
 
-        public async Task<GetUserResDTO> CreateUserAsync(CreateUserReqDTO userSchema)
+        public async Task<GetUserResDTO?> CreateUserAsync(CreateUserReqDTO userSchema)
         {
+            var existingUser = await _context.Users
+                .FirstOrDefaultAsync(u => u.PhoneNumber == userSchema.PhoneNumber);
+
+            if (existingUser != null) return null;
+
             var user = new User
             {
                 Name = userSchema.Name,

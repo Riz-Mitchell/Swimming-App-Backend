@@ -58,7 +58,9 @@ namespace SwimmingAppBackend.Api.Controllers
             }
 
             // Save to database
-            var newUser = await _userService.CreateUser(createUserReqDTO);
+            GetUserResDTO? newUser = await _userService.CreateUser(createUserReqDTO);
+
+            if (newUser == null) return Conflict("User with this phone number already exists.");
 
             return Ok(newUser);
         }

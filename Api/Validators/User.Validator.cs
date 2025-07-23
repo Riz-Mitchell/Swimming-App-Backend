@@ -35,7 +35,6 @@ namespace SwimmingAppBackend.Api.Validators
             RuleFor(u => u.Email)
                 .EmailAddress();
             RuleFor(u => u.UserType)
-                .NotEmpty()
                 .NotNull();
 
 
