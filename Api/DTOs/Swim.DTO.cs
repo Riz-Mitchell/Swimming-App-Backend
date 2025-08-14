@@ -22,8 +22,8 @@ namespace SwimmingAppBackend.Api.DTOs
         public required Guid Id { get; set; }  // Primary Key
         public required EventEnum Event { get; set; } // Event type
         public required ICollection<GetSplitResDTO> Splits { get; set; }
+        public required GetSwimQuestionnaireDTO SwimQuestionnaire { get; set; } // Swim Questionnaire
 
-        public int? PerceivedExertion { get; set; }
         public required bool GoalSwim { get; set; }
         public required DateTime RecordedAt { get; set; }
         public required PoolType PoolType { get; set; }
@@ -32,8 +32,8 @@ namespace SwimmingAppBackend.Api.DTOs
     public class CreateSwimReqDTO
     {
         public required EventEnum Event { get; set; } // Event type
-        public int? PerceivedExertion { get; set; }
         public required ICollection<CreateSplitReqDTO> Splits { get; set; } = [];
+        public required CreateSwimQuestionnaireReqDTO SwimQuestionnaire { get; set; } // Swim Questionnaire
         public bool GoalSwim { get; set; } = false;
         public PoolType PoolType { get; set; } = PoolType.LongCourseMeters;
     }
@@ -42,7 +42,6 @@ namespace SwimmingAppBackend.Api.DTOs
     public class UpdateSwimReqDTO
     {
         public EventEnum? Event { get; set; } // Event type
-        public int? PerceivedExertion { get; set; }
         public bool? GoalSwim { get; set; }
     }
 }
