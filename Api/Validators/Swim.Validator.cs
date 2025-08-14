@@ -21,9 +21,6 @@ namespace SwimmingAppBackend.Api.Validators
     {
         public CreateSwimReqValidator()
         {
-            RuleFor(s => s.PerceivedExertion)
-                .InclusiveBetween(1, 10)
-                .When(s => s.PerceivedExertion.HasValue);
             RuleFor(s => s.Splits)
                 .NotEmpty();
 
@@ -77,9 +74,6 @@ namespace SwimmingAppBackend.Api.Validators
             RuleFor(s => s.Event)
                 .IsInEnum()
                 .When(s => s.Event.HasValue);
-            RuleFor(s => s.PerceivedExertion)
-                .InclusiveBetween(1, 10)
-                .When(s => s.PerceivedExertion.HasValue);
             RuleFor(s => s.GoalSwim)
                 .NotNull();
         }
