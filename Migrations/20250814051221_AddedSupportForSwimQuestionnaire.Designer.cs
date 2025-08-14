@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SwimmingAppBackend.Infrastructure.Context;
@@ -11,9 +12,11 @@ using SwimmingAppBackend.Infrastructure.Context;
 namespace Swimming_App_Backend.Migrations
 {
     [DbContext(typeof(SwimmingAppDBContext))]
-    partial class SwimmingAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250814051221_AddedSupportForSwimQuestionnaire")]
+    partial class AddedSupportForSwimQuestionnaire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -344,10 +347,18 @@ namespace Swimming_App_Backend.Migrations
                     b.Property<int>("StrokeLength")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("SwimId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("SwimId1")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("Turn")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SwimId1");
 
                     b.ToTable("SwimQuestionnaire");
                 });
@@ -546,6 +557,17 @@ namespace Swimming_App_Backend.Migrations
                     b.Navigation("AthleteDataOwner");
 
                     b.Navigation("SwimQuestionnaire");
+                });
+
+            modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.SwimQuestionnaire", b =>
+                {
+                    b.HasOne("SwimmingAppBackend.Infrastructure.Models.Swim", "Swim")
+                        .WithMany()
+                        .HasForeignKey("SwimId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Swim");
                 });
 
             modelBuilder.Entity("SwimmingAppBackend.Infrastructure.Models.User", b =>
