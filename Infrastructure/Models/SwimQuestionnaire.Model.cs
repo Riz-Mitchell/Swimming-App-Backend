@@ -9,15 +9,15 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attrubutes :
         // ------------------------------------------------
         public SelfTalkOptionsEnum SelfTalk { get; set; }
-        public NervesOptionsEnum Nerves { get; set; }
+        public List<NervesOptionsEnum> Nerves { get; set; }
         public EnergyLevelOptionsEnum EnergyLevel { get; set; }
         public BreathingOptionsEnum Breathing { get; set; }
-        public CatchFeelOptionsEnum CatchFeel { get; set; }
+        public List<CatchFeelOptionsEnum> CatchFeel { get; set; }
         public StrokeLengthOptionsEnum StrokeLength { get; set; }
         public KickTechniqueOptionsEnum KickTechnique { get; set; }
         public KickThroughoutOptionsEnum KickThroughout { get; set; }
-        public HeadPositionOptionsEnum HeadPosition { get; set; }
-        public TurnOptionsEnum Turn { get; set; }
+        public List<HeadPositionOptionsEnum> HeadPosition { get; set; }
+        public List<TurnOptionsEnum> Turn { get; set; }
 
         // ------------------------------------------------
     }
