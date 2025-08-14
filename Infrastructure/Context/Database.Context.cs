@@ -145,6 +145,17 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .HasForeignKey(us => us.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.HasPostgresEnum<SelfTalkOptionsEnum>();
+            modelBuilder.HasPostgresEnum<NervesOptionsEnum>();
+            modelBuilder.HasPostgresEnum<EnergyLevelOptionsEnum>();
+            modelBuilder.HasPostgresEnum<BreathingOptionsEnum>();
+            modelBuilder.HasPostgresEnum<CatchFeelOptionsEnum>();
+            modelBuilder.HasPostgresEnum<StrokeLengthOptionsEnum>();
+            modelBuilder.HasPostgresEnum<KickTechniqueOptionsEnum>();
+            modelBuilder.HasPostgresEnum<KickThroughoutOptionsEnum>();
+            modelBuilder.HasPostgresEnum<HeadPositionOptionsEnum>();
+            modelBuilder.HasPostgresEnum<TurnOptionsEnum>();
+
         }
     }
 }
