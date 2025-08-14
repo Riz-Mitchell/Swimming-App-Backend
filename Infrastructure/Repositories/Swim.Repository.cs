@@ -6,6 +6,7 @@ using SwimmingAppBackend.Infrastructure.Models;
 using SwimmingAppBackend.Domain.Helpers;
 using SwimmingAppBackend.Enum;
 using Google.Apis.Logging;
+using System.Diagnostics.Eventing.Reader;
 
 namespace SwimmingAppBackend.Infrastructure.Repositories
 {
@@ -42,8 +43,55 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
 
             var swimsQuery = _context.Swims
                 .Include(s => s.Splits)
+                .Include(s => s.SwimQuestionnaire)
                 .Where(s => s.AthleteDataOwnerId == foundAthleteData.Id)
                 .AsQueryable();
+
+            if (query.year != null && query.month != null && query.day != null)
+            {
+                swimsQuery = swimsQuery
+                    .Where(s => s.RecordedAt.Year == query.year && s.RecordedAt.Month == query.month && s.RecordedAt.Day == query.day);
+
+                var swimQueryRes = await swimsQuery
+                .OrderByDescending(s => s.RecordedAt)
+                .Skip((query.Page - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+                return swimQueryRes.Select(swim => new GetSwimResDTO
+                {
+                    Id = swim.Id,
+                    Event = swim.Event,
+                    GoalSwim = swim.GoalSwim,
+                    PoolType = swim.PoolType,
+                    SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(swim.SwimQuestionnaire),
+                    RecordedAt = swim.RecordedAt,
+                    Splits = SplitMapper.ListModelToListRes(swim.Splits)
+                }).ToList();
+            }
+            else if (query.year != null && query.month != null)
+            {
+                swimsQuery = swimsQuery
+                    .Where(s => s.RecordedAt.Year == query.year && s.RecordedAt.Month == query.month);
+
+                var swimQueryRes = await swimsQuery
+                .OrderByDescending(s => s.RecordedAt)
+                .Skip((query.Page - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+                return swimQueryRes.Select(swim => new GetSwimResDTO
+                {
+                    Id = swim.Id,
+                    Event = swim.Event,
+                    GoalSwim = swim.GoalSwim,
+                    PoolType = swim.PoolType,
+                    SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(swim.SwimQuestionnaire),
+                    RecordedAt = swim.RecordedAt,
+                    Splits = SplitMapper.ListModelToListRes(swim.Splits)
+                }).ToList();
+            }
+
 
             if (query.Event != null)
             {

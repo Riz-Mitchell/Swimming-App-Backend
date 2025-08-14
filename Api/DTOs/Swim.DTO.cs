@@ -9,6 +9,9 @@ namespace SwimmingAppBackend.Api.DTOs
         public bool OnlyPersonalBest { get; set; } = false;
         public bool OnlyGoalSwim { get; set; } = false;
         public bool OnlyDive { get; set; } = false;
+        public int? year { get; set; } = null;
+        public int? month { get; set; } = null;
+        public int? day { get; set; } = null;
 
         public TimePeriod? TimePeriod { get; set; } = Enum.TimePeriod.Week;
 
