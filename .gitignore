@@ -2,6 +2,8 @@ bin/
 obj/
 out/
 
+.history/
+
 ./vscode
 
 .env
