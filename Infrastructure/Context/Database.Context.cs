@@ -108,6 +108,12 @@ namespace SwimmingAppBackend.Infrastructure.Context
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Swim>()
+                .HasOne(s => s.SwimQuestionnaire)
+.WithMany()
+.HasForeignKey(s => s.SwimQuestionnaireId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Swim>()
                 .HasOne(s => s.AthleteDataOwner)
                 .WithMany(ado => ado.Swims)
                 .HasForeignKey(s => s.AthleteDataOwnerId)
