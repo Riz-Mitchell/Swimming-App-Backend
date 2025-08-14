@@ -10,7 +10,6 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // Attrubutes :
         // ------------------------------------------------
         public required EventEnum Event { get; set; } // E.g: 50m Freestyle
-        public int? PerceivedExertion { get; set; }
         public DateTime RecordedAt { get; set; } = DateTime.UtcNow;
         public bool GoalSwim { get; set; } = false;
 
@@ -27,6 +26,10 @@ namespace SwimmingAppBackend.Infrastructure.Models
         // ++++++++++++++++++++++++++++++++++++++++++++++++
 
         public ICollection<Split> Splits { get; set; } = [];
+
+        public required Guid SwimQuestionnaireId { get; set; }
+
+        public SwimQuestionnaire SwimQuestionnaire { get; set; }
 
         public required Guid AthleteDataOwnerId { get; set; }
 
