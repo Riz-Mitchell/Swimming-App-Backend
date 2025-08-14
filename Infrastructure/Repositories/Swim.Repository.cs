@@ -114,9 +114,9 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = swim.Id,
                 Event = swim.Event,
-                PerceivedExertion = swim.PerceivedExertion,
                 GoalSwim = swim.GoalSwim,
                 PoolType = swim.PoolType,
+                SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(swim.SwimQuestionnaire),
                 RecordedAt = swim.RecordedAt
             ,
                 Splits = SplitMapper.ListModelToListRes(swim.Splits)
@@ -135,10 +135,10 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = foundSwim.Id,
                 Event = foundSwim.Event,
-                PerceivedExertion = foundSwim.PerceivedExertion,
                 GoalSwim = foundSwim.GoalSwim,
                 PoolType = foundSwim.PoolType,
                 RecordedAt = foundSwim.RecordedAt,
+                SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(foundSwim.SwimQuestionnaire),
                 Splits = SplitMapper.ListModelToListRes(foundSwim.Splits)
             };
         }
@@ -151,12 +151,27 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             if (!athleteExists)
                 throw new Exception("Athlete not found");
 
+            SwimQuestionnaire swimQuestionnaire = new SwimQuestionnaire
+            {
+                SelfTalk = swimSchema.SwimQuestionnaire.SelfTalk,
+                Nerves = swimSchema.SwimQuestionnaire.Nerves,
+                EnergyLevel = swimSchema.SwimQuestionnaire.EnergyLevel,
+                Breathing = swimSchema.SwimQuestionnaire.Breathing,
+                CatchFeel = swimSchema.SwimQuestionnaire.CatchFeel,
+                StrokeLength = swimSchema.SwimQuestionnaire.StrokeLength,
+                KickTechnique = swimSchema.SwimQuestionnaire.KickTechnique,
+                KickThroughout = swimSchema.SwimQuestionnaire.KickThroughout,
+                HeadPosition = swimSchema.SwimQuestionnaire.HeadPosition,
+                Turn = swimSchema.SwimQuestionnaire.Turn
+            };
+
             Swim swim = new()
             {
                 Event = swimSchema.Event,
-                PerceivedExertion = swimSchema.PerceivedExertion,
                 GoalSwim = swimSchema.GoalSwim,
                 AthleteDataOwnerId = athleteDataOwnerId,
+                SwimQuestionnaireId = swimQuestionnaire.Id,
+                SwimQuestionnaire = swimQuestionnaire,
                 PoolType = swimSchema.PoolType
             };
 
@@ -175,10 +190,10 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = swim.Id,
                 Event = swim.Event,
-                PerceivedExertion = swim.PerceivedExertion,
                 GoalSwim = swim.GoalSwim,
                 PoolType = swim.PoolType,
                 RecordedAt = swim.RecordedAt,
+                SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(swim.SwimQuestionnaire),
                 Splits = splitResDTOList,
             };
         }
@@ -219,7 +234,6 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             }
 
             foundSwim.Event = updateSchema.Event ?? foundSwim.Event;
-            foundSwim.PerceivedExertion = updateSchema.PerceivedExertion ?? foundSwim.PerceivedExertion;
             // If goal swim is attempted being set to true, make sure there is only 1 goal swim for the Event right now
             foundSwim.GoalSwim = updateSchema.GoalSwim ?? foundSwim.GoalSwim;
 
@@ -230,10 +244,10 @@ namespace SwimmingAppBackend.Infrastructure.Repositories
             {
                 Id = foundSwim.Id,
                 Event = foundSwim.Event,
-                PerceivedExertion = foundSwim.PerceivedExertion,
                 GoalSwim = foundSwim.GoalSwim,
                 PoolType = foundSwim.PoolType,
                 RecordedAt = foundSwim.RecordedAt,
+                SwimQuestionnaire = SwimQuestionnaireMapper.ModelToRes(foundSwim.SwimQuestionnaire),
                 Splits = SplitMapper.ListModelToListRes(foundSwim.Splits)
             };
         }
